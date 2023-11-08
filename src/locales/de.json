@@ -1,0 +1,36 @@
+{
+  "gameTitle": "Carnegie",
+  "home": {
+    "title": "Carnegie Solo Helper",
+    "play1": "Spiele <a href='https://boardgamegeek.com/boardgame/310873/carnegie' target='_blank' rel='noopener'><b>Carnegie</b></a> gegen Andrew, den Solo-Gegner.",
+    "play2": "TBD",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Spielaufbau"
+  },
+  "notfound": {
+    "title": "Nicht gefunden"
+  },
+  "action": {
+    "playGame": "Spielen",
+    "startGame": "Spiel starten",
+    "next": "Weiter",
+    "nextRound": "Nächste Runde",
+    "abortGame": "Spiel abbrechen",
+    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist Du sicher?",
+    "endGame": "Spiel beenden",
+    "endGameConfirm": "Dieses Spiel wird beendet - bist Du sicher?",
+    "cancel": "Abbrechen",
+    "backToHome": "Zurück zum Anfang",
+    "back": "Zurück",
+    "close": "Schließen"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Applikation neu laden",
+    "notice": "Die Applikation wurde aktualisiert - möchtest du die Seite neu laden um die neueste Version zu nutzen?"
+  }
+}
