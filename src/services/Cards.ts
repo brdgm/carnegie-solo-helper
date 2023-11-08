@@ -1,10 +1,10 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory';
-import Card from './Card';
-import Action from './enum/Action';
-import CardType from './enum/CardType';
-import Donation from './enum/Donation';
-import Region from './enum/Region';
-import City from './enum/City';
+import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import Card from './Card'
+import Action from './enum/Action'
+import CardType from './enum/CardType'
+import Donation from './enum/Donation'
+import Region from './enum/Region'
+import City from './enum/City'
 
 const cards : Card[] = [
   {

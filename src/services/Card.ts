@@ -1,8 +1,8 @@
-import Action from "./enum/Action"
-import CardType from "./enum/CardType"
-import City from "./enum/City"
-import Donation from "./enum/Donation"
-import Region from "./enum/Region"
+import Action from './enum/Action'
+import CardType from './enum/CardType'
+import City from './enum/City'
+import Donation from './enum/Donation'
+import Region from './enum/Region'
 
 export default interface Card {
   id: string
