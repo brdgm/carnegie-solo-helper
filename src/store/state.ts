@@ -2,6 +2,9 @@ import { defineStore } from 'pinia'
 import { name } from '@/../package.json'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import DepartmentSelectionType from '@/services/enum/DepartmentSelectionType'
+import Action from '@/services/enum/Action'
+import Region from '@/services/enum/Region'
+import Event from '@/services/enum/Event'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -39,4 +42,15 @@ export interface Setup {
 }
 export interface Round {
   round: number
+}
+export interface TimelinePersistence {
+  actions: TimelinePersistenceAction[]
+}
+export interface TimelinePersistenceAction {
+  action: Action
+  entries: TimelinePersistenceEntry[]
+}
+export interface TimelinePersistenceEntry {
+  events: Event[]
+  region?: Region
 }
