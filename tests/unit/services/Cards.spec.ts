@@ -1,4 +1,5 @@
 import Cards from '@/services/Cards'
+import CardType from '@/services/enum/CardType'
 import { expect } from 'chai'
 
 describe('services/Cards', () => {
@@ -12,5 +13,7 @@ describe('services/Cards', () => {
   it('getAll', () => {
     const cards = Cards.getAll()
     expect(cards.length).eq(40)
+    expect(cards.filter(item => item.cardType == CardType.NORMAL).length).eq(20)
+    expect(cards.filter(item => item.cardType == CardType.ADVANCED).length).eq(20)
   })
 })
