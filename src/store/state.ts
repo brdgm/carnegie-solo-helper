@@ -43,6 +43,10 @@ export interface Setup {
 export interface Round {
   round: number
 }
+export interface CardDeckPersistence {
+  pile: string[]
+  discard: string[][]
+}
 export interface TimelinePersistence {
   actions: TimelinePersistenceAction[]
 }
