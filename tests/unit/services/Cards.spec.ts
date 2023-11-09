@@ -11,9 +11,9 @@ describe('services/Cards', () => {
   })
 
   it('getAll', () => {
-    const cards = Cards.getAll()
-    expect(cards.length).eq(40)
-    expect(cards.filter(item => item.cardType == CardType.NORMAL).length).eq(20)
-    expect(cards.filter(item => item.cardType == CardType.ADVANCED).length).eq(20)
+    const normalCards = Cards.getAll(CardType.NORMAL)
+    expect(normalCards.length).eq(20)
+    const advancedCards = Cards.getAll(CardType.ADVANCED)
+    expect(advancedCards.length).eq(20)
   })
 })
