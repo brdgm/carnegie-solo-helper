@@ -2,7 +2,7 @@ import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
 import Department from './Department'
 import Action from './enum/Action'
 
-const cards : Department[] = [
+const departments : Department[] = [
   {
     id: '01-training-partnerships',
     departmentType: Action.HUMAN_RESOURCES,
@@ -165,26 +165,26 @@ const cards : Department[] = [
   }
 ]
 
-const cardsMap = new Map<string,Department>()
-cards.forEach(card => cardsMap.set(card.id, card))
+const departmentsMap = new Map<string,Department>()
+departments.forEach(department => departmentsMap.set(department.id, department))
 
 export default {
 
   /**
-   * Get card by ID
+   * Get department by ID
    * @param id ID
    * @returns Department
    */
   get(id: string) : Department {
-    return findMandatory(cardsMap, id)
+    return findMandatory(departmentsMap, id)
   },
 
   /**
-   * Get all cards
-   * @returns cards
+   * Get all departments
+   * @returns departments
    */
   getAll() : Department[] {
-    return cards
+    return departments
   }
 
 }
