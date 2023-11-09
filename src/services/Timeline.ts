@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import { TimelinePersistence } from '@/store/state'
+import { TimelinePersistence, TimelinePersistenceEntry } from '@/store/state'
 import TimelineAction from './TimelineAction'
 import rollDice from 'brdgm-commons/src/util/random/rollDice'
 import TimelineTiles from './TimelineTiles'
@@ -21,6 +21,41 @@ export default class Timeline {
   }
 
   /**
+   * Checks if an additional action can be executed
+   * @returns true if any available entry is found
+   */
+  public canExecute() : boolean {
+    return this._actions.filter(action => action.entries.filter(entry => !entry.executed).length > 0).length > 0
+  }
+
+  /**
+   * Executed the given action and returns the timeline entry with event and region information
+   * @param action timeline entry
+   */
+  public execute(action : Action) : TimelineEntry {
+    // collect preferred actions rows to check for next available action
+    const actionIndex = Object.values(Action).indexOf(action)
+    const preferredActions : TimelineAction[] = []
+    for (let i=actionIndex; i<this._actions.length; i++) {
+      preferredActions.push(this._actions[i])
+    }
+    for (let i=0; i<actionIndex; i++) {
+      preferredActions.push(this._actions[i])
+    }
+    // get next available action
+    const result = preferredActions
+        .map(actionItem => actionItem.entries.find(entry => !entry.executed))
+        .find(entry => entry != undefined)
+    if (result) {
+      result.executed = true
+      return result
+    }
+    else {
+      throw new Error('No available timeline entry for action found.')
+    }
+  }
+
+  /**
    * Gets persistence view of timeline.
    */
   public toPersistence() : TimelinePersistence {
@@ -29,10 +64,14 @@ export default class Timeline {
         return {
           action: action.action,
           entries: action.entries.map(entry => {
-            return {
-              events: entry.events,
-              region: entry.region
+            const result : TimelinePersistenceEntry = { events: entry.events }
+            if (entry.region) {
+              result.region = entry.region
             }
+            if (entry.executed) {
+              result.executed = entry.executed
+            }
+            return result
           })
         }
       })
@@ -75,6 +114,9 @@ export default class Timeline {
           const result : TimelineEntry = { events: entry.events }
           if (entry.region) {
             result.region = entry.region
+          }
+          if (entry.executed) {
+            result.executed = true
           }
           return result
         })

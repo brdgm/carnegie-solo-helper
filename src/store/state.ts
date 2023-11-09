@@ -53,4 +53,5 @@ export interface TimelinePersistenceAction {
 export interface TimelinePersistenceEntry {
   events: Event[]
   region?: Region
+  executed?: boolean
 }
