@@ -7,7 +7,26 @@
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
-    "title": "Spielaufbau"
+    "title": "Spielaufbau",
+    "difficultyLevel": {
+      "title": "Schwierigkeitsgrad",
+      "easy": "Leicht",
+      "hard": "Schwer"
+    },
+    "departmentSelection": {
+      "title": "Abteilungsauswahl"
+    }
+  },
+  "difficultyLevel": {
+    "1": "Level 1 - Leicht",
+    "2": "Level 2 - Normal",
+    "3": "Level 3 - Schwer",
+    "4": "Level 4 - Experte"
+  },
+  "departmentSelectionType": {
+    "base": "Basis-Spiel",
+    "expansion": "Basis-Spiel und Erweiterung",
+    "expansion-open-bar": "Basis-Spiel und Erweiterung (Abteilungsvielfalt) - eine von jeder"
   },
   "notfound": {
     "title": "Nicht gefunden"
