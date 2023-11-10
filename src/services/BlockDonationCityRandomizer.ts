@@ -3,6 +3,7 @@ import Cards from './Cards'
 import Donation from './enum/Donation'
 import City from './enum/City'
 import getCityMetadata from '@/util/getCityMetadata'
+import { CityCount } from '@/store/state'
 
 /**
  * Places blocking disks on donations and city on start of the game.
@@ -12,7 +13,7 @@ export default class BlockDonationCityRandomizer {
   private readonly _disksTotal : number
   private _disksPlaced = 0
   private _donationsDisks : Donation[] = []
-  private _cityDisks : CityDisks[] = []
+  private _cityDisks : CityCount[] = []
 
   /**
    * @param disksTotal Total disks (18 for two players or solo)
@@ -28,7 +29,7 @@ export default class BlockDonationCityRandomizer {
     return this._donationsDisks
   }
 
-  public get cityDisks() : readonly CityDisks[] {
+  public get cityDisks() : readonly CityCount[] {
     return this._cityDisks
   }
 
@@ -80,15 +81,10 @@ export default class BlockDonationCityRandomizer {
         .filter(donation => this._donationsDisks.includes(donation))
   }
 
-  private orderedCityDisks() : CityDisks[] {
+  private orderedCityDisks() : CityCount[] {
     return Object.values(City)
         .map(city => this._cityDisks.find(item => item.city == city))
-        .filter(item => item != undefined) as CityDisks[]
+        .filter(item => item != undefined) as CityCount[]
   }
 
-}
-
-export interface CityDisks {
-  city: City
-  count: number
 }

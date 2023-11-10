@@ -5,6 +5,8 @@ import DepartmentSelectionType from '@/services/enum/DepartmentSelectionType'
 import Action from '@/services/enum/Action'
 import Region from '@/services/enum/Region'
 import Event from '@/services/enum/Event'
+import Donation from '@/services/enum/Donation'
+import City from '@/services/enum/City'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -20,6 +22,9 @@ export const useStateStore = defineStore(`${name}.state`, {
   },
   actions: {
     resetGame() {
+      this.setup.blockedDonations = undefined
+      this.setup.blockedCities = undefined
+      this.setup.initialDepartments = undefined
       this.rounds = []
     },
     storeRound(round : Round) {
@@ -39,7 +44,15 @@ export interface State {
 export interface Setup {
   difficultyLevel: DifficultyLevel
   departmentSelectionType: DepartmentSelectionType
+  blockedDonations?: readonly Donation[]
+  blockedCities?: readonly CityCount[]
+  initialDepartments?: readonly string[]
 }
+export interface CityCount {
+  city: City
+  count: number
+}
+
 export interface Round {
   round: number
 }
