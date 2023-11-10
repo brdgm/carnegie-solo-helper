@@ -1,27 +1,28 @@
 <template>
-  <h1>{{t('setupPrepare.title')}}</h1>
+  <h1>{{t('setupPrepareGame.title')}}</h1>
 
   <ol>
-    <li v-html="t('setupPrepare.pickPlayerColor.intro')"></li>
+    <li v-html="t('setupPrepareGame.pickPlayerColor.intro')"></li>
     <ul>
-      <li v-html="t('setupPrepare.pickPlayerColor.putDisks')"></li>
-      <li v-html="t('setupPrepare.pickPlayerColor.takeGoodsMoney')"></li>
+      <li v-html="t('setupPrepareGame.pickPlayerColor.putDisks')"></li>
+      <li v-html="t('setupPrepareGame.pickPlayerColor.placeEmployees')"></li>
+      <li v-html="t('setupPrepareGame.pickPlayerColor.takeGoodsMoney')"></li>
     </ul>
-    <li v-html="t('setupPrepare.pickBotColor.intro')"></li>
+    <li v-html="t('setupPrepareGame.pickBotColor.intro')"></li>
     <ul>
-      <li v-html="t('setupPrepare.pickBotColor.putDisks')"></li>
-      <li v-html="t('setupPrepare.pickBotColor.botInfo')"></li>
+      <li v-html="t('setupPrepareGame.pickBotColor.putDisks')"></li>
+      <li v-html="t('setupPrepareGame.pickBotColor.botInfo')"></li>
     </ul>
     <li>
-      <span v-html="t('setupPrepare.pickBlockingColor.intro')"></span>
+      <span v-html="t('setupPrepareGame.pickBlockingColor.intro')"></span>
       <BlockedDonations/>
       <BlockedCities/>
     </li>
   </ol>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="startGame()">
-    {{t('action.startGame')}}
-  </button>
+  <RouterLink type="button" class="btn btn-primary btn-lg mt-4" to="/setupPreparePlayer">
+    {{t('action.next')}}
+  </RouterLink>
 
   <FooterButtons endGameButtonType="abortGame" backButtonRouteTo="/setupGame"/>
 </template>
@@ -45,11 +46,6 @@ export default defineComponent({
     const { t } = useI18n()
     const state = useStateStore()
     return { t, state }
-  },
-  methods: {
-    startGame() : void {
-      this.$router.push('/round/1/selectPhase')
-    }
   }
 })
 </script>

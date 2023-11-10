@@ -15,7 +15,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import Donation from '@/services/enum/Donation'
@@ -27,9 +26,8 @@ export default defineComponent({
     AppIcon
   },
   setup() {
-    const { t } = useI18n()
     const state = useStateStore()
-    return { t, state }
+    return { state }
   },
   computed: {
     donationGroups() : Donation[][] {

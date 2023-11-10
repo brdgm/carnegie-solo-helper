@@ -17,11 +17,12 @@
       "title": "Abteilungsauswahl"
     }
   },
-  "setupPrepare": {
+  "setupPrepareGame": {
     "title": "Spielbrett vorbereiten",
     "pickPlayerColor": {
       "intro": "Wähle eine Spielerfarbe <b>für dich</b>.",
       "putDisks": "Lege 1 Schreibe auf die Punkteleiste, je 1 Schreibe auf die Transportleisten, und 1 Schreibe auf jedes der sichtbaren Felder der Projektstreifen.",
+      "placeEmployees": "Stelle je 1 Mitarbeiter aufrecht auf jede der 5 Abteilungen deines Unternehmens und lege weitere 5 in den Empfangsbereich.",
       "takeGoodsMoney": "Nehme 4 Warenwürfel und $12."
     },
     "pickBotColor": {
@@ -33,6 +34,14 @@
       "intro": "Wähle eine dritte Spielerfarbe um zu Beginn <b>einige Spenden und Städte zu blockieren</b>:",
       "placeCityDisks": "Lege Schreiben auf das erste freie Projektfeld <i>von links</i> in jeder dieser Städte:"
     }
+  },
+  "setupPreparePlayer": {
+    "title": "Spieler-Vorbereitung",
+    "placeHousingDisk": "Setze die <b>Scheibe vom deinem Wohnprojektstreifen</b> auf das Wohnprojektfeld einer <i>mittleren oder großen</i> Stadt auf dem Spielplan.",
+    "pickDepartmentTileInfo": "Wähle eines <b>Abteilungsplättchen</b> und lege es in deinen persönlichen Vorrat:",
+    "pickDepartmentTile": "Abteilungsplättchen wählen",
+    "moveEmployees": "<b>Bewege eigene Mitarbeiter</b> um bis zu 6 Schritte auf dem Unternehmensplan.",
+    "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>."
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

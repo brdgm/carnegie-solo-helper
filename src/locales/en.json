@@ -17,11 +17,12 @@
       "title": "Department Selection"
     }
   },
-  "setupPrepare": {
+  "setupPrepareGame": {
     "title": "Prepare Game Board",
     "pickPlayerColor": {
       "intro": "Pick a player color <b>for you</b>.",
       "putDisks": "Put 1 disks on the score track, 1 disk on each transportation track, and 1 on each available space on the project tabs.",
+      "placeEmployees": "Place 1 of your employees standing up on each of your Company’s 5 Departments, with another 5 employees lying down in the Company’s Lobby.",
       "takeGoodsMoney": "Take 4 good cubes and $12."
     },
     "pickBotColor": {
@@ -33,6 +34,14 @@
       "intro": "Pick a third player color for initially <b>blocking certain donations and cities</b>:",
       "placeCityDisks": "Put discs on the <i>left-most</i> unoccupied construction spaces in each city:"
     }
+  },
+  "setupPreparePlayer": {
+    "title": "Player Preparation",
+    "placeHousingDisk": "Place the <b>disk from your Housing tab</b> onto the game board on a Housing space in a <i>medium or major</i> city.",
+    "pickDepartmentTileInfo": "Choose one <b>Department tile</b> to place in your personal reserve:",
+    "pickDepartmentTile": "Pick Department tile",
+    "moveEmployees": "You may <b>move your employees</b> up to a total of 6 steps on your Company board.",
+    "activateEmployees": "You may <b>activate your employees</b>."
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
