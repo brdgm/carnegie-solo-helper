@@ -15,10 +15,10 @@ describe('services/Cards', () => {
     expect(normalCards.length).eq(40)
   })
 
-  it('getAllByType', () => {
-    const normalCards = Cards.getAllByType(CardType.NORMAL)
+  it('getByType', () => {
+    const normalCards = Cards.getByType(CardType.NORMAL)
     expect(normalCards.length).eq(20)
-    const advancedCards = Cards.getAllByType(CardType.ADVANCED)
+    const advancedCards = Cards.getByType(CardType.ADVANCED)
     expect(advancedCards.length).eq(20)
   })
 })

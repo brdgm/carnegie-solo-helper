@@ -4,6 +4,9 @@ import Donation from './enum/Donation'
 import City from './enum/City'
 import getCityMetadata from '@/util/getCityMetadata'
 
+/**
+ * Places blocking disks on donations and city on start of the game.
+ */
 export default class BlockDonationCityRandomizer {
 
   private readonly _disksTotal : number
@@ -11,6 +14,9 @@ export default class BlockDonationCityRandomizer {
   private _donationsDisks : Donation[] = []
   private _cityDisks : CityDisks[] = []
 
+  /**
+   * @param disksTotal Total disks (18 for two players or solo)
+   */
   constructor(disksTotal : number) {
     this._disksTotal = disksTotal
     this.drawCards()

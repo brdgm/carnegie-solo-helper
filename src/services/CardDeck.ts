@@ -41,8 +41,8 @@ export default class CardDeck {
    * Creates a shuffled new card deck.
    */
   public static new(difficultyLevel : DifficultyLevel) : CardDeck {    
-    const normalCards = _.shuffle(Cards.getAllByType(CardType.NORMAL))
-    const advancedCards = _.shuffle(Cards.getAllByType(CardType.ADVANCED))
+    const normalCards = _.shuffle(Cards.getByType(CardType.NORMAL))
+    const advancedCards = _.shuffle(Cards.getByType(CardType.ADVANCED))
     const pile : Card[] = []
     switch (difficultyLevel) {
       case DifficultyLevel.BEGINNER:
