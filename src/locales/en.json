@@ -43,6 +43,9 @@
     "moveEmployees": "You may <b>move your employees</b> up to a total of 6 steps on your Company board.",
     "activateEmployees": "You may <b>activate your employees</b>."
   },
+  "departmentShop": {
+    "title": "Available Departments"
+  },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
     "2": "Level 2 - Normal",

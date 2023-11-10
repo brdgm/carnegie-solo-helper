@@ -43,6 +43,9 @@
     "moveEmployees": "<b>Bewege eigene Mitarbeiter</b> um bis zu 6 Schritte auf dem Unternehmensplan.",
     "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>."
   },
+  "departmentShop": {
+    "title": "Verfügbare Abteilungen"
+  },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",
     "2": "Level 2 - Normal",
