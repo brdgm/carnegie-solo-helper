@@ -468,7 +468,16 @@ export default {
    * @param cardType Card type
    * @returns cards
    */
-  getAll(cardType : CardType) : Card[] {
+  getAll() : Card[] {
+    return cards
+  },
+
+  /**
+   * Get all cards
+   * @param cardType Card type
+   * @returns cards
+   */
+  getAllByType(cardType : CardType) : Card[] {
     return cards.filter(item => item.cardType == cardType)
   }
 
