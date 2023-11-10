@@ -31,5 +31,5 @@ describe('services/DepartmentSelectionRandomizer', () => {
 })
 
 function countGroupedDepartments(grouped : readonly DepartmentGroup[]) : number {
-  return grouped.reduce((count, grouped) => count + grouped.departments.reduce((count, dept) => count + dept.count, 0), 0)
+  return grouped.reduce((groupCount, groupItem) => groupCount + groupItem.departments.reduce((count, dept) => count + dept.count, 0), 0)
 }
