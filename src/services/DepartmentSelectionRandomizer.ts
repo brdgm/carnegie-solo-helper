@@ -40,8 +40,10 @@ export default class DepartmentSelectionRandomizer {
     switch (departmentSelectionType) {
       case DepartmentSelectionType.BASE:
         // two of each base department in pool
-        pool.push(...baseDepartments)
-        pool.push(...baseDepartments)
+        baseDepartments.forEach(dept => {
+          pool.push(dept)
+          pool.push(dept)
+        })
         break;
       case DepartmentSelectionType.EXPANSION:
         // pick 4 departments from each type, and put 2 of each into the pool
@@ -69,6 +71,7 @@ export default class DepartmentSelectionRandomizer {
         departmentsForCurrentType.push(dept)
       }
     })
+    // put departments in pool in correct order
     const selectedDepartments = Array.from(departmentsByType.values()).flatMap(item => item)
     const result : Department[] = []
     allDepartments.filter(dept => selectedDepartments.includes(dept)).forEach(dept => {
