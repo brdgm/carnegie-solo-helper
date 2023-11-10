@@ -1,6 +1,6 @@
 <template>
   <div class="cities">
-    <p>Put discs on the <i>left-most</i> unoccupied construction spaces in each city:</p>
+    <p v-html="t('setupPrepare.pickBlockingColor.placeCityDisks')"></p>
     <ul>
       <li v-for="cityCount of blockedCities" :key="cityCount.city">
         <CityBadge :city="cityCount.city"/>
@@ -22,7 +22,7 @@ export default defineComponent({
   components: {
     AppIcon,
     CityBadge
-},
+  },
   setup() {
     const { t } = useI18n()
     const state = useStateStore()

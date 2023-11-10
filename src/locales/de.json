@@ -18,7 +18,21 @@
     }
   },
   "setupPrepare": {
-    "title": "Spielbrett vorbereiten"
+    "title": "Spielbrett vorbereiten",
+    "pickPlayerColor": {
+      "intro": "Wähle eine Spielerfarbe <b>für dich</b>.",
+      "putDisks": "Lege 1 Schreibe auf die Punkteleiste, je 1 Schreibe auf die Transportleisten, und 1 Schreibe auf jedes der sichtbaren Felder der Projektstreifen.",
+      "takeGoodsMoney": "Nehme 4 Warenwürfel und $12."
+    },
+    "pickBotColor": {
+      "intro": "Wähle eine Spielerfarbe <b>für Andrew</b>, den Solo-Gegner.",
+      "putDisks": "Lege je 1 Schreibe auf die Transportleisten.",
+      "botInfo": "Andrew hat keinen eigenen Unternehmensplan, keine Mitarbeiter und nutzt während des Spiels kein Geld, keine Warenwürfel und keine Forschungspunkte. Andrew hat für alle Aktionen immer ausreichend Ressourcen zur Verfügung und muss nichts bezahlen."
+    },
+    "pickBlockingColor": {
+      "intro": "Wähle eine dritte Spielerfarbe um zu Beginn <b>einige Spenden und Städte zu blockieren</b>:",
+      "placeCityDisks": "Lege Schreiben auf das erste freie Projektfeld <i>von links</i> in jeder dieser Städte:"
+    }
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

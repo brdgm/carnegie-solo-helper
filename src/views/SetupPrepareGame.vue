@@ -2,22 +2,21 @@
   <h1>{{t('setupPrepare.title')}}</h1>
 
   <ol>
-    <li>Pick a player color <b>for you</b>.</li>
+    <li v-html="t('setupPrepare.pickPlayerColor.intro')"></li>
     <ul>
-      <li>Put one disks on the score track, one disk on each transportation tracks starting field, and one each available space on the project tabs of your player board.</li>
-      <li>Take 4 good cubes and $12.</li>
+      <li v-html="t('setupPrepare.pickPlayerColor.putDisks')"></li>
+      <li v-html="t('setupPrepare.pickPlayerColor.takeGoodsMoney')"></li>
     </ul>
-    <li>Pick a player color <b>for Andrew</b>, the solo opponent.</li>
+    <li v-html="t('setupPrepare.pickBotColor.intro')"></li>
     <ul>
-      <li>Put one disks on the score track, one disk on each transportation tracks starting field.</li>
-      <li>Andrew does not need a player board or any further setup. He does not get good cubes or money.</li>
+      <li v-html="t('setupPrepare.pickBotColor.putDisks')"></li>
+      <li v-html="t('setupPrepare.pickBotColor.botInfo')"></li>
     </ul>
     <li>
-      Pick a third player color for initially <b>blocking certain donations and cities</b>:
+      <span v-html="t('setupPrepare.pickBlockingColor.intro')"></span>
       <BlockedDonations/>
       <BlockedCities/>
     </li>
-    <li>...</li>
   </ol>
 
   <button class="btn btn-primary btn-lg mt-4" @click="startGame()">
