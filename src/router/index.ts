@@ -4,6 +4,7 @@ import NotFound from '@/views/NotFound.vue'
 import createRouter from 'brdgm-commons/src/util/router/createRouter'
 import { name } from '@/../package.json'
 import SetupGame from '@/views/SetupGame.vue'
+import SetupPrepareGame from '@/views/SetupPrepareGame.vue'
 
 const LOCALSTORAGE_KEY = `${name}.route`
 
@@ -17,6 +18,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/setupGame',
     name: 'SetupGame',
     component: SetupGame
+  },
+  {
+    path: '/setupPrepareGame',
+    name: 'SetupPrepareGame',
+    component: SetupPrepareGame
   },
   {
     path: '/:pathMatch(.*)*',

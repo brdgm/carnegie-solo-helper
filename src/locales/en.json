@@ -3,7 +3,7 @@
   "home": {
     "title": "Carnegie Solo Helper",
     "play1": "Play <a href='https://boardgamegeek.com/boardgame/310873/carnegie' target='_blank' rel='noopener'><b>Carnegie</b></a> against a Andrew, the Solo Opponent.",
-    "play2": "TBD",
+    "play2": "This app replaces the solo card deck, the timeline action selection and manages the available department tiles.",
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
@@ -16,6 +16,9 @@
     "departmentSelection": {
       "title": "Department Selection"
     }
+  },
+  "setupPrepare": {
+    "title": "Prepare Game Board"
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
