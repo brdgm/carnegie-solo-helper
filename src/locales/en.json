@@ -47,6 +47,9 @@
     "title": "Available Departments",
     "selectDepartment": "Select Department"
   },
+  "roundTimelineSelection": {
+    "title": "Round {round}: Select Timeline"
+  },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
     "2": "Level 2 - Normal",
