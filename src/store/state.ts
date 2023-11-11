@@ -71,6 +71,7 @@ export interface TimelinePersistenceAction {
   entries: TimelinePersistenceEntry[]
 }
 export interface TimelinePersistenceEntry {
+  id: string
   events: Event[]
   region?: Region
   executed?: boolean

@@ -29,10 +29,10 @@ export default class Timeline {
   }
 
   /**
-   * Executed the given action and returns the timeline entry with event and region information
-   * @param action timeline entry
+   * Returns the matching timeline entry for the next action of given type.
+   * @param action timeline entry or null if not possible
    */
-  public execute(action : Action) : TimelineEntry {
+  public checkExecute(action : Action) : TimelineEntry|undefined {
     // collect preferred actions rows to check for next available action
     const actionIndex = Object.values(Action).indexOf(action)
     const preferredActions : TimelineAction[] = []
@@ -43,9 +43,18 @@ export default class Timeline {
       preferredActions.push(this._actions[i])
     }
     // get next available action
-    const result = preferredActions
+    return preferredActions
         .map(actionItem => actionItem.entries.find(entry => !entry.executed))
         .find(entry => entry != undefined)
+  }
+
+  /**
+   * Executed the given action and returns the timeline entry with event and region information
+   * @param action timeline entry
+   */
+  public execute(action : Action) : TimelineEntry {
+    // get next available action
+    const result = this.checkExecute(action)
     if (result) {
       result.executed = true
       return result
@@ -64,7 +73,7 @@ export default class Timeline {
         return {
           action: action.action,
           entries: action.entries.map(entry => {
-            const result : TimelinePersistenceEntry = { events: entry.events }
+            const result : TimelinePersistenceEntry = { id: entry.id, events: entry.events }
             if (entry.region) {
               result.region = entry.region
             }
@@ -85,6 +94,7 @@ export default class Timeline {
     const timelineTiles = _.shuffle(TimelineTiles.getAll())
     const finalRegions = Object.values(Region)
     const actions : TimelineAction[] = []
+    let index = 0
     Object.values(Action).forEach(action => {
       const timelineTile = timelineTiles.shift()
       const entries : TimelineEntry[] = []
@@ -97,7 +107,7 @@ export default class Timeline {
           entries.push(...timelineTile.back)
         }
       }
-      entries.push({events:[Event.TAKE_INCOME,Event.DONATION], region:finalRegions.shift()})
+      entries.push({id:`l${++index}`, events:[Event.TAKE_INCOME,Event.DONATION], region:finalRegions.shift()})
       actions.push({action,entries})
     })
     return new Timeline(actions)
@@ -111,7 +121,7 @@ export default class Timeline {
       return {
         action: action.action,
         entries: action.entries.map(entry => {
-          const result : TimelineEntry = { events: entry.events }
+          const result : TimelineEntry = { id: entry.id, events: entry.events }
           if (entry.region) {
             result.region = entry.region
           }

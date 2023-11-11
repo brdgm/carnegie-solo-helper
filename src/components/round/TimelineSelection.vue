@@ -1,6 +1,7 @@
 <template>
   <div class="action" v-for="timelineAction of timeline.actions" :key="timelineAction.action">
-    <button class="btn btn-outline-primary">
+    <button class="btn" :class="{'btn-outline-primary':!(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action}"
+        @click="selectAction(timelineAction.action)">
       <AppIcon type="action" :name="timelineAction.action" class="actionIcon"/>
     </button>
 
@@ -9,11 +10,13 @@
       <div class="entry">
         <template v-for="event of timelineEntry.events" :key="event">
           <div v-if="isTakeIncome(event) && timelineEntry.region" class="eventBackground income"
+              :class="{selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)}"
               :style="{'background-color':getRegionEventBackgroundColor(timelineEntry.region)}">
             <AppIcon type="event" :name="event" class="eventIcon"/>
             <div class="region" :style="{'background-color':getRegionBackgroundColor(timelineEntry.region)}">{{timelineEntry.region}}</div>
           </div>
-          <div v-else class="eventBackground donation">
+          <div v-else class="eventBackground donation"
+              :class="{selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)}">
             <AppIcon type="event" :name="event" class="eventIcon"/>
           </div>
         </template>
@@ -41,7 +44,7 @@ export default defineComponent({
     AppIcon
   },
   emits: {
-    selected: (_action: Action, _timelineEntry: TimelineEntry) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    selected: (_action: Action) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   props: {
     timeline: {
@@ -51,7 +54,8 @@ export default defineComponent({
   },
   data() {
     return {
-      selectedAction: undefined as Action|undefined
+      selectedAction: undefined as Action|undefined,
+      selectedTimelineEntry: undefined as TimelineEntry|undefined
     }
   },
   setup() {
@@ -59,6 +63,19 @@ export default defineComponent({
     const state = useStateStore()
     return { t, state }
   },
+  /*
+  computed: {
+    timelineActions() : readonly TimelineAction[] {
+      if (this.selectedAction) {
+        return this.timeline.actions.filter(item => item.action == this.selectedAction
+            || item.entries.find(entry => entry.id == this.selectedTimelineEntry?.id))
+      }
+      else {
+        return this.timeline.actions
+      }
+    }
+  },
+  */
   methods: {
     getRegionBackgroundColor(region : Region) {
       return getRegionMetadata(region).backgroundColor
@@ -71,6 +88,16 @@ export default defineComponent({
     },
     isTakeIncome(event : Event) {
       return event == Event.TAKE_INCOME
+    },
+    selectAction(action : Action) {
+      this.selectedAction = action
+      this.selectedTimelineEntry = this.timeline.checkExecute(action)
+      if (this.selectAction != undefined) {
+        this.$emit('selected', this.selectedAction)
+      }
+    },
+    isSelected(timelineEntry : TimelineEntry) {
+      return this.selectedTimelineEntry?.id == timelineEntry.id
     }
   }
 })
@@ -85,6 +112,9 @@ export default defineComponent({
     width: 90px;
     height: 90px;
     margin-right: 15px;
+    &.btn-outline-primary:not(:hover) {
+      background-color: #fff;
+    }
   }
   .actionIcon {
     width: 60px;
@@ -110,12 +140,21 @@ export default defineComponent({
     height: 70px;
     border-radius: 50%;
     z-index: 50;
+    filter: drop-shadow(#666 3px 3px 3px);
     &.donation {
       background-color: #f3eada;
     }
     &:nth-child(2) {
       margin-left: -15px;
       z-index: 40;
+    }
+    &.selected {      
+      border: 5px solid #e86720;
+      filter: drop-shadow(#e86720 3px 3px 3px);
+    }
+    &.inactive {
+      opacity: 25%;
+      filter: none;
     }
   }
   .eventIcon {
