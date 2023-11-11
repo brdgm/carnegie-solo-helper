@@ -55,6 +55,9 @@ export interface CityCount {
 
 export interface Round {
   round: number
+  cardDeck: CardDeckPersistence
+  timeline: TimelinePersistence
+  departments: readonly string[]
 }
 export interface CardDeckPersistence {
   pile: string[]

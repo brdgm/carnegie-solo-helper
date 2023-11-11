@@ -33,6 +33,9 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import DepartmentShop from '@/components/structure/DepartmentShop.vue'
 import Department from '@/services/Department'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import CardDeck from '@/services/CardDeck'
+import Timeline from '@/services/Timeline'
+import removeDepartment from '@/util/removeDepartment'
 
 export default defineComponent({
   name: 'SetupPreparePlayer',
@@ -58,7 +61,14 @@ export default defineComponent({
   },
   methods: {
     startGame() : void {
-      this.$router.push('/round/1/selectPhase')
+      // prepare 1st round
+      this.state.storeRound({
+        round: 1,
+        cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
+        timeline: Timeline.new().toPersistence(),
+        departments: removeDepartment(this.state.setup.initialDepartments, this.department?.id)
+      })
+      this.$router.push('/round/1/timelineSelection')
     },
     selectDepartment(department : Department) : void {
       this.department = department
