@@ -1,7 +1,7 @@
 <template>
   <h1>{{t('roundTimelineSelection.title', {round})}}</h1>
 
-  <p>...</p>
+  <TimelineSelection :timeline="navigationState.timeline"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -18,11 +18,13 @@ import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
+import TimelineSelection from '@/components/round/TimelineSelection.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelection',
   components: {
-    FooterButtons
+    FooterButtons,
+    TimelineSelection
   },
   setup() {
     const { t } = useI18n()
