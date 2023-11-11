@@ -11,8 +11,7 @@
           <div v-if="isTakeIncome(event) && timelineEntry.region" class="eventBackground income"
               :style="{'background-color':getRegionEventBackgroundColor(timelineEntry.region)}">
             <AppIcon type="event" :name="event" class="eventIcon"/>
-            <div class="region" :style="{'background-color':getRegionBackgroundColor(timelineEntry.region)}">{{timelineEntry.region}}
-            </div>
+            <div class="region" :style="{'background-color':getRegionBackgroundColor(timelineEntry.region)}">{{timelineEntry.region}}</div>
           </div>
           <div v-else class="eventBackground donation">
             <AppIcon type="event" :name="event" class="eventIcon"/>
@@ -120,10 +119,9 @@ export default defineComponent({
     }
   }
   .eventIcon {
-    width: 40px;    
+    width: 35px;    
   }
   .income .eventIcon {
-    width: 30px;
     margin-top: 8px;
   }
   .region {
