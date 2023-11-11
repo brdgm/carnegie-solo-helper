@@ -5,7 +5,12 @@
     <li v-html="t('setupPreparePlayer.placeHousingDisk')"></li>    
     <li>
       <span v-html="t('setupPreparePlayer.pickDepartmentTileInfo')"></span><br/>
-      <button class="btn btn-primary mt-2 mb-2" data-bs-toggle="modal" data-bs-target="#departmentShopModal">{{t('setupPreparePlayer.pickDepartmentTile')}}</button>
+      <p v-if="department" class="mt-3">
+        <AppIcon type="department" :name="department.id" extension="jpg" class="department-icon"
+            :title="t(`department.${department.id}.title`)"
+            data-bs-toggle="modal" data-bs-target="#departmentShopModal"/>
+      </p>
+      <button v-else class="btn btn-primary mt-2 mb-2" data-bs-toggle="modal" data-bs-target="#departmentShopModal">{{t('setupPreparePlayer.pickDepartmentTile')}}</button>
     </li>
     <li v-html="t('setupPreparePlayer.moveEmployees')"></li>
     <li v-html="t('setupPreparePlayer.activateEmployees')"></li>
@@ -15,7 +20,7 @@
     {{t('action.startGame')}}
   </button>
 
-  <DepartmentShop :departments="initialDepartments"/>
+  <DepartmentShop :departments="initialDepartments" @selected="selectDepartment"/>
 
   <FooterButtons endGameButtonType="abortGame" backButtonRouteTo="/setupPrepareGame"/>
 </template>
@@ -26,12 +31,15 @@ import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import DepartmentShop from '@/components/structure/DepartmentShop.vue'
+import Department from '@/services/Department'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'SetupPreparePlayer',
   components: {
     FooterButtons,
-    DepartmentShop
+    DepartmentShop,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -40,7 +48,7 @@ export default defineComponent({
   },
   data() {
     return {
-      department: undefined as string|undefined
+      department: undefined as Department|undefined
     }
   },
   computed: {
@@ -51,6 +59,9 @@ export default defineComponent({
   methods: {
     startGame() : void {
       this.$router.push('/round/1/selectPhase')
+    },
+    selectDepartment(department : Department) : void {
+      this.department = department
     }
   }
 })
@@ -59,5 +70,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 ol > li {
   margin-top: 10px;
+}
+
+.department-icon {
+  height: 130px;
+  border-radius: 10px;
+  border: 1px solid #888;
+  filter: drop-shadow(#333 3px 3px 3px);
+  cursor: pointer;
 }
 </style>

@@ -44,7 +44,8 @@
     "activateEmployees": "You may <b>activate your employees</b>."
   },
   "departmentShop": {
-    "title": "Available Departments"
+    "title": "Available Departments",
+    "selectDepartment": "Select Department"
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
@@ -57,7 +58,7 @@
     "expansion": "Base Game and Expansion",
     "expansion-open-bar": "Base Game and Expansion (Open Bar) - one of each"
   },
-  "departments": {
+  "department": {
     "01-training-partnerships": {
       "title": "Training and Partnerships",
       "description": "This Department is a powerful way to bring more flexibility in allocating employees. It also allows its owner to supplement their financial resources.",

@@ -38,13 +38,14 @@
   "setupPreparePlayer": {
     "title": "Spieler-Vorbereitung",
     "placeHousingDisk": "Setze die <b>Scheibe vom deinem Wohnprojektstreifen</b> auf das Wohnprojektfeld einer <i>mittleren oder großen</i> Stadt auf dem Spielplan.",
-    "pickDepartmentTileInfo": "Wähle eines <b>Abteilungsplättchen</b> und lege es in deinen persönlichen Vorrat:",
+    "pickDepartmentTileInfo": "Wähle eines der <b>Abteilungsplättchen</b> und lege es in deinen persönlichen Vorrat:",
     "pickDepartmentTile": "Abteilungsplättchen wählen",
     "moveEmployees": "<b>Bewege eigene Mitarbeiter</b> um bis zu 6 Schritte auf dem Unternehmensplan.",
     "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>."
   },
   "departmentShop": {
-    "title": "Verfügbare Abteilungen"
+    "title": "Verfügbare Abteilungen",
+    "selectDepartment": "Abteilung auswählen"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",
@@ -57,7 +58,7 @@
     "expansion": "Basis-Spiel und Erweiterung",
     "expansion-open-bar": "Basis-Spiel und Erweiterung (Abteilungsvielfalt) - eine von jeder"
   },
-  "departments": {
+  "department": {
     "01-training-partnerships": {
       "title": "Fortbildung und Beteiligungen",
       "description": "Diese Abteilung bietet größere Flexibilität beim Einsatz der Mitarbeiter deines Unternehmens und kann zudem mit einer Finanzspritze aushelfen.",
