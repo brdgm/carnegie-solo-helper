@@ -1,6 +1,6 @@
 <template>
-  <div class="action" v-for="timelineAction of timeline.actions" :key="timelineAction.action">
-    <button class="btn" :class="{'btn-outline-primary':!(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action}"
+  <div class="action" v-for="timelineAction of timelineActions" :key="timelineAction.action">
+    <button class="btn" :class="{'btn-outline-primary':selectedAction && !(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action || !selectedAction}"
         @click="selectAction(timelineAction.action)">
       <AppIcon type="action" :name="timelineAction.action" class="actionIcon"/>
     </button>
@@ -31,6 +31,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import Action from '@/services/enum/Action'
+import TimelineAction from '@/services/TimelineAction'
 import TimelineEntry from '@/services/TimelineEntry'
 import Timeline from '@/services/Timeline'
 import AppIcon from '@/components/structure/AppIcon.vue'
@@ -44,7 +45,7 @@ export default defineComponent({
     AppIcon
   },
   emits: {
-    selected: (_action: Action) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    selected: (_action?: Action) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   props: {
     timeline: {
@@ -63,7 +64,6 @@ export default defineComponent({
     const state = useStateStore()
     return { t, state }
   },
-  /*
   computed: {
     timelineActions() : readonly TimelineAction[] {
       if (this.selectedAction) {
@@ -75,7 +75,6 @@ export default defineComponent({
       }
     }
   },
-  */
   methods: {
     getRegionBackgroundColor(region : Region) {
       return getRegionMetadata(region).backgroundColor
@@ -90,11 +89,15 @@ export default defineComponent({
       return event == Event.TAKE_INCOME
     },
     selectAction(action : Action) {
-      this.selectedAction = action
-      this.selectedTimelineEntry = this.timeline.checkExecute(action)
-      if (this.selectAction != undefined) {
-        this.$emit('selected', this.selectedAction)
+      if (this.selectedAction == action) {
+        this.selectedAction = undefined
+        this.selectedTimelineEntry = undefined
       }
+      else {
+        this.selectedAction = action
+        this.selectedTimelineEntry = this.timeline.checkExecute(action)
+      }
+      this.$emit('selected', this.selectedAction)
     },
     isSelected(timelineEntry : TimelineEntry) {
       return this.selectedTimelineEntry?.id == timelineEntry.id

@@ -1,5 +1,5 @@
 <template>
-  <img src="@/assets/andrew.png" class="botImage" v-if="!playerStartPlayer"/>
+  <img src="@/assets/andrew.png" class="botImage" alt="" v-if="!playerStartPlayer"/>
 
   <h1>{{t('roundTimelineSelection.title', {round})}}</h1>
 
@@ -86,7 +86,7 @@ export default defineComponent({
       }
       */
     },
-    selectTimeline(action: Action) : void {
+    selectTimeline(action?: Action) : void {
       this.selectedAction = action
     }
   }
@@ -98,7 +98,7 @@ export default defineComponent({
   position: absolute;
   right: 0px;
   bottom: 0px;
-  width: 100%;
+  width: 80%;
   max-width: 500px;
   opacity: 25%;
   overflow: hidden;
