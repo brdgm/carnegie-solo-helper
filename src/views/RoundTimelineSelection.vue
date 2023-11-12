@@ -1,5 +1,5 @@
 <template>
-  <img src="@/assets/andrew.png" class="botImage" alt="" v-if="!playerStartPlayer"/>
+  <BotBackgroundImage v-if="!playerStartPlayer"/>
 
   <h1>{{t('roundTimelineSelection.title', {round})}}</h1>
 
@@ -25,12 +25,14 @@ import NavigationState from '@/util/NavigationState'
 import TimelineSelection from '@/components/round/TimelineSelection.vue'
 import Action from '@/services/enum/Action'
 import Player from '@/services/enum/Player'
+import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelection',
   components: {
     FooterButtons,
-    TimelineSelection
+    TimelineSelection,
+    BotBackgroundImage
   },
   setup() {
     const { t } = useI18n()
@@ -92,16 +94,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.botImage {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  width: 80%;
-  max-width: 500px;
-  opacity: 25%;
-  overflow: hidden;
-  z-index: -50;
-}
-</style>
