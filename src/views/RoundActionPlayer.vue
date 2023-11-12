@@ -1,6 +1,23 @@
 <template>
   <h1>{{t('actionPlayer.title', {round})}}</h1>
 
+  <div v-if="selectedAction" class="clearfix mt-3 mb-3">
+    <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3"/>
+    <p v-html="t('actionPlayer.useDepartments')"></p>
+  </div>
+
+  <div v-if="isManagement">
+    <p v-html="t('actionPlayer.newDepartments')"></p>
+    <p v-if="newDepartments.length > 0">
+      <DepartmentTile v-for="(department, index) of newDepartments" :key="index"
+          :department="department" @click="removeDepartment(index)"/>
+    </p>
+    <button class="btn btn-primary" v-if="newDepartments.length < 3"
+      data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
+  </div>
+
+  <DepartmentShop id="newDepartmentModal" :departments="(navigationState.departments as string[])" @selected="selectDepartment"/>
+
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
   </button>
@@ -16,11 +33,19 @@ import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
+import AppIcon from '@/components/structure/AppIcon.vue'
+import Action from '@/services/enum/Action'
+import Department from '@/services/Department'
+import DepartmentShop from '@/components/structure/DepartmentShop.vue'
+import DepartmentTile from '@/components/structure/DepartmentTile.vue'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
   components: {
-    FooterButtons
+    FooterButtons,
+    AppIcon,
+    DepartmentShop,
+    DepartmentTile
   },
   setup() {
     const { t } = useI18n()
@@ -30,6 +55,11 @@ export default defineComponent({
     const { round, startPlayer, selectedAction } = navigationState
     return { t, state, navigationState, round, startPlayer, selectedAction }
   },
+  data() {
+    return {
+      "newDepartments": [] as string[]
+    }
+  },
   computed: {
     backButtonRouteTo() : string {
       if (this.startPlayer == Player.BOT) {
@@ -38,6 +68,9 @@ export default defineComponent({
       else {
         return `/round/${this.round}/timelineSelection/${this.startPlayer}`
       }
+    },
+    isManagement() : boolean {
+      return this.selectedAction == Action.MANAGEMENT
     }
   },
   methods: {
@@ -65,7 +98,19 @@ export default defineComponent({
       else {
         this.$router.push(`/round/${this.round}/action/bot`)
       }
+    },
+    selectDepartment(department : Department) : void {
+      this.newDepartments.push(department.id)
+    },
+    removeDepartment(index : number) : void {
+      this.newDepartments.splice(index, 1)
     }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.actionIcon {
+  width: 80px;
+}
+</style>

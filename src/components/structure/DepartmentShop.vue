@@ -1,5 +1,5 @@
 <template>
-  <ModalDialog id="departmentShopModal" :title="t('departmentShop.title')" :size-xl="true" :scrollable="true">
+  <ModalDialog :id="id" :title="t('departmentShop.title')" :size-xl="true" :scrollable="true">
     <template #body>
 
       <template v-if="selectedDepartment">
@@ -36,7 +36,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStateStore } from '@/store/state'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import GroupedDepartments, { DepartmentCount, DepartmentGroup } from '@/services/GroupedDepartments'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
@@ -59,6 +58,10 @@ export default defineComponent({
     select: {
       type: Boolean,
       required: false
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -68,8 +71,7 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const state = useStateStore()
-    return { t, state }
+    return { t }
   },
   computed: {
     groups() : readonly DepartmentGroup[] {
@@ -85,6 +87,7 @@ export default defineComponent({
       this.selectedDepartment = undefined
     },
     selectDepartment(department : Department) {
+      this.selectedDepartment = undefined
       this.$emit('selected', department)
     }
   }

@@ -63,7 +63,10 @@
     }
   },
   "actionPlayer": {
-    "title": "{round}: Your Turn"
+    "title": "{round}: Your Turn",
+    "useDepartments": "Use your departments.",
+    "newDepartments": "If you build new departments this round, select them here:",
+    "selectDepartment": "New Department"
   },
   "actionBot": {
     "title": "{round}: Andrew's Turn"

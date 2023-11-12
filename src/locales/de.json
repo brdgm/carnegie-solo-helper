@@ -63,7 +63,10 @@
     }
   },
   "actionPlayer": {
-    "title": "{round}: Dein Zug"
+    "title": "{round}: Dein Zug",
+    "useDepartments": "Nutze deine Abteilungen.",
+    "newDepartments": " Wenn du in dieser Runde neue Abteilungen gebaut hast, wähle sie hier aus:",
+    "selectDepartment": "Neue Abteilung"
   },
   "actionBot": {
     "title": "{round}: Andrews Zug"
