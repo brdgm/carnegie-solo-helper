@@ -31,8 +31,9 @@ export default class Timeline {
   /**
    * Returns the matching timeline entry for the next action of given type.
    * @param action timeline entry or null if not possible
+   * @returns Resulting timeline entry
    */
-  public checkExecute(action? : Action) : TimelineEntry|undefined {
+  public checkExecuteAction(action? : Action) : TimelineEntry|undefined {
     if (!action) {
       return undefined
     }
@@ -52,12 +53,36 @@ export default class Timeline {
   }
 
   /**
+   * Checks if the given timeline entry can be returned from the next execution of any action.
+   * @param timelineEntry Timeline Entry
+   * @return Matching action, if possible
+   */
+  public checkExecuteTimelineEntry(timelineEntry : TimelineEntry) : Action|undefined {
+    if (timelineEntry.executed) {
+      return undefined
+    }
+    const result : Action[] = []
+    for (const timelineAction of this.actions) {
+      const resultingTimelineEntry = this.checkExecuteAction(timelineAction.action)
+      if (resultingTimelineEntry?.id == timelineEntry.id) {
+        if (timelineAction.entries.find(item => item.id == timelineEntry.id)) {
+          result.unshift(timelineAction.action)
+        }
+        else {
+          result.push(timelineAction.action)
+        }
+      }
+    }
+    return result[0]
+  }
+
+  /**
    * Executed the given action and returns the timeline entry with event and region information
    * @param action timeline entry
    */
   public execute(action : Action) : TimelineEntry {
     // get next available action
-    const result = this.checkExecute(action)
+    const result = this.checkExecuteAction(action)
     if (result) {
       result.executed = true
       return result

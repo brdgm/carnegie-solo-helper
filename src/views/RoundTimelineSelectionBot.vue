@@ -49,7 +49,7 @@ export default defineComponent({
 
     // bot selects timeline action
     const action = navigationState.cardDeck.currentCard.mainAction
-    const timelineEntry = navigationState.timeline.checkExecute(action)
+    const timelineEntry = navigationState.timeline.checkExecuteAction(action)
     const events = timelineEntry?.events
 
     return { t, state, navigationState, round, action, events }

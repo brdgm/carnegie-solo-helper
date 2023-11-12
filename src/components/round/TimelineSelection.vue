@@ -12,13 +12,22 @@
       <div class="entry">
         <template v-for="event of timelineEntry.events" :key="event">
           <div v-if="isTakeIncome(event) && timelineEntry.region" class="eventBackground income"
-              :class="{selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)}"
-              :style="{'background-color':getRegionEventBackgroundColor(timelineEntry.region)}">
+              :class="{
+                selectable:timeline.checkExecuteTimelineEntry(timelineEntry),
+                selected:isSelected(timelineEntry),
+                inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)
+              }"
+              :style="{'background-color':getRegionEventBackgroundColor(timelineEntry.region)}"
+              @click="selectTimelineEntry(timelineEntry)">
             <AppIcon type="event" :name="event" class="eventIcon"/>
             <div class="region" :style="{'background-color':getRegionBackgroundColor(timelineEntry.region)}">{{timelineEntry.region}}</div>
           </div>
           <div v-else class="eventBackground donation"
-              :class="{selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)}">
+              :class="{
+                selectable:timeline.checkExecuteTimelineEntry(timelineEntry),
+                selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)
+              }"
+              @click="selectTimelineEntry(timelineEntry)">
             <AppIcon type="event" :name="event" class="eventIcon"/>
           </div>
         </template>
@@ -60,7 +69,7 @@ export default defineComponent({
   data() {
     return {
       selectedAction: this.preselectedAction,
-      selectedTimelineEntry: this.timeline.checkExecute(this.preselectedAction)
+      selectedTimelineEntry: this.timeline.checkExecuteAction(this.preselectedAction)
     }
   },
   computed: {
@@ -94,9 +103,15 @@ export default defineComponent({
       }
       else {
         this.selectedAction = action
-        this.selectedTimelineEntry = this.timeline.checkExecute(action)
+        this.selectedTimelineEntry = this.timeline.checkExecuteAction(action)
       }
       this.$emit('selected', this.selectedAction, this.selectedTimelineEntry?.events)
+    },
+    selectTimelineEntry(timelineEntry : TimelineEntry) {
+      const action = this.timeline.checkExecuteTimelineEntry(timelineEntry)
+      if (action) {
+        this.selectAction(action)
+      }
     },
     isSelected(timelineEntry : TimelineEntry) {
       return this.selectedTimelineEntry?.id == timelineEntry.id
@@ -149,6 +164,9 @@ export default defineComponent({
     &:nth-child(2) {
       margin-left: -15px;
       z-index: 40;
+    }
+    &.selectable {
+      cursor: pointer;
     }
     &.selected {      
       border: 5px solid #e86720;

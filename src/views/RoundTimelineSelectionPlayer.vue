@@ -72,6 +72,10 @@ export default defineComponent({
     selectTimeline(action?: Action, events?: Event[]) : void {
       this.action = action
       this.events = events
+      if (this.action == undefined) {
+        this.eventCompleted = false
+        this.botEventDonationFailed = false
+      }
     },
     botEventCompleted(donationFailed: boolean) : void {
       this.eventCompleted = true

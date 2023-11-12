@@ -51,10 +51,10 @@ describe('services/Timeline', () => {
 
   it('executions', () => {
     const timeline = Timeline.fromPersistence({actions: [
-      {action:Action.HUMAN_RESOURCES,entries:[{events:[Event.TAKE_INCOME],region:Region.EAST}]},
-      {action:Action.MANAGEMENT,entries:[{events:[Event.TAKE_INCOME],region:Region.WEST},{events:[Event.DONATION]}]},
-      {action:Action.CONSTRUCTION,entries:[{events:[Event.TAKE_INCOME],region:Region.MIDWEST}]},
-      {action:Action.RESEARCH_DEVELOPMENT,entries:[{events:[Event.TAKE_INCOME],region:Region.SOUTH}]},
+      {action:Action.HUMAN_RESOURCES,entries:[{id:'h1',events:[Event.TAKE_INCOME],region:Region.EAST}]},
+      {action:Action.MANAGEMENT,entries:[{id:'m1',events:[Event.TAKE_INCOME],region:Region.WEST},{id:'m2',events:[Event.DONATION]}]},
+      {action:Action.CONSTRUCTION,entries:[{id:'c1',events:[Event.TAKE_INCOME],region:Region.MIDWEST}]},
+      {action:Action.RESEARCH_DEVELOPMENT,entries:[{id:'r1',events:[Event.TAKE_INCOME],region:Region.SOUTH}]}
     ]})
 
     // test multiple executions with switch to next preferred action and wrap-over
@@ -70,5 +70,27 @@ describe('services/Timeline', () => {
     const entry5 = timeline.execute(Action.MANAGEMENT)
     expect(entry5.region).to.eq(Region.EAST)
     expect(timeline.canExecute()).to.false
+  })
+
+  it('checkExecuteTimelineEntry', () => {
+    const entryH1 = {id:'h1',events:[Event.TAKE_INCOME],region:Region.EAST}
+    const entryM1 = {id:'m1',events:[Event.TAKE_INCOME],region:Region.WEST,executed:true}
+    const entryM2 = {id:'m2',events:[Event.DONATION]}
+    const entryC1 = {id:'c1',events:[Event.TAKE_INCOME],region:Region.MIDWEST,executed:true}
+    const entryR1 = {id:'r1',events:[Event.TAKE_INCOME],region:Region.SOUTH}
+
+    const timeline = Timeline.fromPersistence({actions: [
+      {action:Action.HUMAN_RESOURCES,entries:[entryH1]},
+      {action:Action.MANAGEMENT,entries:[entryM1,entryM2]},
+      {action:Action.CONSTRUCTION,entries:[entryC1]},
+      {action:Action.RESEARCH_DEVELOPMENT,entries:[entryR1]}
+    ]})
+
+    // test multiple executions with switch to next preferred action and wrap-over
+    expect(timeline.checkExecuteTimelineEntry(entryH1)).to.eq(Action.HUMAN_RESOURCES)
+    expect(timeline.checkExecuteTimelineEntry(entryM1)).to.undefined
+    expect(timeline.checkExecuteTimelineEntry(entryM2)).to.eq(Action.MANAGEMENT)
+    expect(timeline.checkExecuteTimelineEntry(entryC1)).to.undefined
+    expect(timeline.checkExecuteTimelineEntry(entryR1)).to.eq(Action.RESEARCH_DEVELOPMENT)
   })
 })
