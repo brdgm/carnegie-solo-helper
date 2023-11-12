@@ -29,9 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useStateStore } from '@/store/state'
+import { defineComponent, PropType } from 'vue'
 import Action from '@/services/enum/Action'
 import TimelineAction from '@/services/TimelineAction'
 import TimelineEntry from '@/services/TimelineEntry'
@@ -40,7 +38,6 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import Region from '@/services/enum/Region'
 import Event from '@/services/enum/Event'
 import getRegionMetadata from '@/util/getRegionMetadata'
-import { PropType } from 'vue'
 
 export default defineComponent({
   name: 'TimelineSelection',
@@ -65,11 +62,6 @@ export default defineComponent({
       selectedAction: this.preselectedAction as Action|undefined,
       selectedTimelineEntry: this.timeline.checkExecute(this.preselectedAction) as TimelineEntry|undefined
     }
-  },
-  setup() {
-    const { t } = useI18n()
-    const state = useStateStore()
-    return { t, state }
   },
   computed: {
     timelineActions() : readonly TimelineAction[] {

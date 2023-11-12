@@ -1,11 +1,16 @@
 <template>
-  <h1>{{t('roundTimelineSelection.title', {round})}}</h1>
+  <h1>{{t('timelineSelection.title', {round})}}</h1>
 
-  <p v-html="t('roundTimelineSelection.playerSelect')"></p>
+  <p v-html="t('timelineSelection.playerSelect')"></p>
 
   <TimelineSelection :timeline="navigationState.timeline" @selected="selectTimeline"/>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="action">
+  <ul v-if="events" class="mt-3">
+    <TimelineExecutionPlayer :events="events"/>
+    <TimelineExecutionBot :events="events" :donation="navigationState.cardDeck.currentCard.donation" @eventCompleted="botEventCompleted"/>
+  </ul>
+
+  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="action && eventCompleted">
     {{t('action.next')}}
   </button>
 
@@ -22,12 +27,16 @@ import NavigationState from '@/util/NavigationState'
 import TimelineSelection from '@/components/round/TimelineSelection.vue'
 import Action from '@/services/enum/Action'
 import Event from '@/services/enum/Event'
+import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
+import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionPlayer',
   components: {
     FooterButtons,
-    TimelineSelection
+    TimelineSelection,
+    TimelineExecutionBot,
+    TimelineExecutionPlayer
   },
   setup() {
     const { t } = useI18n()
@@ -40,7 +49,9 @@ export default defineComponent({
   data() {
     return {
       action: undefined as Action|undefined,
-      events: undefined as Event[]|undefined
+      events: undefined as Event[]|undefined,
+      eventCompleted: false,
+      botEventDonationFailed: false
     }
   },
   computed: {
@@ -70,6 +81,10 @@ export default defineComponent({
     selectTimeline(action?: Action, events?: Event[]) : void {
       this.action = action
       this.events = events
+    },
+    botEventCompleted(donationFailed: boolean) : void {
+      this.eventCompleted = true
+      this.botEventDonationFailed = donationFailed
     }
   }
 })

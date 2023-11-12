@@ -1,13 +1,18 @@
 <template>
   <BotBackgroundImage/>
 
-  <h1>{{t('roundTimelineSelection.title', {round})}}</h1>
+  <h1>{{t('timelineSelection.title', {round})}}</h1>
 
-  <p v-html="t('roundTimelineSelection.botSelect')"></p>
+  <p v-html="t('timelineSelection.botSelect')"></p>
 
   <TimelineSelection :timeline="navigationState.timeline" :preselectedAction="action"/>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="action">
+  <ul v-if="events" class="mt-3">
+    <TimelineExecutionBot :events="events" :donation="navigationState.cardDeck.currentCard.donation" @eventCompleted="botEventCompleted"/>
+    <TimelineExecutionPlayer :events="events"/>
+  </ul>
+
+  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="action && eventCompleted">
     {{t('action.next')}}
   </button>
 
@@ -23,13 +28,17 @@ import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import TimelineSelection from '@/components/round/TimelineSelection.vue'
 import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
+import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
+import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionBot',
   components: {
     FooterButtons,
     TimelineSelection,
-    BotBackgroundImage
+    BotBackgroundImage,
+    TimelineExecutionBot,
+    TimelineExecutionPlayer
   },
   setup() {
     const { t } = useI18n()
@@ -44,6 +53,12 @@ export default defineComponent({
     const events = timelineEntry?.events
 
     return { t, state, navigationState, round, action, events }
+  },
+  data() {
+    return {
+      eventCompleted: false,
+      botEventDonationFailed: false
+    }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -63,6 +78,10 @@ export default defineComponent({
         departments: departments
       })
       this.$router.push(`/round/${this.round + 1}/timelineSelection/player`)
+    },
+    botEventCompleted(donationFailed: boolean) : void {
+      this.eventCompleted = true
+      this.botEventDonationFailed = donationFailed
     }
   }
 })

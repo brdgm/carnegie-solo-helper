@@ -47,10 +47,20 @@
     "title": "Available Departments",
     "selectDepartment": "Select Department"
   },
-  "roundTimelineSelection": {
+  "timelineSelection": {
     "title": "Round {round}: Select Timeline",
     "playerSelect": "<b>You</b> select the next timeline action:",
-    "botSelect": "<b>Andrew</b> selects this action:"
+    "botSelect": "<b>Andrew</b> selects this action:",
+    "playerEvent": {
+      "take-income": "Return 1 or more employees from the <b>active mission area</b> and receive income",
+      "donation": "You can make a <b>donation</b>"
+    },
+    "botEventDonation": {
+      "title": "<b>Andrew</b> makes a donation:",
+      "failed": "<b>Andrew</b> fails to make a donation.",
+      "done": "Disk placed",
+      "notPossible": "Not possible"
+    }
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",

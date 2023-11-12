@@ -47,10 +47,20 @@
     "title": "Verfügbare Abteilungen",
     "selectDepartment": "Abteilung auswählen"
   },
-  "roundTimelineSelection": {
+  "timelineSelection": {
     "title": "Runde {round}: Aktion wählen",
     "playerSelect": "<b>Du</b> wählst die nächste Aktion:",
-    "botSelect": "<b>Andrew</b> wählt diese Aktion:"
+    "botSelect": "<b>Andrew</b> wählt diese Aktion:",
+    "playerEvent": {
+      "take-income": "Hole 1 oder mehr Mitarbeiter aus dem <b>aktiven Einsatzgebiet</b> zurück",
+      "donation": "Du kannst eine <b>Spende</b> leisten"
+    },
+    "botEventDonation": {
+      "title": "<b>Andrew</b> leistet eine Spende:",
+      "failed": "<b>Andrew</b> kann keine Spende leisten.",
+      "done": "Scheibe platziert",
+      "notPossible": "Nicht möglich"
+    }
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",
