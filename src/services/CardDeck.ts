@@ -8,11 +8,11 @@ import CardType from './enum/CardType'
 export default class CardDeck {
 
   private _pile : Card[]
-  private _discard : Card[][]
+  private _discardPile : Card[][]
 
-  public constructor(pile : Card[], discard : Card[][]) {
+  public constructor(pile : Card[], discardPile : Card[][]) {
     this._pile = pile
-    this._discard = discard
+    this._discardPile = discardPile
   }
 
   public get currentCard() : Card {
@@ -23,8 +23,24 @@ export default class CardDeck {
     return this._pile
   }
 
-  public get discard() : readonly Card[][] {
-    return this._discard
+  public get discardPile() : readonly Card[][] {
+    return this._discardPile
+  }
+
+  /**
+   * Discards the current card, and puts it on the discard pile moved the given number of steps to the right.
+   * @param moveRight Steps to move card to the right
+   */
+  public discardCurrentCard(moveRight : number) : void {
+    const currentCard = this._pile.shift()
+    if (!currentCard) {
+      throw new Error('Draw pile is empty.')
+    }
+    let selectedDiscardPile = this._discardPile[moveRight]
+    if (!selectedDiscardPile) {
+      this._discardPile[moveRight] = selectedDiscardPile = []
+    }
+    selectedDiscardPile.push(currentCard)
   }
 
   /**
@@ -33,7 +49,7 @@ export default class CardDeck {
   public toPersistence() : CardDeckPersistence {
     return {
       pile: this._pile.map(card => card.id),
-      discard: this._discard.map(slot => slot.map(card => card.id))
+      discardPile: this._discardPile.map(slot => slot.map(card => card.id))
     }
   }
 
@@ -72,7 +88,7 @@ export default class CardDeck {
   public static fromPersistence(persistence : CardDeckPersistence) : CardDeck {
     return new CardDeck(
       persistence.pile.map(Cards.get),
-      persistence.discard.map(slot => slot.map(Cards.get))
+      persistence.discardPile.map(slot => slot.map(Cards.get))
     )
   }
 

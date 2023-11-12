@@ -48,7 +48,9 @@
     "selectDepartment": "Abteilung auswählen"
   },
   "roundTimelineSelection": {
-    "title": "Runde {round}: Aktion wählen"
+    "title": "Runde {round}: Aktion wählen",
+    "playerSelect": "<b>Du</b> wählst die nächste Aktion:",
+    "botSelect": "<b>Andrew</b> wählt diese Aktion:"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

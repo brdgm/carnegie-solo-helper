@@ -6,7 +6,8 @@ import { name } from '@/../package.json'
 import SetupGame from '@/views/SetupGame.vue'
 import SetupPrepareGame from '@/views/SetupPrepareGame.vue'
 import SetupPreparePlayer from '@/views/SetupPreparePlayer.vue'
-import RoundTimelineSelection from '@/views/RoundTimelineSelection.vue'
+import RoundTimelineSelectionPlayer from '@/views/RoundTimelineSelectionPlayer.vue'
+import RoundTimelineSelectionBot from '@/views/RoundTimelineSelectionBot.vue'
 
 const LOCALSTORAGE_KEY = `${name}.route`
 
@@ -32,9 +33,14 @@ const routes: Array<RouteRecordRaw> = [
     component: SetupPreparePlayer
   },
   {
-    path: '/round/:round/timelineSelection',
-    name: 'RoundTimelineSelection',
-    component: RoundTimelineSelection
+    path: '/round/:round/timelineSelection/player',
+    name: 'RoundTimelineSelectionPlayer',
+    component: RoundTimelineSelectionPlayer
+  },
+  {
+    path: '/round/:round/timelineSelection/bot',
+    name: 'RoundTimelineSelectionBot',
+    component: RoundTimelineSelectionBot
   },
   {
     path: '/:pathMatch(.*)*',

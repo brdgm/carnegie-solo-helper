@@ -61,7 +61,7 @@ export interface Round {
 }
 export interface CardDeckPersistence {
   pile: string[]
-  discard: string[][]
+  discardPile: string[][]
 }
 export interface TimelinePersistence {
   actions: TimelinePersistenceAction[]

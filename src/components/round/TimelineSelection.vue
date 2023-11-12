@@ -1,7 +1,9 @@
 <template>
   <div class="action" v-for="timelineAction of timelineActions" :key="timelineAction.action">
-    <button class="btn" :class="{'btn-outline-primary':selectedAction && !(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action || !selectedAction}"
-        @click="selectAction(timelineAction.action)">
+    <button class="btn"
+        :class="{'btn-outline-primary':selectedAction && !(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action || !selectedAction}"        
+        @click="selectAction(timelineAction.action)"
+        :disabled="preselectedAction != undefined">
       <AppIcon type="action" :name="timelineAction.action" class="actionIcon"/>
     </button>
 
@@ -38,6 +40,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import Region from '@/services/enum/Region'
 import Event from '@/services/enum/Event'
 import getRegionMetadata from '@/util/getRegionMetadata'
+import { PropType } from 'vue'
 
 export default defineComponent({
   name: 'TimelineSelection',
@@ -45,18 +48,22 @@ export default defineComponent({
     AppIcon
   },
   emits: {
-    selected: (_action?: Action) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    selected: (_action?: Action, _events?: Event[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   props: {
     timeline: {
       type: Timeline,
       required: true
+    },
+    preselectedAction: {
+      type: String as PropType<Action>,
+      required: false
     }
   },
   data() {
     return {
-      selectedAction: undefined as Action|undefined,
-      selectedTimelineEntry: undefined as TimelineEntry|undefined
+      selectedAction: this.preselectedAction as Action|undefined,
+      selectedTimelineEntry: this.timeline.checkExecute(this.preselectedAction) as TimelineEntry|undefined
     }
   },
   setup() {
@@ -97,7 +104,7 @@ export default defineComponent({
         this.selectedAction = action
         this.selectedTimelineEntry = this.timeline.checkExecute(action)
       }
-      this.$emit('selected', this.selectedAction)
+      this.$emit('selected', this.selectedAction, this.selectedTimelineEntry?.events)
     },
     isSelected(timelineEntry : TimelineEntry) {
       return this.selectedTimelineEntry?.id == timelineEntry.id

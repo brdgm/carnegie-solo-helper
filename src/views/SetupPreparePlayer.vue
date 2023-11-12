@@ -68,7 +68,7 @@ export default defineComponent({
         timeline: Timeline.new().toPersistence(),
         departments: removeDepartment(this.state.setup.initialDepartments, this.department?.id)
       })
-      this.$router.push('/round/1/timelineSelection')
+      this.$router.push('/round/1/timelineSelection/player')
     },
     selectDepartment(department : Department) : void {
       this.department = department

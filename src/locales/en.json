@@ -48,7 +48,9 @@
     "selectDepartment": "Select Department"
   },
   "roundTimelineSelection": {
-    "title": "Round {round}: Select Timeline"
+    "title": "Round {round}: Select Timeline",
+    "playerSelect": "<b>You</b> select the next timeline action:",
+    "botSelect": "<b>Andrew</b> selects this action:"
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",

@@ -32,7 +32,10 @@ export default class Timeline {
    * Returns the matching timeline entry for the next action of given type.
    * @param action timeline entry or null if not possible
    */
-  public checkExecute(action : Action) : TimelineEntry|undefined {
+  public checkExecute(action? : Action) : TimelineEntry|undefined {
+    if (!action) {
+      return undefined
+    }
     // collect preferred actions rows to check for next available action
     const actionIndex = Object.values(Action).indexOf(action)
     const preferredActions : TimelineAction[] = []
