@@ -2,7 +2,7 @@
 
   <div class="float-end m-2 w-25">
     <a href="https://boardgamegeek.com/boardgame/310873/carnegie" target="_blank" rel="noopener">
-      <img src="../assets/game-carnegie.webp" class="rounded shadow w-75" alt=""/>
+      <img src="../assets/game-carnegie.webp" class="rounded shadow w-75 mb-3" alt=""/>
     </a>
   </div>
 

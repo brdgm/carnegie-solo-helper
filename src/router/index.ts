@@ -8,6 +8,9 @@ import SetupPrepareGame from '@/views/SetupPrepareGame.vue'
 import SetupPreparePlayer from '@/views/SetupPreparePlayer.vue'
 import RoundTimelineSelectionPlayer from '@/views/RoundTimelineSelectionPlayer.vue'
 import RoundTimelineSelectionBot from '@/views/RoundTimelineSelectionBot.vue'
+import RoundActionPlayer from '@/views/RoundActionPlayer.vue'
+import RoundActionBot from '@/views/RoundActionBot.vue'
+import EndOfGame from '@/views/EndOfGame.vue'
 
 const LOCALSTORAGE_KEY = `${name}.route`
 
@@ -41,6 +44,21 @@ const routes: Array<RouteRecordRaw> = [
     path: '/round/:round/timelineSelection/bot',
     name: 'RoundTimelineSelectionBot',
     component: RoundTimelineSelectionBot
+  },
+  {
+    path: '/round/:round/action/player',
+    name: 'RoundActionPlayer',
+    component: RoundActionPlayer
+  },
+  {
+    path: '/round/:round/action/bot',
+    name: 'RoundActionBot',
+    component: RoundActionBot
+  },
+  {
+    path: '/endOfGame',
+    name: 'EndOfGame',
+    component: EndOfGame
   },
   {
     path: '/:pathMatch(.*)*',

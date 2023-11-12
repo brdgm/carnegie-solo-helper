@@ -30,6 +30,13 @@ export const useStateStore = defineStore(`${name}.state`, {
     storeRound(round : Round) {
       this.rounds = this.rounds.filter(item => item.round != round.round)
       this.rounds.push(round)
+    },
+    storeTimelineSelection(round : number, action: Action, botEventDonationFailed : boolean) {
+      const roundData = this.rounds.find(item => item.round == round)
+      if (roundData) {
+        roundData.selectedAction = action
+        roundData.botEventDonationFailed = botEventDonationFailed
+      }
     }
   },
   persist: true
@@ -58,6 +65,8 @@ export interface Round {
   cardDeck: CardDeckPersistence
   timeline: TimelinePersistence
   departments: readonly string[]
+  selectedAction?: Action
+  botEventDonationFailed?: boolean
 }
 export interface CardDeckPersistence {
   pile: string[]

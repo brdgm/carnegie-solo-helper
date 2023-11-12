@@ -45,7 +45,7 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const round = navigationState.round
+    const { round} = navigationState
 
     // bot selects timeline action
     const action = navigationState.cardDeck.currentCard.mainAction
@@ -62,22 +62,13 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      return `/round/${this.round - 1}/timelineSelection/player`
+      return `/round/${this.round - 1}/action/bot`
     }
   },
   methods: {
     next() : void {
-      // prepare next round
-      const { timeline, cardDeck, departments } = this.navigationState
-      timeline.execute(this.action)
-      cardDeck.discardCurrentCard(0)
-      this.state.storeRound({
-        round: this.round + 1,
-        cardDeck: cardDeck.toPersistence(),
-        timeline: timeline.toPersistence(),
-        departments: departments
-      })
-      this.$router.push(`/round/${this.round + 1}/timelineSelection/player`)
+      this.state.storeTimelineSelection(this.round, this.action, this.botEventDonationFailed)
+      this.$router.push(`/round/${this.round}/action/bot`)
     },
     botEventCompleted(donationFailed: boolean) : void {
       this.eventCompleted = true

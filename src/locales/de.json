@@ -48,7 +48,7 @@
     "selectDepartment": "Abteilung auswählen"
   },
   "timelineSelection": {
-    "title": "Runde {round}: Aktion wählen",
+    "title": "{round}: Aktion wählen",
     "playerSelect": "<b>Du</b> wählst die nächste Aktion:",
     "botSelect": "<b>Andrew</b> wählt diese Aktion:",
     "playerEvent": {
@@ -61,6 +61,15 @@
       "done": "Scheibe platziert",
       "notPossible": "Nicht möglich"
     }
+  },
+  "actionPlayer": {
+    "title": "{round}: Dein Zug"
+  },
+  "actionBot": {
+    "title": "{round}: Andrews Zug"
+  },
+  "endOfGame": {
+    "title": "Spielende"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

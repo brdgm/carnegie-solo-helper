@@ -43,7 +43,7 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const round = navigationState.round
+    const { round } = navigationState
     return { t, state, navigationState, round }
   },
   data() {
@@ -57,26 +57,17 @@ export default defineComponent({
   computed: {
     backButtonRouteTo() : string|undefined {
       if (this.round > 1) {
-        return `/round/${this.round - 1}/timelineSelection/bot`
+        return `/round/${this.round - 1}/action/player`
       }
       return undefined
     }
   },
   methods: {
     next() : void {
-      // prepare next round
       if (this.action) {
-        const { timeline, cardDeck, departments } = this.navigationState
-        timeline.execute(this.action)
-        cardDeck.discardCurrentCard(0)
-        this.state.storeRound({
-          round: this.round + 1,
-          cardDeck: cardDeck.toPersistence(),
-          timeline: timeline.toPersistence(),
-          departments: departments
-        })
+        this.state.storeTimelineSelection(this.round, this.action, this.botEventDonationFailed)
       }
-      this.$router.push(`/round/${this.round + 1}/timelineSelection/bot`)
+      this.$router.push(`/round/${this.round}/action/player`)
     },
     selectTimeline(action?: Action, events?: Event[]) : void {
       this.action = action

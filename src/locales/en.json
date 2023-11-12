@@ -48,7 +48,7 @@
     "selectDepartment": "Select Department"
   },
   "timelineSelection": {
-    "title": "Round {round}: Select Timeline",
+    "title": "{round}: Select Timeline",
     "playerSelect": "<b>You</b> select the next timeline action:",
     "botSelect": "<b>Andrew</b> selects this action:",
     "playerEvent": {
@@ -61,6 +61,15 @@
       "done": "Disk placed",
       "notPossible": "Not possible"
     }
+  },
+  "actionPlayer": {
+    "title": "{round}: Your Turn"
+  },
+  "actionBot": {
+    "title": "{round}: Andrew's Turn"
+  },
+  "endOfGame": {
+    "title": "End of Game"
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
