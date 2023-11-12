@@ -62,13 +62,17 @@ export default defineComponent({
   methods: {
     startGame() : void {
       // prepare 1st round
-      this.state.storeRound({
-        round: 1,
-        cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
-        timeline: Timeline.new().toPersistence(),
-        departments: removeDepartment(this.state.setup.initialDepartments, this.department?.id)
-      })
-      this.$router.push('/round/1/timelineSelection/player')
+      if (this.department) {
+        this.state.storeRound({
+          round: 1,
+          cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
+          timeline: Timeline.new().toPersistence(),
+          departments: removeDepartment(this.state.setup.initialDepartments, this.department.id),
+          playerDepartments: [this.department.id],
+          botDepartments: []
+        })
+        this.$router.push('/round/1/timelineSelection/player')
+      }
     },
     selectDepartment(department : Department) : void {
       this.department = department

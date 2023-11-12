@@ -12,7 +12,7 @@ export default class GroupedDepartments {
   /**
    * @param departments Departments
    */
-  constructor(departments : string[]) {
+  constructor(departments : readonly string[]) {
     const allDepartments = Departments.getAll()
     this._groups = this.createGroups(departments, allDepartments)
   }
@@ -21,7 +21,7 @@ export default class GroupedDepartments {
     return this._groups
   }
 
-  private createGroups(departments : string[], allDepartments : Department[]) : DepartmentGroup[] {
+  private createGroups(departments : readonly string[], allDepartments : Department[]) : DepartmentGroup[] {
     const result : DepartmentGroup[] = []
     Object.values(Action).forEach(departmentType => {
       const departmentGroup : DepartmentGroup = { departmentType, departments: [] }

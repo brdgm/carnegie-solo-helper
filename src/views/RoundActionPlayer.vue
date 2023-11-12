@@ -8,11 +8,11 @@
 
   <div v-if="isManagement">
     <p v-html="t('actionPlayer.newDepartments')"></p>
-    <p v-if="playerDepartments.length > 0">
-      <DepartmentTile v-for="(department, index) of playerDepartments" :key="index"
+    <p v-if="playerNewDepartments.length > 0">
+      <DepartmentTile v-for="(department, index) of playerNewDepartments" :key="index"
           :department="department" @click="deselectDepartment(index)"/>
     </p>
-    <button class="btn btn-primary" v-if="playerDepartments.length < 3"
+    <button class="btn btn-primary" v-if="playerNewDepartments.length < 3"
       data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
   </div>
 
@@ -40,6 +40,7 @@ import DepartmentShop from '@/components/structure/DepartmentShop.vue'
 import DepartmentTile from '@/components/structure/DepartmentTile.vue'
 import removeDepartment from '@/util/removeDepartment'
 import removeDepartments from '@/util/removeDepartments'
+import addDepartments from '@/util/addDepartments'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
@@ -54,13 +55,13 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, departments, botDepartments } = navigationState
+    const { round, startPlayer, selectedAction, departments, botNewDepartments } = navigationState
 
-    const availableDepartments = ref([...removeDepartments(departments, botDepartments)])
-    const playerDepartments = ref([] as string[])
+    const availableDepartments = ref([...removeDepartments(departments, botNewDepartments)])
+    const playerNewDepartments = ref([] as string[])
 
     return { t, state, navigationState, round, startPlayer, selectedAction,
-      availableDepartments, botDepartments, playerDepartments }
+      availableDepartments, botNewDepartments, playerNewDepartments }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -78,18 +79,20 @@ export default defineComponent({
   methods: {
     next() : void {
       // update current round
-      this.state.storePlayerDepartments(this.round, this.playerDepartments)
+      this.state.storePlayerDepartments(this.round, this.playerNewDepartments)
       if (this.startPlayer == Player.BOT) {
         // prepare next round
         if (this.selectedAction) {
-          const { timeline, cardDeck, departments } = this.navigationState
+          const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
           timeline.execute(this.selectedAction)
           cardDeck.discardCurrentCard(0)
           this.state.storeRound({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
             timeline: timeline.toPersistence(),
-            departments: removeDepartments(departments, this.playerDepartments, this.botDepartments)
+            departments: removeDepartments(departments, this.playerNewDepartments, this.botNewDepartments),
+            playerDepartments: addDepartments(playerDepartments, this.playerNewDepartments),
+            botDepartments: addDepartments(botDepartments, this.botNewDepartments)
           })
           if (this.round == 20) {
             this.$router.push('/endOfGame')
@@ -104,11 +107,11 @@ export default defineComponent({
       }
     },
     selectDepartment(department : Department) : void {
-      this.playerDepartments.push(department.id)
+      this.playerNewDepartments.push(department.id)
       this.availableDepartments = [...removeDepartment(this.availableDepartments, department.id)]
     },
     deselectDepartment(index : number) : void {
-      this.availableDepartments.push(...this.playerDepartments.splice(index, 1))
+      this.availableDepartments.push(...this.playerNewDepartments.splice(index, 1))
     }
   }
 })

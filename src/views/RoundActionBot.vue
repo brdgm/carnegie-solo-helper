@@ -20,6 +20,7 @@ import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
 import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
 import removeDepartments from '@/util/removeDepartments'
+import addDepartments from '@/util/addDepartments'
 
 export default defineComponent({
   name: 'RoundActionBot',
@@ -32,8 +33,8 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, playerDepartments, botDepartments } = navigationState
-    return { t, state, navigationState, round, startPlayer, selectedAction, playerDepartments, botDepartments }
+    const { round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments } = navigationState
+    return { t, state, navigationState, round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -50,14 +51,16 @@ export default defineComponent({
       if (this.startPlayer == Player.PLAYER) {
         // prepare next round
         if (this.selectedAction) {
-          const { timeline, cardDeck, departments } = this.navigationState
+          const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
           timeline.execute(this.selectedAction)
           cardDeck.discardCurrentCard(0)
           this.state.storeRound({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
             timeline: timeline.toPersistence(),
-            departments: removeDepartments(departments, this.playerDepartments, this.botDepartments)
+            departments: removeDepartments(departments, this.playerNewDepartments, this.botNewDepartments),
+            playerDepartments: addDepartments(playerDepartments, this.playerNewDepartments),
+            botDepartments: addDepartments(botDepartments, this.botNewDepartments)
           })
           this.$router.push(`/round/${this.round + 1}/timelineSelection/bot`)
         }

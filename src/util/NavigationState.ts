@@ -14,7 +14,9 @@ export default class NavigationState {
   readonly timeline : Timeline
   readonly departments : readonly string[]
   readonly playerDepartments : readonly string[]
+  readonly playerNewDepartments : readonly string[]
   readonly botDepartments : readonly string[]
+  readonly botNewDepartments : readonly string[]
   readonly selectedAction? : Action
   readonly botEventDonationFailed : boolean
 
@@ -27,8 +29,10 @@ export default class NavigationState {
       this.cardDeck = CardDeck.fromPersistence(roundData.cardDeck)
       this.timeline = Timeline.fromPersistence(roundData.timeline)
       this.departments = roundData.departments
-      this.playerDepartments = roundData.playerDepartments ?? []
-      this.botDepartments = roundData.botDepartments ?? []
+      this.playerDepartments = roundData.playerDepartments
+      this.playerNewDepartments = roundData.playerNewDepartments ?? []
+      this.botDepartments = roundData.botDepartments
+      this.botNewDepartments = roundData.botNewDepartments ?? []
       this.selectedAction = roundData.selectedAction
       this.botEventDonationFailed = roundData.botEventDonationFailed ?? false
     }
@@ -37,7 +41,9 @@ export default class NavigationState {
       this.timeline = Timeline.new()
       this.departments = []
       this.playerDepartments = []
+      this.playerNewDepartments = []
       this.botDepartments = []
+      this.botNewDepartments = []
       this.botEventDonationFailed = false
     }
   }
