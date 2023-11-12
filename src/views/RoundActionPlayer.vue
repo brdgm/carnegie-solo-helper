@@ -8,15 +8,15 @@
 
   <div v-if="isManagement">
     <p v-html="t('actionPlayer.newDepartments')"></p>
-    <p v-if="newDepartments.length > 0">
-      <DepartmentTile v-for="(department, index) of newDepartments" :key="index"
-          :department="department" @click="removeDepartment(index)"/>
+    <p v-if="playerDepartments.length > 0">
+      <DepartmentTile v-for="(department, index) of playerDepartments" :key="index"
+          :department="department" @click="deselectDepartment(index)"/>
     </p>
-    <button class="btn btn-primary" v-if="newDepartments.length < 3"
+    <button class="btn btn-primary" v-if="playerDepartments.length < 3"
       data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
   </div>
 
-  <DepartmentShop id="newDepartmentModal" :departments="(navigationState.departments as string[])" @selected="selectDepartment"/>
+  <DepartmentShop id="newDepartmentModal" :departments="availableDepartments" @selected="selectDepartment"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useRoute } from 'vue-router'
@@ -38,6 +38,8 @@ import Action from '@/services/enum/Action'
 import Department from '@/services/Department'
 import DepartmentShop from '@/components/structure/DepartmentShop.vue'
 import DepartmentTile from '@/components/structure/DepartmentTile.vue'
+import removeDepartment from '@/util/removeDepartment'
+import removeDepartments from '@/util/removeDepartments'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
@@ -52,13 +54,13 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction } = navigationState
-    return { t, state, navigationState, round, startPlayer, selectedAction }
-  },
-  data() {
-    return {
-      "newDepartments": [] as string[]
-    }
+    const { round, startPlayer, selectedAction, departments, botDepartments } = navigationState
+
+    const availableDepartments = ref([...removeDepartments(departments, botDepartments)])
+    const playerDepartments = ref([] as string[])
+
+    return { t, state, navigationState, round, startPlayer, selectedAction,
+      availableDepartments, botDepartments, playerDepartments }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -75,6 +77,8 @@ export default defineComponent({
   },
   methods: {
     next() : void {
+      // update current round
+      this.state.storePlayerDepartments(this.round, this.playerDepartments)
       if (this.startPlayer == Player.BOT) {
         // prepare next round
         if (this.selectedAction) {
@@ -85,7 +89,7 @@ export default defineComponent({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
             timeline: timeline.toPersistence(),
-            departments: departments
+            departments: removeDepartments(departments, this.playerDepartments, this.botDepartments)
           })
           if (this.round == 20) {
             this.$router.push('/endOfGame')
@@ -100,10 +104,11 @@ export default defineComponent({
       }
     },
     selectDepartment(department : Department) : void {
-      this.newDepartments.push(department.id)
+      this.playerDepartments.push(department.id)
+      this.availableDepartments = [...removeDepartment(this.availableDepartments, department.id)]
     },
-    removeDepartment(index : number) : void {
-      this.newDepartments.splice(index, 1)
+    deselectDepartment(index : number) : void {
+      this.availableDepartments.push(...this.playerDepartments.splice(index, 1))
     }
   }
 })

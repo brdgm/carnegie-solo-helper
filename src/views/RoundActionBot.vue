@@ -1,4 +1,6 @@
 <template>
+  <BotBackgroundImage/>
+
   <h1>{{t('actionBot.title', {round})}}</h1>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
@@ -16,19 +18,22 @@ import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
+import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
+import removeDepartments from '@/util/removeDepartments'
 
 export default defineComponent({
   name: 'RoundActionBot',
   components: {
-    FooterButtons
+    FooterButtons,
+    BotBackgroundImage
   },
   setup() {
     const { t } = useI18n()
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction } = navigationState
-    return { t, state, navigationState, round, startPlayer, selectedAction }
+    const { round, startPlayer, selectedAction, playerDepartments, botDepartments } = navigationState
+    return { t, state, navigationState, round, startPlayer, selectedAction, playerDepartments, botDepartments }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -52,7 +57,7 @@ export default defineComponent({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
             timeline: timeline.toPersistence(),
-            departments: departments
+            departments: removeDepartments(departments, this.playerDepartments, this.botDepartments)
           })
           this.$router.push(`/round/${this.round + 1}/timelineSelection/bot`)
         }

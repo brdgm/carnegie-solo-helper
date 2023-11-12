@@ -37,6 +37,18 @@ export const useStateStore = defineStore(`${name}.state`, {
         roundData.selectedAction = action
         roundData.botEventDonationFailed = botEventDonationFailed
       }
+    },
+    storePlayerDepartments(round : number, departments: readonly string[]) {
+      const roundData = this.rounds.find(item => item.round == round)
+      if (roundData) {
+        roundData.playerDepartments = departments
+      }
+    },
+    storeBotDepartments(round : number, departments: readonly string[]) {
+      const roundData = this.rounds.find(item => item.round == round)
+      if (roundData) {
+        roundData.botDepartments = departments
+      }
     }
   },
   persist: true
@@ -67,6 +79,8 @@ export interface Round {
   departments: readonly string[]
   selectedAction?: Action
   botEventDonationFailed?: boolean
+  playerDepartments?: readonly string[]
+  botDepartments?: readonly string[]
 }
 export interface CardDeckPersistence {
   pile: string[]

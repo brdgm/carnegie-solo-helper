@@ -1,9 +1,9 @@
-import CardDeck from "@/services/CardDeck"
-import Timeline from "@/services/Timeline"
-import Action from "@/services/enum/Action"
-import Player from "@/services/enum/Player"
-import { State } from "@/store/state"
-import { RouteLocation } from "vue-router"
+import CardDeck from '@/services/CardDeck'
+import Timeline from '@/services/Timeline'
+import Action from '@/services/enum/Action'
+import Player from '@/services/enum/Player'
+import { State } from '@/store/state'
+import { RouteLocation } from 'vue-router'
 
 export default class NavigationState {
 
@@ -13,6 +13,8 @@ export default class NavigationState {
   readonly cardDeck : CardDeck
   readonly timeline : Timeline
   readonly departments : readonly string[]
+  readonly playerDepartments : readonly string[]
+  readonly botDepartments : readonly string[]
   readonly selectedAction? : Action
   readonly botEventDonationFailed : boolean
 
@@ -25,6 +27,8 @@ export default class NavigationState {
       this.cardDeck = CardDeck.fromPersistence(roundData.cardDeck)
       this.timeline = Timeline.fromPersistence(roundData.timeline)
       this.departments = roundData.departments
+      this.playerDepartments = roundData.playerDepartments ?? []
+      this.botDepartments = roundData.botDepartments ?? []
       this.selectedAction = roundData.selectedAction
       this.botEventDonationFailed = roundData.botEventDonationFailed ?? false
     }
@@ -32,6 +36,8 @@ export default class NavigationState {
       this.cardDeck = CardDeck.new(state.setup.difficultyLevel)
       this.timeline = Timeline.new()
       this.departments = []
+      this.playerDepartments = []
+      this.botDepartments = []
       this.botEventDonationFailed = false
     }
   }

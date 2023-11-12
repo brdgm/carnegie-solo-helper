@@ -6,7 +6,7 @@ describe('util/removeDepartment', () => {
     expect(removeDepartment(['dep1','dep2','dep3'],'dep2')).to.eql(['dep1','dep3'])
   })
 
-  it('remove multiple', () => {
+  it('remove single from multiple', () => {
     expect(removeDepartment(['dep1','dep2','dep2','dep3'],'dep2')).to.eql(['dep1','dep2','dep3'])
   })
 
