@@ -59,8 +59,8 @@ export default defineComponent({
   },
   data() {
     return {
-      selectedAction: this.preselectedAction as Action|undefined,
-      selectedTimelineEntry: this.timeline.checkExecute(this.preselectedAction) as TimelineEntry|undefined
+      selectedAction: this.preselectedAction,
+      selectedTimelineEntry: this.timeline.checkExecute(this.preselectedAction)
     }
   },
   computed: {
