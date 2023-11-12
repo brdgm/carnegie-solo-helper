@@ -3,6 +3,12 @@
 
   <h1>{{t('actionBot.title', {round})}}</h1>
 
+  <div v-if="selectedAction" class="clearfix mt-3">
+    <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
+    <component :is="`${selectedAction}BotAction`" :botActions="botActions"/>
+    <p v-if="cardShiftVP > 0" v-html="t('actionBot.cardShiftVP',{count:cardShiftVP})"></p>
+  </div>
+
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
   </button>
@@ -21,20 +27,40 @@ import Player from '@/services/enum/Player'
 import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
 import removeDepartments from '@/util/removeDepartments'
 import addDepartments from '@/util/addDepartments'
+import HumanResourcesBotAction from '@/components/round/botAction/HumanResourcesBotAction.vue'
+import ConstructionBotAction from '@/components/round/botAction/ConstructionBotAction.vue'
+import ManagementBotAction from '@/components/round/botAction/ManagementBotAction.vue'
+import ResearchDevelopmentBotAction from '@/components/round/botAction/ResearchDevelopmentBotAction.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
+import BotActions from '@/services/BotActions'
+import getCardShiftVP from '@/util/getCardShiftVP'
 
 export default defineComponent({
   name: 'RoundActionBot',
   components: {
     FooterButtons,
-    BotBackgroundImage
+    BotBackgroundImage,
+    HumanResourcesBotAction,
+    ConstructionBotAction,
+    ManagementBotAction,
+    ResearchDevelopmentBotAction,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments } = navigationState
-    return { t, state, navigationState, round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments }
+    const { round, startPlayer, selectedAction, playerNewDepartments } = navigationState
+
+    const botActions = new BotActions(navigationState.cardDeck.currentCard,
+        navigationState.botEventDonationFailed, navigationState.departments, navigationState.botDepartments)
+    if (selectedAction) {
+      botActions.applyAction(selectedAction)
+    }
+    const botNewDepartments = botActions.botNewDepartments
+
+    return { t, state, navigationState, round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments, botActions }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -44,6 +70,9 @@ export default defineComponent({
       else {
         return `/round/${this.round}/timelineSelection/${this.startPlayer}`
       }
+    },
+    cardShiftVP() : number {
+      return getCardShiftVP(this.botActions.cardShift)
     }
   },
   methods: {
@@ -72,3 +101,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.actionIcon {
+  width: 80px;
+}
+</style>

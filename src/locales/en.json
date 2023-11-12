@@ -69,7 +69,9 @@
     "selectDepartment": "New Department"
   },
   "actionBot": {
-    "title": "{round}: Andrew's Turn"
+    "title": "{round}: Andrew's Turn",
+    "cardShiftVP": "Andrew gains <b>{count} VP</b>.",
+    "managementBuildDepartments": "Andrew builds a new department: | Andrew builds new departments:"
   },
   "endOfGame": {
     "title": "End of Game"

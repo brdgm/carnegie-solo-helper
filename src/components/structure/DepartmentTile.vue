@@ -19,11 +19,23 @@ export default defineComponent({
     department: {
       type: String,
       required: true
+    },
+    clickable: {
+      type: Boolean,
+      required: false
     }
   },
   setup() {
     const { t } = useI18n()
     return { t }
+  },
+  computed: {
+    cursor() : string|undefined {
+      if (this.clickable) {
+        return 'pointer'
+      }
+      return undefined
+    }
   }
 })
 </script>
@@ -33,7 +45,7 @@ export default defineComponent({
   display: inline-block;
   height: 140px;
   width: 180px;
-  cursor: pointer;
+  cursor: v-bind(cursor);
   .icon {
     height: 130px;
     border-radius: 10px;

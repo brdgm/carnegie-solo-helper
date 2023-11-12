@@ -69,7 +69,9 @@
     "selectDepartment": "Neue Abteilung"
   },
   "actionBot": {
-    "title": "{round}: Andrews Zug"
+    "title": "{round}: Andrews Zug",
+    "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
+    "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:"
   },
   "endOfGame": {
     "title": "Spielende"

@@ -1,8 +1,8 @@
 <template>
   <h1>{{t('actionPlayer.title', {round})}}</h1>
 
-  <div v-if="selectedAction" class="clearfix mt-3 mb-3">
-    <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3"/>
+  <div v-if="selectedAction" class="clearfix mt-3">
+    <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
     <p v-html="t('actionPlayer.useDepartments')"></p>
   </div>
 
@@ -10,7 +10,7 @@
     <p v-html="t('actionPlayer.newDepartments')"></p>
     <p v-if="playerNewDepartments.length > 0">
       <DepartmentTile v-for="(department, index) of playerNewDepartments" :key="index"
-          :department="department" @click="deselectDepartment(index)"/>
+          :department="department" :clickable="true" @click="deselectDepartment(index)"/>
     </p>
     <button class="btn btn-primary" v-if="playerNewDepartments.length < 3"
       data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
