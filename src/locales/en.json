@@ -48,7 +48,7 @@
     "selectDepartment": "Select Department"
   },
   "timelineSelection": {
-    "title": "{round}: Select Timeline",
+    "title": "Select Timeline",
     "playerSelect": "<b>You</b> select the next timeline action:",
     "botSelect": "<b>Andrew</b> selects this action:",
     "playerEvent": {
@@ -63,13 +63,13 @@
     }
   },
   "actionPlayer": {
-    "title": "{round}: Your Turn",
+    "title": "Your Turn",
     "useDepartments": "Use your departments.",
     "newDepartments": "If you build new departments this round, select them here:",
     "selectDepartment": "New Department"
   },
   "actionBot": {
-    "title": "{round}: Andrew's Turn",
+    "title": "Andrew's Turn",
     "cardShiftVP": "Andrew gains <b>{count} VP</b>.",
     "managementBuildDepartments": "Andrew builds a new department: | Andrew builds new departments:",
     "constructionCities": "Andrew builds projects in these cities (left-most empty space):",
@@ -86,7 +86,8 @@
   "sideBar": {
     "round": "Round",
     "departments": "Departments",
-    "timeline": "Timeline"
+    "timeline": "Timeline",
+    "nextAction": "Andrew's Plan:"
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",

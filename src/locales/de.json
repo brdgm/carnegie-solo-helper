@@ -86,7 +86,8 @@
   "sideBar": {
     "round": "Runde",
     "departments": "Abteilungen",
-    "timeline": "Zeitplan"
+    "timeline": "Zeitplan",
+    "nextAction": "Andrews Plan:"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",
