@@ -38,16 +38,17 @@ export const useStateStore = defineStore(`${name}.state`, {
         roundData.botEventDonationFailed = botEventDonationFailed
       }
     },
-    storePlayerDepartments(round : number, departments: readonly string[]) {
+    storePlayerRoundDetails(round : number, playerNewDepartments: readonly string[]) {
       const roundData = this.rounds.find(item => item.round == round)
       if (roundData) {
-        roundData.playerNewDepartments = departments
+        roundData.playerNewDepartments = playerNewDepartments
       }
     },
-    storeBotDepartments(round : number, departments: readonly string[]) {
+    storeBotRoundDetails(round : number, botNewDepartments: readonly string[], botCardShift: number) {
       const roundData = this.rounds.find(item => item.round == round)
       if (roundData) {
-        roundData.botNewDepartments = departments
+        roundData.botNewDepartments = botNewDepartments
+        roundData.botCardShift = botCardShift
       }
     }
   },
@@ -83,6 +84,7 @@ export interface Round {
   botEventDonationFailed?: boolean
   playerNewDepartments?: readonly string[]
   botNewDepartments?: readonly string[]
+  botCardShift?: number
 }
 export interface CardDeckPersistence {
   pile: string[]

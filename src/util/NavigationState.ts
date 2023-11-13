@@ -19,6 +19,7 @@ export default class NavigationState {
   readonly botNewDepartments : readonly string[]
   readonly selectedAction? : Action
   readonly botEventDonationFailed : boolean
+  readonly botCardShift : number
 
   constructor(route : RouteLocation, state : State) {    
     this.round = parseInt(route.params['round'] as string)
@@ -35,6 +36,7 @@ export default class NavigationState {
       this.botNewDepartments = roundData.botNewDepartments ?? []
       this.selectedAction = roundData.selectedAction
       this.botEventDonationFailed = roundData.botEventDonationFailed ?? false
+      this.botCardShift = roundData.botCardShift ?? 0
     }
     else {
       this.cardDeck = CardDeck.new(state.setup.difficultyLevel)
@@ -45,6 +47,7 @@ export default class NavigationState {
       this.botDepartments = []
       this.botNewDepartments = []
       this.botEventDonationFailed = false
+      this.botCardShift = 0
     }
 
     if (this.selectedAction) {

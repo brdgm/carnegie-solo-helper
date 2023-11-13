@@ -3,7 +3,7 @@
 
   <h1>{{t('actionPlayer.title')}}</h1>
 
-  <div v-if="selectedAction" class="clearfix mt-3">
+  <div v-if="selectedAction" class="mt-3">
     <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
     <p v-html="t('actionPlayer.useDepartments')"></p>
   </div>
@@ -64,6 +64,10 @@ export default defineComponent({
     const availableDepartments = ref([...removeDepartments(departments, botNewDepartments)])
     const playerNewDepartments = ref([] as string[])
 
+    if (navigationState.startPlayer == Player.BOT) {
+      navigationState.cardDeck.discardCurrentCard(navigationState.botCardShift)
+    }
+
     return { t, state, navigationState, round, startPlayer, selectedAction,
       availableDepartments, botNewDepartments, playerNewDepartments }
   },
@@ -83,12 +87,11 @@ export default defineComponent({
   methods: {
     next() : void {
       // update current round
-      this.state.storePlayerDepartments(this.round, this.playerNewDepartments)
+      this.state.storePlayerRoundDetails(this.round, this.playerNewDepartments)
       if (this.startPlayer == Player.BOT) {
         // prepare next round
         if (this.selectedAction) {
           const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
-          cardDeck.discardCurrentCard(0)
           this.state.storeRound({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),

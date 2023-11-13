@@ -4,7 +4,7 @@
 
   <h1>{{t('actionBot.title')}}</h1>
 
-  <div v-if="selectedAction" class="clearfix mt-3">
+  <div v-if="selectedAction" class="mt-3">
     <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
     <component :is="`${selectedAction}BotAction`" :botActions="botActions"
         @actionCompleted="actionCompleted"/>
@@ -83,11 +83,13 @@ export default defineComponent({
   },
   methods: {
     next() : void {
+      // update current round
+      this.state.storeBotRoundDetails(this.round, this.botNewDepartments, this.botActions.cardShift)
       if (this.startPlayer == Player.PLAYER) {
         // prepare next round
         if (this.selectedAction) {
           const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
-          cardDeck.discardCurrentCard(0)
+          cardDeck.discardCurrentCard(this.botActions.cardShift)
           this.state.storeRound({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
