@@ -10,6 +10,11 @@
       </span>
     </p>
 
+    <b>{{roundsVP}} VP</b><br/>
+    <p class="small">
+      for Andrews cards & departments
+    </p>
+
     <p class="buttons">
       <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarDepartmentShopModal">{{t('sideBar.departments')}}</button>
       <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarTimelineModal">{{t('sideBar.timeline')}}</button>
@@ -36,6 +41,7 @@ import TimelineSelection from './TimelineSelection.vue';
 import AppIcon from '../structure/AppIcon.vue';
 import Card from '@/services/Card';
 import CardType from '@/services/enum/CardType';
+import RoundsVPCalculator from '@/services/RoundsVPCalculator';
 
 export default defineComponent({
   name: "SideBar",
@@ -48,7 +54,6 @@ export default defineComponent({
   setup() {
     const { t } = useI18n();
     const state = useStateStore()
-
     return { t, state };
   },
   props: {
@@ -69,6 +74,10 @@ export default defineComponent({
     },
     isAdvancedCard() : boolean {
       return this.currentCard.cardType == CardType.ADVANCED
+    },
+    roundsVP() : number {
+      const vpCalculator = new RoundsVPCalculator(this.state.rounds.filter(item => item.round <= this.navigationState.round))
+      return vpCalculator.cardsShiftVP + vpCalculator.departmentsVP
     }
   }
 })
