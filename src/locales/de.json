@@ -57,7 +57,7 @@
     },
     "botEventDonation": {
       "title": "<b>Andrew</b> leistet eine Spende:",
-      "failed": "<b>Andrew</b> kann keine Spende leisten.",
+      "failed": "<b>Andrew</b> kann keine Spende leisten und erhält <b>1 SP</b>.",
       "done": "Scheibe platziert",
       "notPossible": "Nicht möglich"
     }
@@ -72,13 +72,15 @@
     "title": "{round}: Andrews Zug",
     "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
     "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:",
-    "constructionCities": "Andrew versucht in diesen Städten Projekte zu realisieren:"
+    "constructionCities": "Andrew realisiert Projekte in diesen Städten (erste freie Feld von links):",
+    "disksPlaced": "Scheiben platziert:",
+    "researchIncreaseTransportLevel": "Andrew verbessert seinen Transportlevel in dieser Region um <b>{count} Schritte</b>:",
+    "transportDiskMovedSteps": "Scheibe bewegt um Schritte:"
   },
   "endOfGame": {
     "title": "Spielende"
   },
-  "disksPlaced": {
-    "disksPlaced": "Scheiben platziert:",
+  "actionStepsRadioGroup": {
     "all": "Alle {count}"
   },
   "difficultyLevel": {

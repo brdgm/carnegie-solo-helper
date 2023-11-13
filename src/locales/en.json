@@ -57,7 +57,7 @@
     },
     "botEventDonation": {
       "title": "<b>Andrew</b> makes a donation:",
-      "failed": "<b>Andrew</b> fails to make a donation.",
+      "failed": "<b>Andrew</b> fails to make a donation an gains <b>1 VP</b>.",
       "done": "Disk placed",
       "notPossible": "Not possible"
     }
@@ -72,13 +72,15 @@
     "title": "{round}: Andrew's Turn",
     "cardShiftVP": "Andrew gains <b>{count} VP</b>.",
     "managementBuildDepartments": "Andrew builds a new department: | Andrew builds new departments:",
-    "constructionCities": "Andrew tries to build projects in these cities:"
+    "constructionCities": "Andrew builds projects in these cities (left-most empty space):",
+    "disksPlaced": "Disks placed:",
+    "researchIncreaseTransportLevel": "Andrew increases his transport level in this region by <b>{count} steps</b>:",
+    "transportDiskMovedSteps": "Disk moved steps:"
   },  
   "endOfGame": {
     "title": "End of Game"
   },
-  "disksPlaced": {
-    "disksPlaced": "Disks placed:",
+  "actionStepsRadioGroup": {
     "all": "All {count}"
   },
   "difficultyLevel": {
