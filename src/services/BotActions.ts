@@ -9,7 +9,7 @@ import Region from './enum/Region'
  */
 export default class BotActions {
 
-  private readonly currentCard : Card
+  private readonly currentCard : Card|undefined
   private readonly botEventDonationFailed : boolean
   private readonly availableDepartments : readonly string[]
 
@@ -20,7 +20,7 @@ export default class BotActions {
   private _transportSteps = 0
   private _actionStepsFailed = 0
 
-  constructor(currentCard : Card, botEventDonationFailed : boolean,
+  constructor(currentCard : Card|undefined, botEventDonationFailed : boolean,
       availableDepartments : readonly string[]) {
     this.currentCard = currentCard
     this.botEventDonationFailed = botEventDonationFailed
@@ -58,7 +58,10 @@ export default class BotActions {
    * Apply action based on current card.
    * @param action Action
    */
-  public applyAction(action : Action) : void {    
+  public applyAction(action : Action) : void {
+    if (!this.currentCard) {
+      throw new Error('No current card.')
+    }
     switch (action) {
       case Action.HUMAN_RESOURCES:
         this._cardShift += this.currentCard.humanResourcesCardShift

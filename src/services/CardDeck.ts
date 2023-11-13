@@ -15,7 +15,7 @@ export default class CardDeck {
     this._discardPile = discardPile
   }
 
-  public get currentCard() : Card {
+  public get currentCard() : Card|undefined {
     return this._pile[0]
   }
 

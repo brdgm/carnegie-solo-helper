@@ -2,7 +2,7 @@
   <div class="sidebar">    
     <p>{{t('sideBar.round')}} <strong>{{round}}</strong> / 20</p>
 
-    <p>
+    <p v-if="currentCard">
       <span>{{t('sideBar.nextAction')}}</span><br/>
       <span class="nextAction">
         <span v-if="isActionHidden" class="unknownAction">?</span>
@@ -72,11 +72,11 @@ export default defineComponent({
       return [...removeDepartments(this.navigationState.departments,
           this.navigationState.playerNewDepartments, this.navigationState.botNewDepartments)]
     },
-    currentCard() : Card {
+    currentCard() : Card|undefined {
       return this.navigationState.cardDeck.currentCard
     },
     isActionHidden() : boolean {
-      return this.currentCard.cardType == CardType.ADVANCED
+      return this.currentCard?.cardType == CardType.ADVANCED
           && this.navigationState.player != Player.BOT
     },
     vpCalculator() : RoundsVPCalculator {

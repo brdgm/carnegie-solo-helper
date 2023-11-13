@@ -1,23 +1,23 @@
 <template>
-  <div class="mt-5" v-if="debugEnabled">
-    <button class="btn btn-outline-danger" @click="debugShow = !debugShow"
+  <div class="mt-4" v-if="debugEnabled">
+    <button class="btn btn-outline-danger float-end" @click="debugShow = !debugShow"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .25rem;--bs-btn-font-size: .6rem;">DEBUG INFO</button>
+    <template v-if="debugShow">
+      <hr/>
+      <p class="debug">
+        <b>Card Deck</b><br/>
+        Pile: {{cardDeck.pile.map(card => cardInfo(card))}}<br/>
+        Discard: <span v-for="(discard,index) of cardDeck.discardPile" :key="index">{{index}}: {{(discard ?? []).map(card => cardInfo(card))}}&nbsp;</span><br/>
+        <b>Departments</b><br/>
+        Available: {{navigationState.departments}}<br/>
+        Player: {{navigationState.playerDepartments}} + {{navigationState.playerNewDepartments}}<br/>
+        Bot: {{navigationState.botDepartments}} + {{navigationState.botNewDepartments}}<br/>
+        <b>Bot</b><br/>
+        botEventDonationFailed={{navigationState.botEventDonationFailed}}, botCardShift={{navigationState.botCardShift}}<br/>
+        vpCalculator: cardsShift={{vpCalculator.cardsShift}}, cardsShiftVP={{vpCalculator.cardsShiftVP}}, departmentCount={{vpCalculator.departmentCount}}, departmentsVP={{vpCalculator.departmentsVP}}
+      </p>
+    </template>
   </div>
-  <template v-if="debugShow">
-    <hr/>
-    <p class="debug">
-      <b>Card Deck</b><br/>
-      Pile: {{cardDeck.pile.map(card => cardInfo(card))}}<br/>
-      Discard: <span v-for="(discard,index) of cardDeck.discardPile" :key="index">{{index}}: {{(discard ?? []).map(card => cardInfo(card))}}&nbsp;</span><br/>
-      <b>Departments</b><br/>
-      Available: {{navigationState.departments}}<br/>
-      Player: {{navigationState.playerDepartments}} + {{navigationState.playerNewDepartments}}<br/>
-      Bot: {{navigationState.botDepartments}} + {{navigationState.botNewDepartments}}<br/>
-      <b>Bot</b><br/>
-      botEventDonationFailed={{navigationState.botEventDonationFailed}}, botCardShift={{navigationState.botCardShift}}<br/>
-      vpCalculator: cardsShift={{vpCalculator.cardsShift}}, cardsShiftVP={{vpCalculator.cardsShiftVP}}, departmentCount={{vpCalculator.departmentCount}}, departmentsVP={{vpCalculator.departmentsVP}}
-    </p>
-  </template>
 </template>
 
 <script lang="ts">

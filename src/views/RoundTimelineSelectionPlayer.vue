@@ -9,7 +9,7 @@
 
   <ul v-if="events" class="mt-3">
     <TimelineExecutionPlayer :events="events"/>
-    <TimelineExecutionBot :events="events" :donation="navigationState.cardDeck.currentCard.donation" @eventCompleted="botEventCompleted"/>
+    <TimelineExecutionBot v-if="botDonation" :events="events" :donation="botDonation" @eventCompleted="botEventCompleted"/>
   </ul>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="action && eventCompleted">
@@ -34,6 +34,7 @@ import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
 import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
+import Donation from '@/services/enum/Donation'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionPlayer',
@@ -67,6 +68,9 @@ export default defineComponent({
         return `/round/${this.round - 1}/action/player`
       }
       return undefined
+    },
+    botDonation() : Donation|undefined {
+      return this.navigationState.cardDeck.currentCard?.donation
     }
   },
   methods: {

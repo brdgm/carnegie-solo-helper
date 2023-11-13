@@ -9,7 +9,7 @@
   <TimelineSelection :timeline="navigationState.timeline" :preselectedAction="action"/>
 
   <ul v-if="events" class="mt-3">
-    <TimelineExecutionBot :events="events" :donation="navigationState.cardDeck.currentCard.donation" @eventCompleted="botEventCompleted"/>
+    <TimelineExecutionBot v-if="botDonation" :events="events" :donation="botDonation" @eventCompleted="botEventCompleted"/>
     <TimelineExecutionPlayer :events="events"/>
   </ul>
 
@@ -34,6 +34,8 @@ import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
 import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
+import Donation from '@/services/enum/Donation'
+import Action from '@/services/enum/Action'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionBot',
@@ -54,7 +56,7 @@ export default defineComponent({
     const { round} = navigationState
 
     // bot selects timeline action
-    const action = navigationState.cardDeck.currentCard.mainAction
+    const action = navigationState.cardDeck.currentCard?.mainAction ?? Action.HUMAN_RESOURCES
     const timelineEntry = navigationState.timeline.checkExecuteAction(action)
     const events = timelineEntry?.events
 
@@ -69,6 +71,9 @@ export default defineComponent({
   computed: {
     backButtonRouteTo() : string {
       return `/round/${this.round - 1}/action/bot`
+    },
+    botDonation() : Donation|undefined {
+      return this.navigationState.cardDeck.currentCard?.donation
     }
   },
   methods: {
