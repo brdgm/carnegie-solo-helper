@@ -1,0 +1,290 @@
+{
+  "gameTitle": "Carnegie",
+  "home": {
+    "title": "Carnegie Solo Helper",
+    "play1": "Spiele <a href='https://boardgamegeek.com/boardgame/310873/carnegie' target='_blank' rel='noopener'><b>Carnegie</b></a> gegen Andrew, den Solo-Gegner.",
+    "play2": "Diese Applikation ersetzt die Solokarten, die Aktionswahl auf dem Zeitplan und verwaltet die verfügbaren Abteilungen.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Spielaufbau",
+    "difficultyLevel": {
+      "title": "Schwierigkeitsgrad",
+      "easy": "Leicht",
+      "hard": "Schwer"
+    },
+    "departmentSelection": {
+      "title": "Abteilungsauswahl"
+    }
+  },
+  "setupPrepareGame": {
+    "title": "Spielbrett vorbereiten",
+    "pickPlayerColor": {
+      "intro": "Wähle eine Spielerfarbe <b>für dich</b>.",
+      "putDisks": "Lege 1 Schreibe auf die Punkteleiste, je 1 Schreibe auf die Transportleisten, und 1 Schreibe auf jedes der sichtbaren Felder der Projektstreifen.",
+      "placeEmployees": "Stelle je 1 Mitarbeiter aufrecht auf jede der 5 Abteilungen deines Unternehmens und lege weitere 5 in den Empfangsbereich.",
+      "takeGoodsMoney": "Nehme 4 Warenwürfel und $12."
+    },
+    "pickBotColor": {
+      "intro": "Wähle eine Spielerfarbe <b>für Andrew</b>, den Solo-Gegner.",
+      "putDisks": "Lege je 1 Schreibe auf die Transportleisten.",
+      "botInfo": "Andrew hat keinen eigenen Unternehmensplan, keine Mitarbeiter und nutzt während des Spiels kein Geld, keine Warenwürfel und keine Forschungspunkte. Andrew hat für alle Aktionen immer ausreichend Ressourcen zur Verfügung und muss nichts bezahlen."
+    },
+    "pickBlockingColor": {
+      "intro": "Wähle eine dritte Spielerfarbe um zu Beginn <b>einige Spenden und Städte zu blockieren</b>:",
+      "placeCityDisks": "Lege Schreiben auf das erste freie Projektfeld <i>von links</i> in jeder dieser Städte:"
+    }
+  },
+  "setupPreparePlayer": {
+    "title": "Spieler-Vorbereitung",
+    "placeHousingDisk": "Setze die <b>Scheibe vom deinem Wohnprojektstreifen</b> auf das Wohnprojektfeld einer <i>mittleren oder großen</i> Stadt auf dem Spielplan.",
+    "pickDepartmentTileInfo": "Wähle eines der <b>Abteilungsplättchen</b> und lege es in deinen persönlichen Vorrat:",
+    "pickDepartmentTile": "Abteilungsplättchen wählen",
+    "moveEmployees": "<b>Bewege eigene Mitarbeiter</b> um bis zu 6 Schritte auf dem Unternehmensplan.",
+    "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>."
+  },
+  "departmentShop": {
+    "title": "Verfügbare Abteilungen",
+    "selectDepartment": "Abteilung auswählen"
+  },
+  "timelineSelection": {
+    "title": "Aktion wählen",
+    "playerSelect": "<b>Du</b> wählst die nächste Aktion:",
+    "botSelect": "<b>Andrew</b> wählt diese Aktion:",
+    "playerEvent": {
+      "take-income": "Hole 1 oder mehr Mitarbeiter aus dem <b>aktiven Einsatzgebiet</b> zurück",
+      "donation": "Du kannst eine <b>Spende</b> leisten"
+    },
+    "botEventDonation": {
+      "title": "<b>Andrew</b> leistet eine Spende:",
+      "failed": "<b>Andrew</b> kann keine Spende leisten.",
+      "done": "Scheibe platziert",
+      "notPossible": "Nicht möglich"
+    }
+  },
+  "actionPlayer": {
+    "title": "Dein Zug",
+    "useDepartments": "Nutze deine Abteilungen.",
+    "newDepartments": " Wenn du in dieser Runde neue Abteilungen gebaut hast, wähle sie hier aus:",
+    "selectDepartment": "Neue Abteilung"
+  },
+  "actionBot": {
+    "title": "Andrews Zug",
+    "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
+    "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:",
+    "constructionCities": "Andrew realisiert Projekte in diesen Städten (erste freie Feld von links):",
+    "disksPlaced": "Scheiben platziert:",
+    "researchIncreaseTransportLevel": "Andrew verbessert seinen Transportlevel in dieser Region um <b>{count} Schritte</b>:",
+    "transportDiskMovedSteps": "Scheibe bewegt um Schritte:"
+  },
+  "endOfGame": {
+    "title": "Spielende",
+    "vp": "SP",
+    "player": "Spieler",
+    "bot": "Andrew",
+    "vpActiveEmployee": "1 SP pro aktivem Mitarbeiter",
+    "vpDepartments": "2-3 SP pro Abteilung",
+    "vpProjectTabs": "SP von den Projektstreifen",
+    "vpConnectionMajorCities": "SP für Verbindungen zwischen Großstädten",
+    "vpCityProjects": "SP für jedes realisierte Projekt in den Städten",
+    "vpDonations": "SP für Spenden *)",
+    "vpBotTransportLevel": "6 SP für jede Scheibe auf dem letzten Feld einer Transportleiste",
+    "vpBotCards": "SP für Andrews Karten",
+    "total": "Summe",
+    "difficultyLevel": "Schwierigkeitsgrad:",
+    "vpDonationsBotInfo1": "Andrews Spenden werden so gewertet, als hättest du sie geleistet. Wenn du z.B. 5 Projekte in der Region Westen realisiert hast und Andrew eine Scheibe auf der Spende platziert hat, die 2 SP für jedes Projekt in dieser Region bringt, bekommt Andrew dafür 10 SP (5 x 2).",
+    "vpDonationsBotInfo2": "Tipp: Du magst es unfair finden, dass Andrew Punkte für das bekommt, was du während des Spiels geschafft hast, aber Unternehmer von Andrews Kaliber kümmert das wenig. Sobald Andrew eine Spende getätigt hat, weißt du, dass du selbst diese Spende nicht mehr leisten kannst und vielleicht auf weitere Aktionen, die Andrew belohnen würden, verzichten solltest."
+  },
+  "actionStepsRadioGroup": {
+    "all": "Alle {count}"
+  },
+  "sideBar": {
+    "round": "Runde",
+    "departments": "Abteilungen",
+    "timeline": "Zeitplan",
+    "nextAction": "Andrews Plan:",
+    "vpCards": "{count} SP Karten",
+    "vpDepartments": "{count} SP Abteilungen"
+  },
+  "difficultyLevel": {
+    "1": "Level 1 - Leicht",
+    "2": "Level 2 - Normal",
+    "3": "Level 3 - Schwer",
+    "4": "Level 4 - Experte"
+  },
+  "departmentSelectionType": {
+    "base": "Basis-Spiel",
+    "expansion": "Basis-Spiel und Erweiterung",
+    "expansion-open-bar": "Basis-Spiel und Erweiterung (Abteilungsvielfalt) - eine von jeder"
+  },
+  "department": {
+    "01-training-partnerships": {
+      "title": "Fortbildung und Beteiligungen",
+      "description": "Diese Abteilung bietet größere Flexibilität beim Einsatz der Mitarbeiter deines Unternehmens und kann zudem mit einer Finanzspritze aushelfen.",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Du erhältst dafür entweder $8 oder 8 Mitarbeiterschritte."
+    },
+    "02-recruiting": {
+      "title": "Personalbeschaffung",
+      "description": "Mit dieser Abteilung kann man schnell das Maximum von 15 Mitarbeitern erreichen.",
+      "rules": "Wenn du diese Abteilung nutzt, kannst du entweder<br/>• einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann legst du sofort einen neuen Mitarbeiter aus dem Vorrat auf deinen Empfang, ODER<br/>• 4 Mitarbeiterschritte erhalten."
+    },
+    "03-safety-quality": {
+      "title": "Sicherheit und Qualität",
+      "description": "Diese Abteilung beaufsichtigt die Einhaltung der Qualitätsstandards in Prozessen und Produkten und sorgt für die Sicherheit und das Wohlbefinden der Mitarbeiter.",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Du erhältst 1 SP für je 2 aktive Mitarbeiter in deinem Unternehmen (aufgerundet). Mitarbeiter im Außeneinsatz gelten nicht als aktiv."
+    },
+    "04-new-lobby": {
+      "title": "Neuer Empfang",
+      "description": "Der neue Empfangsbereich erlaubt schnelleren Zugang zu bestimmten Abteilungen und verringert dadurch die Notwendigkeit, Mitarbeiter zu bewegen.",
+      "rules": "Der Bau dieser Abteilung kostet 2 Warenwürfel zusätzlich zu den normalen Baukosten. Sobald diese Abteilung gebaut wurde, kannst du neu eingestellte und von Außeneinsätzen zurückkehrende Mitarbeiter nach Belieben in diesen oder deinen ursprünglichen Empfangsbereich setzen. Diese Abteilung hat eine dauerhafte Funktion. Sie ist die einzige Abteilung, die für ihre Funktionsfähigkeit keinen aktiven Mitarbeiter benötigt."
+    },
+    "05-purchasing": {
+      "title": "Einkauf",
+      "description": "Mit dieser Abteilung können schnell und kostengünstig größere Mengen von Waren herangeschafft oder zusätzliche finanzielle Mittel freigesetzt werden.",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Du erhältst dann 3 Warenwürfel oder $8 aus dem Vorrat."
+    },
+    "06-sales": {
+      "title": "Verkauf",
+      "description": "Wenn ein Unternehmen viele Waren produziert, kann diese Abteilung sie zum Bestpreis verkaufen.",
+      "rules": "Immer wenn du diese Abteilung nutzt, kannst du 1 bis 3 Warenwürfel an den Vorrat zahlen. Für jeden gezahlten Warenwürfel erhältst du $6."
+    },
+    "07-logistics": {
+      "title": "Logistik",
+      "description": "Diese Abteilung verbessert die Zuverlässigkeit und Liefergeschwindigkeit des Unternehmens.",
+      "rules": "Wenn du diese Abteilung nutzt, kannst du 1-3 Warenwürfel an den Vorrat zahlen. Für jeden gezahlten Warenwürfel erhältst du $3 und 1 SP."
+    },
+    "08-property-management": {
+      "title": "Gebäudemanagement",
+      "description": "Mit dieser Abteilung kann einer neu gebauten Abteilung direkt ein Mitarbeiter zugewiesen werden.",
+      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Immer wenn du eine neue Abteilung in deinem Unternehmen baust, kannst du sofort einen aktiven oder inaktiven Mitarbeiter von einem beliebigen Feld deines Unternehmensplans in diese neue Abteilung versetzen. Dieser Mitarbeiter wird inaktiv, kann aber ganz normal am Ende der Runde aktiviert werden."
+    },
+    "09-engineering": {
+      "title": "Konstruktion",
+      "description": "Die Abteilung ermöglicht die Realisierung weiterer Projekte.",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann zahle 1 oder 2 Warenwürfel (abhängig von der Art des Projekts, das realisiert werden soll) und lege eine Scheibe von deinem zugehörigen Projektstreifen auf ein Projektfeld in der gleichen Region."
+    },
+    "10-construction-outsourcing": {
+      "title": "Konstruktionsoutsourcing",
+      "description": "Mit dieser Abteilung kannst du Projekte realisieren, ohne Mitarbeiter auf einen Außeneinsatz zu schicken.",
+      "rules": "Wenn du diese Abteilung nutzt, kannst du $3 und 1 oder 2 Warenwürfel (abhängig von der Art des gewählten Projekts) bezahlen, um ein neues Projekt an einem beliebigen Ort auf dem Spielplan zu realisieren, ohne einen Mitarbeiter auf einen Außeneinsatz zu schicken."
+    },
+    "11-supply-chain": {
+      "title": "Supply Chain Management",
+      "description": "Mit dieser Abteilung können Waren zu verringerten Kosten gekauft werden.",
+      "rules": "Wenn du diese Abteilung nutzt, kannst du bis zu 3 Warenwürfel zum Preis von je $1 kaufen."
+    },
+    "12-communications": {
+      "title": "Kommunikation",
+      "description": "Diese Abteilung verbessert die Effizienz von Spenden.",
+      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Die Basiskosten für neue Spenden betragen für dich nur $3 statt der üblichen $5 (d.h. deine zweite Spende kostet dich nur $6, deine dritte $9 usw.)."
+    },
+    "13-advanced-research": {
+      "title": "Verbesserte Forschung",
+      "description": "Diese Abteilung kann die Mitarbeiter bei ihrer Forschung unterstützen.",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Du erhältst 7 Forschungspunkte."
+    },
+    "14-advanced-design": {
+      "title": "Verbesserte Gestaltung",
+      "description": "Diese Abteilung verbessert die Effizienz der Forschung.",
+      "rules": "Wenn du diese Abteilung nutzt, erhältst du 4 Forschungspunkte."
+    },
+    "15-charitable-giving": {
+      "title": "Karitative Zwecke",
+      "description": "Mit dieser Abteilung kannst du eine Spende kopieren, die ein anderer Spieler bereits geleistet hat.",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Nachdem du die Kosten für die Spende gezahlt hast, musst du eine deiner Scheiben auf die Scheibe eines anderen Spielers im Spendenbereich legen anstatt auf ein leeres Feld. Du kannst keine Spende zweimal leisten."
+    },
+    "16-telegraph-operators": {
+      "title": "Telegrafie",
+      "description": "Diese Abteilung reduziert die Kosten für die Transportentwicklung.",
+      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Die Kosten zum Vorrücken auf den Transportleisten sind für dich um je 1 Forschungspunkt reduziert (bis zu einem Minimum von 1)."
+    },
+    "17-human-resources-administration": {
+      "title": "Personalverwaltung",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann darfst du für jede Personalabteilung in deinem Unternehmen (einschließlich der Startabteilung) einen Mitarbeiter auf deinem Unternehmensplan an einen beliebigen anderen Drt in deinem Unternehmen versetzen. Auf diese Weise versetzte Mitarbeiter werden inaktiv."
+    },
+    "18-local-partners": {
+      "title": "Regionale Partner",
+      "rules": "Wenn du diese Abteilung nutzt, wähle eine Region auf dem Spielplan. Für jedes deiner realisierten Projekte in dieser Region erhältst du $2 <b>oder</b> 2 Mitarbeiterschritte.<br/><b>Beispiel</b>: Mary hat im Mittleren Westen 5 Projekte realisiert. Sie wählt diese Region bei der Aktivierung der Abteilung und entscheidet sich für $6 und 4 Mitarbeiterschritte."
+    },
+    "19-corporate-communications": {
+      "title": "Unternehmenskommunikation",
+      "rules": "Damit du diese Abteilung nutzen kannst, muss sich zu Beginn deines Zuges ein aktiver Mitarbeiter dort befunden haben. Für die Dauer dieses Zuges können sich deine Mitarbeiter sowohl orthogonal als auch diagonal über deinen Unternehmensplan bewegen."
+    },
+    "20-green-spaces": {
+      "title": "Grünflächen",
+      "rules": "Diese Abteilung hat eine Funktion in der Schlusswertung, sofern sich dort am Spielende ein aktiver Mitarbeiter befindet. Du erhältst 2 SP für jedes Feld auf deinem Unternehmensplan, auf dem sich keine Abteilung befindet."
+    },
+    "21-accounting": {
+      "title": "Rechnungswesen",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann erhältst du $3 für jede Verwaltungsabteilung in deinem Unternehmen (einschließlich der Startabteilungen)."
+    },
+    "22-branding": {
+      "title": "Markenbildung",
+      "rules": "Wenn du diese Abteilung nutzt, wähle eine Region auf dem Spielplan. Für jedes deiner realisierten Projekte in dieser Region erhältst du $2 <b>oder</b> 1 Warenwürfel."
+    },
+    "23-payroll-management": {
+      "title": "Lohnbuchhaltung",
+      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Diese Funktion gilt aber noch nicht in der Runde, in der der Mitarbeiter dort aktiviert wird. Immer wenn du einen Mitarbeiter in deinem Unternehmen aktivierst, kannst du <b>entweder</b> die auf dem Arbeitsplatz angegebenen Kosten zahlen (wie üblich) <b>oder</b> S2 zusätzlich zu diesen Kosten zahlen und 1 SP erhalten <b>oder</b> S1 statt der abgebildeten Kosten zahlen und 1 SP abgeben. Die letzte Möglichkeit kann nicht gewählt werden, wenn du 0 oder weniger SP besitzt."
+    },
+    "24-public-relations": {
+      "title": "Öffentlichkeitsarbeit",
+      "rules": "Diese Abteilung hat eine Funktion in der Schlusswertung, sofern sich dort am Spielende ein aktiver Mitarbeiter befindet. Du erhältst 2 SP für jedes deiner realisierten Projekte in einer Region deiner Wahl."
+    },
+    "25-production-lines": {
+      "title": "Fließbandfertigung",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann erhältst du 1 Warenwürfel für jede Konstruktionsabteilung in deinem Unternehmen (einschließlich der Startabteilung)."
+    },
+    "26-renovation": {
+      "title": "Sanierung",
+      "rules": "Wenn du diese Abteilung nutzt, wähle eine Region auf dem Spielplan. Für jedes deiner realisierten Projekte in dieser Region erhältst du $2 <b>oder</b> 1 SP."
+    },
+    "27-political-lobbying": {
+      "title": "Lobbyismus",
+      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Du darfst Projekte auf Projektfeldern realisieren, die nicht der Art des gewählten Projekts entsprechen. Wenn du ein Projekt in einer Kleinstadt oder auf einem zur Projektart passenden Feld realisierst, erhältst du 1 SP."
+    },
+    "28-post-office": {
+      "title": "Poststelle",
+      "rules": "Diese Abteilung hat eine Funktion in der Schlusswertung, sofern sich dort am Spielende ein aktiver Mitarbeiter befindet. Bei der Ermittlung der Anschlusspunkte für Verbindungen zwischen den Großstädten erhältst du 1 zusätzlichen Anschlusspunkt, bis zu einem Maximum von 6 Anschlusspunkten. Wenn du das Spiel mit den vollen 6 Anschlusspunkten beendest, erhältst du noch einmal 9 SP zusätzlich."
+    },
+    "29-rd-coordination": {
+      "title": "F&E-Koordination",
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann erhältst du 2 Forschungspunkte für jede F&E-Abteilung in deinem Unternehmen (einschließlich der Startabteilung)."
+    },
+    "30-knowledge-sharing": {
+      "title": "Wissensaustausch",
+      "rules": "Wenn du diese Abteilung nutzt, wähle eine Region auf dem Spielplan. Für jedes deiner realisierten Projekte in dieser Region erhältst du $2 <b>oder</b> 2 Forschungspunkte."
+    },
+    "31-archives": {
+      "title": "Archiv",
+      "rules": "Diese Abteilung hat zwei dauerhafte Funktionen, solange sich dort ein aktiver Mitarbeiter befindet. Zum einen darfst du, wenn du Transporteinkommen erhältst, das Einkommen einer niedrigeren Stufe wählen als deine Scheibe auf der Transportleiste angibt. Zum anderen darfst du das letzte Feld jeder Transportleiste auch dann betreten, wenn es bereits von anderen Spielern besetzt ist."
+    },
+    "32-network-libraries": {
+      "title": "Bibliotheksnetzwerk",
+      "rules": "Diese Abteilung hat eine Funktion in der Schlusswertung, sofern sich dort am Spielende ein aktiver Mitarbeiter befindet. Du erhältst 4 SP für jedes deiner Projekte in der Region, in der du die wenigsten deiner Projekte realisiert hast."
+    }
+  },
+  "notfound": {
+    "title": "Nicht gefunden"
+  },
+  "action": {
+    "playGame": "Spielen",
+    "startGame": "Spiel starten",
+    "next": "Weiter",
+    "nextRound": "Nächste Runde",
+    "abortGame": "Spiel abbrechen",
+    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist Du sicher?",
+    "endGame": "Spiel beenden",
+    "endGameConfirm": "Dieses Spiel wird beendet - bist Du sicher?",
+    "cancel": "Abbrechen",
+    "backToHome": "Zurück zum Anfang",
+    "back": "Zurück",
+    "close": "Schließen"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Applikation neu laden",
+    "notice": "Die Applikation wurde aktualisiert - möchtest du die Seite neu laden um die neueste Version zu nutzen?"
+  }
+}

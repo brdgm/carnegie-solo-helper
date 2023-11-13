@@ -1,0 +1,290 @@
+{
+  "gameTitle": "Carnegie",
+  "home": {
+    "title": "Carnegie Solo Helper",
+    "play1": "Play <a href='https://boardgamegeek.com/boardgame/310873/carnegie' target='_blank' rel='noopener'><b>Carnegie</b></a> against a Andrew, the Solo Opponent.",
+    "play2": "This app replaces the solo card deck, the timeline action selection and manages the available department tiles.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Setup Game",
+    "difficultyLevel": {
+      "title": "Difficulty Level",
+      "easy": "Easy",
+      "hard": "Hard"
+    },
+    "departmentSelection": {
+      "title": "Department Selection"
+    }
+  },
+  "setupPrepareGame": {
+    "title": "Prepare Game Board",
+    "pickPlayerColor": {
+      "intro": "Pick a player color <b>for you</b>.",
+      "putDisks": "Put 1 disks on the score track, 1 disk on each transportation track, and 1 on each available space on the project tabs.",
+      "placeEmployees": "Place 1 of your employees standing up on each of your Company’s 5 Departments, with another 5 employees lying down in the Company’s Lobby.",
+      "takeGoodsMoney": "Take 4 good cubes and $12."
+    },
+    "pickBotColor": {
+      "intro": "Pick a player color <b>for Andrew</b>, the solo opponent.",
+      "putDisks": "Put 1 disk on each transportation track.",
+      "botInfo": "Andrew does not use employees, VP, money, goods cubes, or study points during the game, and he does not use an individual Company board. Andrew always has enough money, goods, and study points."
+    },
+    "pickBlockingColor": {
+      "intro": "Pick a third player color for initially <b>blocking certain donations and cities</b>:",
+      "placeCityDisks": "Put discs on the <i>left-most</i> unoccupied construction spaces in each city:"
+    }
+  },
+  "setupPreparePlayer": {
+    "title": "Player Preparation",
+    "placeHousingDisk": "Place the <b>disk from your Housing tab</b> onto the game board on a Housing space in a <i>medium or major</i> city.",
+    "pickDepartmentTileInfo": "Choose one <b>Department tile</b> to place in your personal reserve:",
+    "pickDepartmentTile": "Pick Department tile",
+    "moveEmployees": "You may <b>move your employees</b> up to a total of 6 steps on your Company board.",
+    "activateEmployees": "You may <b>activate your employees</b>."
+  },
+  "departmentShop": {
+    "title": "Available Departments",
+    "selectDepartment": "Select Department"
+  },
+  "timelineSelection": {
+    "title": "Select Timeline",
+    "playerSelect": "<b>You</b> select the next timeline action:",
+    "botSelect": "<b>Andrew</b> selects this action:",
+    "playerEvent": {
+      "take-income": "Return 1 or more employees from the <b>active mission area</b> and receive income",
+      "donation": "You can make a <b>donation</b>"
+    },
+    "botEventDonation": {
+      "title": "<b>Andrew</b> makes a donation:",
+      "failed": "<b>Andrew</b> fails to make a donation.",
+      "done": "Disk placed",
+      "notPossible": "Not possible"
+    }
+  },
+  "actionPlayer": {
+    "title": "Your Turn",
+    "useDepartments": "Use your departments.",
+    "newDepartments": "If you build new departments this round, select them here:",
+    "selectDepartment": "New Department"
+  },
+  "actionBot": {
+    "title": "Andrew's Turn",
+    "cardShiftVP": "Andrew gains <b>{count} VP</b>.",
+    "managementBuildDepartments": "Andrew builds a new department: | Andrew builds new departments:",
+    "constructionCities": "Andrew builds projects in these cities (left-most empty space):",
+    "disksPlaced": "Disks placed:",
+    "researchIncreaseTransportLevel": "Andrew increases his transport level in this region by <b>{count} steps</b>:",
+    "transportDiskMovedSteps": "Disk moved steps:"
+  },  
+  "endOfGame": {
+    "title": "End of Game",
+    "vp": "VP",
+    "player": "Player",
+    "bot": "Andrew",
+    "vpActiveEmployee": "1 VP per active employee",
+    "vpDepartments": "2-3 VP per department",
+    "vpProjectTabs": "VP from project tabs",
+    "vpConnectionMajorCities": "VPs connections between major cities",
+    "vpCityProjects": "VPs for each construction project in cities",
+    "vpDonations": "VPs for donations *)",
+    "vpBotTransportLevel": "6 VP for each disk on last box in transportation track",
+    "vpBotCards": "VP from Andrews cards",
+    "total": "Total",
+    "difficultyLevel": "Difficulty Level:",
+    "vpDonationsBotInfo1": "Andrew’s donations are scored according to what <i>you</i> built during the game. For example, you built 5 projects in the West; if Andrew had placed the donation disk that awards 2 VP for each project built in that region, Andrew would score 10 VP (5 x 2).",
+    "vpDonationsBotInfo2": "Tip: You may find it unfair that Andrew receives points for what you have done during the game, but businessmen of Andrew’s caliber don’t care. Once Andrew has placed a donation disk, you know that you may no longer make that particular donation and may thus wish to avoid taking further actions that would reward Andrew."
+  },
+  "actionStepsRadioGroup": {
+    "all": "All {count}"
+  },
+  "sideBar": {
+    "round": "Round",
+    "departments": "Departments",
+    "timeline": "Timeline",
+    "nextAction": "Andrew's Plan:",
+    "vpCards": "{count} VP cards",
+    "vpDepartments": "{count} VP departments"
+  },
+  "difficultyLevel": {
+    "1": "Level 1 - Beginner",
+    "2": "Level 2 - Normal",
+    "3": "Level 3 - Difficult",
+    "4": "Level 4 - Expert"
+  },
+  "departmentSelectionType": {
+    "base": "Base Game",
+    "expansion": "Base Game and Expansion",
+    "expansion-open-bar": "Base Game and Expansion (Open Bar) - one of each"
+  },
+  "department": {
+    "01-training-partnerships": {
+      "title": "Training and Partnerships",
+      "description": "This Department is a powerful way to bring more flexibility in allocating employees. It also allows its owner to supplement their financial resources.",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). Then, the player may choose to receive either $8 OR 8 employee moves."
+    },
+    "02-recruiting": {
+      "title": "Recruiting",
+      "description": "This Department offers a very efficient way to reach the maximum of 15 employees.",
+      "rules": "For each use of this Department, the player may either:<br/>• send an active employee from this Department on a Mission (move it to a Mission area on the game board). Then that player must immediately place a new employee from their supply into their Company’s Lobby, OR<br/>• receive 4 employee moves."
+    },
+    "03-safety-quality": {
+      "title": "Safety and Quality",
+      "description": "This Department helps to ensure the quality of manufacturing processes and products, as well as ensuring employees’ safety and well-being.",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). Then, the player receives 1 VP for every two active employees in their Company, rounded up. Employees on Missions are not considered to be active."
+    },
+    "04-new-lobby": {
+      "title": "New Lobby",
+      "description": "A new Lobby allows faster access to certain Departments, minimizing the need for employee movement.",
+      "rules": "To build this Department, the player must pay 2 goods cubes in addition to the normal building cost. Once this Department has been built, it can hold new recruits and returning employees, which can be allocated between the two Lobbies as desired. This Department has an ongoing effect; it is the only Department that does not require an active employee to function."
+    },
+    "05-purchasing": {
+      "title": "Purchasing",
+      "description": "This Department makes it possible to find new financial resources and produce a large quantity of goods quickly and free of charge.",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board); they may then either receive $8 OR take 3 goods cubes from the supply."
+    },
+    "06-sales": {
+      "title": "Sales",
+      "description": "If a Company produces a lot of goods, this Department can sell them for the best price.",
+      "rules": "Each time a player uses this Department, they may pay 1 to 3 goods cubes to the supply. For each cube paid in this way, they receive $6."
+    },
+    "07-logistics": {
+      "title": "Logistics",
+      "description": "This Department improves a Company’s reliability and delivery time.",
+      "rules": "Each time a player uses this Department, they may pay 1 to 3 goods cubes to the supply. For each cube paid in this way, they receive $3 and 1 VP."
+    },
+    "08-property-management": {
+      "title": "Property Management",
+      "description": "This Department allows a player to immediately assign an employee to a newly built Department.",
+      "rules": "This Department has an ongoing effect as long as it contains an active employee. Whenever a player adds a new Department to their Company, they may immediately move one of their employees (active or inactive) from anywhere on their Department board to the new Department, in an inactive state. This employee can be activated at the end of the round, as normal."
+    },
+    "09-engineering": {
+      "title": "Engineering",
+      "description": "This Department provides new construction capabilities.",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). That player then pays 1 or 2 goods cubes (according to the type of project being built) to build a new project in the same region."
+    },
+    "10-construction-outsourcing": {
+      "title": "Construction Outsourcing",
+      "description": "This Department allows a player to build without sending an employee on a Mission.",
+      "rules": "Whenever this Department is used, the player may pay $3 and 1-2 goods cubes (according to the type of project being built) to build a new project anywhere on the game board, without sending an employee on a Mission."
+    },
+    "11-supply-chain": {
+      "title": "Supply Chain",
+      "description": "This Department makes it possible to buy goods at a reduced cost.",
+      "rules": "Whenever a player uses this Department, they may purchase up to 3 goods cubes at a cost of $1 each."
+    },
+    "12-communications": {
+      "title": "Communications",
+      "description": "This Department increases the efficiency of donations.",
+      "rules": "As long as this Department contains an active employee, it has an ongoing effect: the costs of the player’s new donations will be calculated on the basis of $3 per donation, rather than $5."
+    },
+    "13-advanced-research": {
+      "title": "Advanced Research",
+      "description": "This Department is an effective way to accelerate employees’ studies.",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board); the player then gains 7 study points."
+    },
+    "14-advanced-design": {
+      "title": "Advanced Design",
+      "description": "A new design Department improves a Company’s study efficiency.",
+      "rules": "Whenever this Department is used, its owner gains 4 study points for each active employee in the Department."
+    },
+    "15-charitable-giving": {
+      "title": "Charitable Giving",
+      "description": "This Department allows a player to duplicate a donation that another player has already made.",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). After paying the appropriate donation cost, the player must then place one of their disks on top of another player’s donation disk, rather than on an unoccupied space; a player may not make the same donation twice."
+    },
+    "16-telegraph-operators": {
+      "title": "Telegraph Operators",
+      "description": "This Department reduces transportation development costs.",
+      "rules": "As long as this Department contains an active employee, it has an ongoing effect: the player’s study point costs to progress along transportation tracks are reduced by 1 (to a minimum of 1)."
+    },
+    "17-human-resources-administration": {
+      "title": "Human Resources Administration",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). Then, for each Human Resources Department in that player’s Company (including the starting Department), they may move one employee on their Company board to any other location within their Company. An employee moved this way becomes inactive."
+    },
+    "18-local-partners": {
+      "title": "Local Partners",
+      "rules": "When using this Department, the player must choose a single region of the map. Then, for each project they have built in that region, they receive either $2 <b>OR</b> 2 employee moves.<br><b>Example</b>: Mary has built 5 projects in the Midwest. She chooses that region when using this Department, and decides to receive $6 and 4 employee moves."
+    },
+    "19-corporate-communications": {
+      "title": "Corporate Communication",
+      "rules": "In order to benefit from the effect of this Department, it must contain an active employee at the beginning of the turn. For the duration of that turn, the player’s employees may move diagonally or orthogonally within their Company."
+    },
+    "20-green-spaces": {
+      "title": "Green Spaces",
+      "rules": "This Department has an effect on final scoring as long as it contains an active employee at the end of the game. The player scores 2 VP for each space on their Company board that does not contain a Department."
+    },
+    "21-accounting": {
+      "title": "Accounting",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). The player then receives $3 for each Management Department in their company (including starting Departments)."
+    },
+    "22-branding": {
+      "title": "Branding",
+      "rules": "When using this Department, the player must choose a single region of the map. Then, for each project they have built in that region, the player receives either $2 b>OR</b> 1 goods cube."
+    },
+    "23-payroll-management": {
+      "title": "Payroll Management",
+      "rules": "This Department has an ongoing effect as long as it contains an active employee. However, this effect does not apply in the same round in which that employee was activated. When the player activates an employee anywhere in their Company, they can <b>EITHER</b> pay the price listed on the Workstation (as usual), <b>OR</b> pay $2 more than the listed price and gain 1 VP, <b>OR</b> pay 1 regardless of price and lose 1 VP. The last option cannot be taken if the player has 0 or fewer VP."
+    },
+    "24-public-relations": {
+      "title": "Public Relations",
+      "rules": "This Department has an effect on final scoring as long as it contains an active employee at the end of the game. The player gains 2 VP for each project they have built in a single region of their choice."
+    },
+    "25-production-lines": {
+      "title": "Production Lines",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). The player then receives 1 goods cube for each Construction Department in their company (including the starting Department)."
+    },
+    "26-renovation": {
+      "title": "Renovation",
+      "rules": "When using this Department, the player must choose a single region of the map. Then, for each project they have built in that region, the player receives either $2 <b>OR</b> 1 VP."
+    },
+    "27-political-lobbying": {
+      "title": "Political Lobbying",
+      "rules": "This Department has an ongoing effect as long as it contains an active employee. The player may build on spaces that do not match the chosen project type. If the player builds in a small town, or on a space that matches the chosen project type, they gain 1 VP."
+    },
+    "28-post-office": {
+      "title": "Post Office",
+      "rules": "This Department has an effect on final scoring as long as it contains an active employee at the end of the game. When counting connections between major cities the player may add 1 connection point to their total, to a maximum of 6 connection points. If the player finishes the game with 6 connection points, they receive a bonus of 9 VP in addition to the points earned for their connections between major cities."
+    },
+    "29-rd-coordination": {
+      "title": "R&D Coordination",
+      "rules": "To use this Department, the player must send an active employee from this Department on a Mission (move it to a Mission area on the game board). The player then receives 2 study points for each R&D Department in their company (including the starting Department)."
+    },
+    "30-knowledge-sharing": {
+      "title": "Knowledge Sharing",
+      "rules": "When using this Department, the player must choose a single region of the map. Then, for each project they have built in that region, the player receives either $2 <b>OR</b> 2 study points."
+    },
+    "31-archives": {
+      "title": "Archives",
+      "rules": "This Department has two ongoing effects as long as it contains an active employee. First, when receiving transport income the player may choose to receive a lower level of income, according to the position of their disk on the Mission region’s transportation track. Second, the player’s transportation marker may enter the final box of each transportation track and receive the end-of-track bonus, even if those boxes are already occupied by other players’ markers."
+    },
+    "32-network-libraries": {
+      "title": "Network of Libraries",
+      "rules": "This Department has an effect on final scoring as long as it contains an active employee at the end of the game. The player gains 4 VP for each project they built in the region in which they had built the fewest projects."
+    }
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "nextRound": "Next Round",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Refresh Application",
+    "notice": "The application was updated - do you want to refresh to use the latest version?"
+  }
+}
