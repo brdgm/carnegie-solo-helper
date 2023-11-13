@@ -71,10 +71,15 @@
   "actionBot": {
     "title": "{round}: Andrews Zug",
     "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
-    "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:"
+    "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:",
+    "constructionCities": "Andrew versucht in diesen Städten Projekte zu realisieren:"
   },
   "endOfGame": {
     "title": "Spielende"
+  },
+  "disksPlaced": {
+    "disksPlaced": "Scheiben platziert:",
+    "all": "Alle {count}"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

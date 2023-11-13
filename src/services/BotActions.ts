@@ -12,31 +12,25 @@ export default class BotActions {
   private readonly currentCard : Card
   private readonly botEventDonationFailed : boolean
   private readonly availableDepartments : readonly string[]
-  private readonly botDepartments : readonly string[]
 
   private _cardShift = 0
   private _botNewDepartments : readonly string[] = []
-  private _departmentsFailed = 0
   private _cities : City[] = []
-  private _citiesFailed = 0
   private _transportRegion?: Region
   private _transportSteps = 0
-  private _transportStepsFailed = 0
+  private _actionStepsFailed = 0
 
   constructor(currentCard : Card, botEventDonationFailed : boolean,
-      availableDepartments : readonly string[], botDepartments : readonly string[]) {
+      availableDepartments : readonly string[]) {
     this.currentCard = currentCard
     this.botEventDonationFailed = botEventDonationFailed
     this.availableDepartments = availableDepartments
-    this.botDepartments = botDepartments
   }
 
   public get cardShift() : number {
     const result = this._cardShift
       + (this.botEventDonationFailed ? 1 : 0)
-      + this._departmentsFailed
-      + this._citiesFailed
-      + this._transportStepsFailed
+      + this._actionStepsFailed
     // card shift limited to 4
     if (result > 4) {
       return 4;
@@ -72,7 +66,7 @@ export default class BotActions {
       case Action.MANAGEMENT:
         this._botNewDepartments = this.getDepartements(this.currentCard.managementDepartment)
         // count number of departments that could not be gained
-        this._departmentsFailed = this.currentCard.managementDepartment.length - this._botNewDepartments.length
+        this._actionStepsFailed = this.currentCard.managementDepartment.length - this._botNewDepartments.length
         break
       case Action.CONSTRUCTION:
         this._cities = this.currentCard.constructionCities
@@ -87,17 +81,10 @@ export default class BotActions {
   }
 
   /**
-   * @param count Number of cities which could not be placed
+   * @param count Number of action steps failed (e.g. cities which could not be placed or transport level increments not possible)
    */
-  public setCitiesFailed(count : number ) {
-    this._citiesFailed = count
-  }
-
-  /**
-   * @param count Number of transport steps that could not be moved
-   */
-  public setTransportStepsFailed(count : number ) {
-    this._transportStepsFailed = count
+  public setActionStepsFailed(count : number ) {
+    this._actionStepsFailed = count
   }
 
   /**
@@ -111,7 +98,9 @@ export default class BotActions {
     departmentTypes.forEach(departmentType => {
       const group = groupedDepartments.groups.find(item => item.departmentType == departmentType)
       if (group) {
-        const departmentCount = group.departments.find(item => !this.botDepartments.includes(item.department.id) && !result.includes(item.department.id))
+        // andrew does not take multiple copies of the same department in one turn, but may do so in future turns
+        // see https://boardgamegeek.com/thread/2855674/article/39990267#39990267
+        const departmentCount = group.departments.find(item => !result.includes(item.department.id))
         if (departmentCount) {
           result.push(departmentCount.department.id)
         }

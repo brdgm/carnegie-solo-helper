@@ -71,10 +71,15 @@
   "actionBot": {
     "title": "{round}: Andrew's Turn",
     "cardShiftVP": "Andrew gains <b>{count} VP</b>.",
-    "managementBuildDepartments": "Andrew builds a new department: | Andrew builds new departments:"
-  },
+    "managementBuildDepartments": "Andrew builds a new department: | Andrew builds new departments:",
+    "constructionCities": "Andrew tries to build projects in these cities:"
+  },  
   "endOfGame": {
     "title": "End of Game"
+  },
+  "disksPlaced": {
+    "disksPlaced": "Disks placed:",
+    "all": "All {count}"
   },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",

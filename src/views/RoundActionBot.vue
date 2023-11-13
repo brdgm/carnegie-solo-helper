@@ -5,11 +5,12 @@
 
   <div v-if="selectedAction" class="clearfix mt-3">
     <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
-    <component :is="`${selectedAction}BotAction`" :botActions="botActions"/>
-    <p v-if="cardShiftVP > 0" v-html="t('actionBot.cardShiftVP',{count:cardShiftVP})"></p>
+    <component :is="`${selectedAction}BotAction`" :botActions="botActions"
+        @actionCompleted="actionCompleted"/>
+    <p v-if="getBotVP() > 0" v-html="t('actionBot.cardShiftVP',{count:getBotVP()})"></p>
   </div>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next()">
+  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="botActionCompleted">
     {{t('action.next')}}
   </button>
 
@@ -54,13 +55,18 @@ export default defineComponent({
     const { round, startPlayer, selectedAction, playerNewDepartments } = navigationState
 
     const botActions = new BotActions(navigationState.cardDeck.currentCard,
-        navigationState.botEventDonationFailed, navigationState.departments, navigationState.botDepartments)
+        navigationState.botEventDonationFailed, navigationState.departments)
     if (selectedAction) {
       botActions.applyAction(selectedAction)
     }
     const botNewDepartments = botActions.botNewDepartments
 
     return { t, state, navigationState, round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments, botActions }
+  },
+  data() {
+    return {
+      botActionCompleted: false
+    }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -70,9 +76,6 @@ export default defineComponent({
       else {
         return `/round/${this.round}/timelineSelection/${this.startPlayer}`
       }
-    },
-    cardShiftVP() : number {
-      return getCardShiftVP(this.botActions.cardShift)
     }
   },
   methods: {
@@ -97,6 +100,14 @@ export default defineComponent({
       else {
         this.$router.push(`/round/${this.round}/action/player`)
       }
+    },
+    actionCompleted(actionStepsFailed: number) {
+      this.botActions.setActionStepsFailed(actionStepsFailed)
+      this.botActionCompleted = true
+      this.$forceUpdate()
+    },
+    getBotVP() : number {
+      return getCardShiftVP(this.botActions.cardShift)
     }
   }
 })

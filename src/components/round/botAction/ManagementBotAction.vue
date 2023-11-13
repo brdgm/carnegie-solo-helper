@@ -18,6 +18,9 @@ export default defineComponent({
   components: {
     DepartmentTile
   },
+  emits: {
+    actionCompleted: (_actionStepsFailed: number) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   setup() {
     const { t } = useI18n()
     return { t }
@@ -32,6 +35,9 @@ export default defineComponent({
     departments() : readonly string[] {
       return this.botActions.botNewDepartments
     }
+  },
+  mounted() {
+    this.$emit('actionCompleted', 0)
   }
 })
 </script>
