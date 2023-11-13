@@ -16,6 +16,7 @@
     {{t('action.next')}}
   </button>
 
+  <DebugInfo :navigationState="navigationState"/>
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
 
@@ -32,6 +33,7 @@ import Event from '@/services/enum/Event'
 import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
 import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
 import SideBar from '@/components/round/SideBar.vue'
+import DebugInfo from '@/components/round/DebugInfo.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionPlayer',
@@ -40,7 +42,8 @@ export default defineComponent({
     TimelineSelection,
     TimelineExecutionBot,
     TimelineExecutionPlayer,
-    SideBar
+    SideBar,
+    DebugInfo
   },
   setup() {
     const { t } = useI18n()

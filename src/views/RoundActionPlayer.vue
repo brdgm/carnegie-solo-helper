@@ -24,6 +24,7 @@
     {{t('action.next')}}
   </button>
 
+  <DebugInfo :navigationState="navigationState"/>
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
 
@@ -44,6 +45,7 @@ import removeDepartment from '@/util/removeDepartment'
 import removeDepartments from '@/util/removeDepartments'
 import addDepartments from '@/util/addDepartments'
 import SideBar from '@/components/round/SideBar.vue'
+import DebugInfo from '@/components/round/DebugInfo.vue'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
@@ -52,7 +54,8 @@ export default defineComponent({
     AppIcon,
     DepartmentShop,
     DepartmentTile,
-    SideBar
+    SideBar,
+    DebugInfo
   },
   setup() {
     const { t } = useI18n()

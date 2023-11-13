@@ -15,6 +15,7 @@
     {{t('action.next')}}
   </button>
 
+  <DebugInfo :navigationState="navigationState"/>
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
 
@@ -37,6 +38,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import BotActions from '@/services/BotActions'
 import getCardShiftVP from '@/util/getCardShiftVP'
 import SideBar from '@/components/round/SideBar.vue'
+import DebugInfo from '@/components/round/DebugInfo.vue'
 
 export default defineComponent({
   name: 'RoundActionBot',
@@ -48,7 +50,8 @@ export default defineComponent({
     ManagementBotAction,
     ResearchDevelopmentBotAction,
     AppIcon,
-    SideBar
+    SideBar,
+    DebugInfo
   },
   setup() {
     const { t } = useI18n()
