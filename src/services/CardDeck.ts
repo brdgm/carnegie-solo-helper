@@ -88,7 +88,7 @@ export default class CardDeck {
   public static fromPersistence(persistence : CardDeckPersistence) : CardDeck {
     return new CardDeck(
       persistence.pile.map(Cards.get),
-      persistence.discardPile.map(slot => slot.map(Cards.get))
+      persistence.discardPile.map(slot => (slot ?? []).map(Cards.get))
     )
   }
 

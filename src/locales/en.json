@@ -57,7 +57,7 @@
     },
     "botEventDonation": {
       "title": "<b>Andrew</b> makes a donation:",
-      "failed": "<b>Andrew</b> fails to make a donation an gains <b>1 VP</b>.",
+      "failed": "<b>Andrew</b> fails to make a donation.",
       "done": "Disk placed",
       "notPossible": "Not possible"
     }

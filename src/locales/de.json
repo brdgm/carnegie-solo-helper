@@ -57,7 +57,7 @@
     },
     "botEventDonation": {
       "title": "<b>Andrew</b> leistet eine Spende:",
-      "failed": "<b>Andrew</b> kann keine Spende leisten und erhält <b>1 SP</b>.",
+      "failed": "<b>Andrew</b> kann keine Spende leisten.",
       "done": "Scheibe platziert",
       "notPossible": "Nicht möglich"
     }

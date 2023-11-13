@@ -18,14 +18,7 @@ export default class RoundsVPCalculator {
     this._departmentCount = this.getDepartmentCount(rounds)
 
     if (navigationState) {
-      let currentCardShift
-      if (navigationState.botCardShift > 0) {
-        currentCardShift = navigationState.botCardShift
-      }
-      else {
-        currentCardShift = navigationState.botEventDonationFailed ? 1 : 0
-      }
-      this._cardsShift[currentCardShift]++
+      this._cardsShift[navigationState.botCardShift]++
       this._departmentCount += navigationState.botNewDepartments.length
     }
   }

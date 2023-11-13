@@ -1,6 +1,10 @@
 <template>
-  <template v-if="debugVisible">
-    <hr class="mt-5"/>
+  <div class="mt-5" v-if="debugEnabled">
+    <button class="btn btn-outline-danger" @click="debugShow = !debugShow"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .25rem;--bs-btn-font-size: .6rem;">DEBUG INFO</button>
+  </div>
+  <template v-if="debugShow">
+    <hr/>
     <p class="debug">
       <b>Card Deck</b><br/>
       Pile: {{cardDeck.pile.map(card => cardInfo(card))}}<br/>
@@ -39,7 +43,8 @@ export default defineComponent({
   },
   data() {
     return {
-      debugVisible: true
+      debugEnabled: true,
+      debugShow: false
     }
   },
   computed: {
