@@ -1,7 +1,8 @@
 <template>
+  <SideBar :navigation-state="navigationState"/>
   <BotBackgroundImage/>
 
-  <h1>{{t('timelineSelection.title', {round})}}</h1>
+  <h1>{{t('timelineSelection.title')}}</h1>
 
   <p v-html="t('timelineSelection.botSelect')"></p>
 
@@ -30,6 +31,7 @@ import TimelineSelection from '@/components/round/TimelineSelection.vue'
 import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
 import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
 import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
+import SideBar from '@/components/round/SideBar.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionBot',
@@ -38,7 +40,8 @@ export default defineComponent({
     TimelineSelection,
     BotBackgroundImage,
     TimelineExecutionBot,
-    TimelineExecutionPlayer
+    TimelineExecutionPlayer,
+    SideBar
   },
   setup() {
     const { t } = useI18n()

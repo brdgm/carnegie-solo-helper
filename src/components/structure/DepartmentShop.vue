@@ -14,7 +14,7 @@
         <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)"></p>
         <p v-html="t(`department.${selectedDepartment.department.id}.rules`)"></p>
         <button class="btn btn-secondary" @click="backToOverview">&lt; {{t('action.back')}}</button>
-        <button class="btn btn-primary ms-2" data-bs-dismiss="modal" @click="selectDepartment(selectedDepartment.department)">{{t('departmentShop.selectDepartment')}}</button>
+        <button class="btn btn-primary ms-2" data-bs-dismiss="modal" @click="selectDepartment(selectedDepartment.department)" v-if="select">{{t('departmentShop.selectDepartment')}}</button>
       </template>
 
       <template v-else>

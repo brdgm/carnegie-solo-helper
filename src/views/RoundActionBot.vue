@@ -1,7 +1,8 @@
 <template>
+  <SideBar :navigation-state="navigationState"/>
   <BotBackgroundImage/>
 
-  <h1>{{t('actionBot.title', {round})}}</h1>
+  <h1>{{t('actionBot.title')}}</h1>
 
   <div v-if="selectedAction" class="clearfix mt-3">
     <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
@@ -35,6 +36,7 @@ import ResearchDevelopmentBotAction from '@/components/round/botAction/ResearchD
 import AppIcon from '@/components/structure/AppIcon.vue'
 import BotActions from '@/services/BotActions'
 import getCardShiftVP from '@/util/getCardShiftVP'
+import SideBar from '@/components/round/SideBar.vue'
 
 export default defineComponent({
   name: 'RoundActionBot',
@@ -45,7 +47,8 @@ export default defineComponent({
     ConstructionBotAction,
     ManagementBotAction,
     ResearchDevelopmentBotAction,
-    AppIcon
+    AppIcon,
+    SideBar
   },
   setup() {
     const { t } = useI18n()
@@ -84,7 +87,6 @@ export default defineComponent({
         // prepare next round
         if (this.selectedAction) {
           const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
-          timeline.execute(this.selectedAction)
           cardDeck.discardCurrentCard(0)
           this.state.storeRound({
             round: this.round + 1,

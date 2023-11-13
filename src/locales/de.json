@@ -48,7 +48,7 @@
     "selectDepartment": "Abteilung auswählen"
   },
   "timelineSelection": {
-    "title": "{round}: Aktion wählen",
+    "title": "Aktion wählen",
     "playerSelect": "<b>Du</b> wählst die nächste Aktion:",
     "botSelect": "<b>Andrew</b> wählt diese Aktion:",
     "playerEvent": {
@@ -63,13 +63,13 @@
     }
   },
   "actionPlayer": {
-    "title": "{round}: Dein Zug",
+    "title": "Dein Zug",
     "useDepartments": "Nutze deine Abteilungen.",
     "newDepartments": " Wenn du in dieser Runde neue Abteilungen gebaut hast, wähle sie hier aus:",
     "selectDepartment": "Neue Abteilung"
   },
   "actionBot": {
-    "title": "{round}: Andrews Zug",
+    "title": "Andrews Zug",
     "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
     "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:",
     "constructionCities": "Andrew realisiert Projekte in diesen Städten (erste freie Feld von links):",
@@ -82,6 +82,11 @@
   },
   "actionStepsRadioGroup": {
     "all": "Alle {count}"
+  },
+  "sideBar": {
+    "round": "Runde",
+    "departments": "Abteilungen",
+    "timeline": "Zeitplan"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

@@ -46,6 +46,10 @@ export default class NavigationState {
       this.botNewDepartments = []
       this.botEventDonationFailed = false
     }
+
+    if (this.selectedAction) {
+      this.timeline.execute(this.selectedAction)
+    }
   }
 
 }

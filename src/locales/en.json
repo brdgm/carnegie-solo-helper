@@ -83,6 +83,11 @@
   "actionStepsRadioGroup": {
     "all": "All {count}"
   },
+  "sideBar": {
+    "round": "Round",
+    "departments": "Departments",
+    "timeline": "Timeline"
+  },
   "difficultyLevel": {
     "1": "Level 1 - Beginner",
     "2": "Level 2 - Normal",

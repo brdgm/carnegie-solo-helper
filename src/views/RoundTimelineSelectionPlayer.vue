@@ -1,5 +1,7 @@
 <template>
-  <h1>{{t('timelineSelection.title', {round})}}</h1>
+  <SideBar :navigation-state="navigationState"/>
+
+  <h1>{{t('timelineSelection.title')}}</h1>
 
   <p v-html="t('timelineSelection.playerSelect')"></p>
 
@@ -29,6 +31,7 @@ import Action from '@/services/enum/Action'
 import Event from '@/services/enum/Event'
 import TimelineExecutionBot from '@/components/round/TimelineExecutionBot.vue'
 import TimelineExecutionPlayer from '@/components/round/TimelineExecutionPlayer.vue'
+import SideBar from '@/components/round/SideBar.vue'
 
 export default defineComponent({
   name: 'RoundTimelineSelectionPlayer',
@@ -36,7 +39,8 @@ export default defineComponent({
     FooterButtons,
     TimelineSelection,
     TimelineExecutionBot,
-    TimelineExecutionPlayer
+    TimelineExecutionPlayer,
+    SideBar
   },
   setup() {
     const { t } = useI18n()

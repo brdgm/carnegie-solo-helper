@@ -1,5 +1,7 @@
 <template>
-  <h1>{{t('actionPlayer.title', {round})}}</h1>
+  <SideBar :navigation-state="navigationState"/>
+
+  <h1>{{t('actionPlayer.title')}}</h1>
 
   <div v-if="selectedAction" class="clearfix mt-3">
     <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
@@ -16,7 +18,7 @@
       data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
   </div>
 
-  <DepartmentShop id="newDepartmentModal" :departments="availableDepartments" @selected="selectDepartment"/>
+  <DepartmentShop id="newDepartmentModal" :departments="availableDepartments" :select="true" @selected="selectDepartment"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -41,6 +43,7 @@ import DepartmentTile from '@/components/structure/DepartmentTile.vue'
 import removeDepartment from '@/util/removeDepartment'
 import removeDepartments from '@/util/removeDepartments'
 import addDepartments from '@/util/addDepartments'
+import SideBar from '@/components/round/SideBar.vue'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
@@ -48,7 +51,8 @@ export default defineComponent({
     FooterButtons,
     AppIcon,
     DepartmentShop,
-    DepartmentTile
+    DepartmentTile,
+    SideBar
   },
   setup() {
     const { t } = useI18n()
@@ -84,7 +88,6 @@ export default defineComponent({
         // prepare next round
         if (this.selectedAction) {
           const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
-          timeline.execute(this.selectedAction)
           cardDeck.discardCurrentCard(0)
           this.state.storeRound({
             round: this.round + 1,

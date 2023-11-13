@@ -3,7 +3,7 @@
     <button class="btn"
         :class="{'btn-outline-primary':selectedAction && !(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action || !selectedAction}"        
         @click="selectAction(timelineAction.action)"
-        :disabled="preselectedAction != undefined">
+        :disabled="isReadOnly">
       <AppIcon type="action" :name="timelineAction.action" class="actionIcon"/>
     </button>
 
@@ -13,7 +13,7 @@
         <template v-for="event of timelineEntry.events" :key="event">
           <div v-if="isTakeIncome(event) && timelineEntry.region" class="eventBackground income"
               :class="{
-                selectable:timeline.checkExecuteTimelineEntry(timelineEntry),
+                selectable:isSelectable(timelineEntry),
                 selected:isSelected(timelineEntry),
                 inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)
               }"
@@ -24,7 +24,7 @@
           </div>
           <div v-else class="eventBackground donation"
               :class="{
-                selectable:timeline.checkExecuteTimelineEntry(timelineEntry),
+                selectable:isSelectable(timelineEntry),
                 selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)
               }"
               @click="selectTimelineEntry(timelineEntry)">
@@ -64,6 +64,10 @@ export default defineComponent({
     preselectedAction: {
       type: String as PropType<Action>,
       required: false
+    },
+    readOnly: {
+      type: Boolean,
+      required: false
     }
   },
   data() {
@@ -81,6 +85,9 @@ export default defineComponent({
       else {
         return this.timeline.actions
       }
+    },
+    isReadOnly() : boolean {
+      return this.readOnly || this.preselectedAction != undefined
     }
   },
   methods: {
@@ -97,6 +104,9 @@ export default defineComponent({
       return event == Event.TAKE_INCOME
     },
     selectAction(action : Action) {
+      if (this.readOnly) {
+        return
+      }
       if (this.selectedAction == action) {
         this.selectedAction = undefined
         this.selectedTimelineEntry = undefined
@@ -107,7 +117,13 @@ export default defineComponent({
       }
       this.$emit('selected', this.selectedAction, this.selectedTimelineEntry?.events)
     },
+    isSelectable(timelineEntry : TimelineEntry) {
+      return !this.isReadOnly && this.timeline.checkExecuteTimelineEntry(timelineEntry)
+    },
     selectTimelineEntry(timelineEntry : TimelineEntry) {
+      if (this.readOnly) {
+        return
+      }
       const action = this.timeline.checkExecuteTimelineEntry(timelineEntry)
       if (action) {
         this.selectAction(action)

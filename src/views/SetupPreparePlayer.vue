@@ -20,7 +20,7 @@
     {{t('action.startGame')}}
   </button>
 
-  <DepartmentShop id="departmentShopModal" :departments="initialDepartments" @selected="selectDepartment"/>
+  <DepartmentShop id="departmentShopModal" :departments="initialDepartments" :select="true" @selected="selectDepartment"/>
 
   <FooterButtons endGameButtonType="abortGame" backButtonRouteTo="/setupPrepareGame"/>
 </template>
