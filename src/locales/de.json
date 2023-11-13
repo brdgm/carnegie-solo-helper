@@ -87,7 +87,9 @@
     "round": "Runde",
     "departments": "Abteilungen",
     "timeline": "Zeitplan",
-    "nextAction": "Andrews Plan:"
+    "nextAction": "Andrews Plan:",
+    "vpCards": "{count} SP Karten",
+    "vpDepartments": "{count} SP Abteilungen"
   },
   "difficultyLevel": {
     "1": "Level 1 - Leicht",

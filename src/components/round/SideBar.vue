@@ -5,14 +5,14 @@
     <p>
       <span>{{t('sideBar.nextAction')}}</span><br/>
       <span class="nextAction">
-        <span v-if="isAdvancedCard" class="unknownAction">?</span>
+        <span v-if="isActionHidden" class="unknownAction">?</span>
         <AppIcon v-else type="action" :name="currentCard.mainAction" class="icon"/>
       </span>
     </p>
 
-    <b>{{roundsVP}} VP</b><br/>
     <p class="small">
-      for Andrews cards & departments
+      {{t('sideBar.vpCards',{count:vpCalculator.cardsShiftVP})}}<br/>
+      {{t('sideBar.vpDepartments',{count:vpCalculator.departmentsVP})}}
     </p>
 
     <p class="buttons">
@@ -42,9 +42,11 @@ import AppIcon from '../structure/AppIcon.vue';
 import Card from '@/services/Card';
 import CardType from '@/services/enum/CardType';
 import RoundsVPCalculator from '@/services/RoundsVPCalculator';
+import removeDepartments from '@/util/removeDepartments';
+import Player from '@/services/enum/Player';
 
 export default defineComponent({
-  name: "SideBar",
+  name: 'SideBar',
   components: {
     DepartmentShop,
     ModalDialog,
@@ -67,17 +69,19 @@ export default defineComponent({
       return this.navigationState.round
     },
     availableDepartments() : string [] {
-      return [...this.navigationState.departments]
+      return [...removeDepartments(this.navigationState.departments,
+          this.navigationState.playerNewDepartments, this.navigationState.botNewDepartments)]
     },
     currentCard() : Card {
       return this.navigationState.cardDeck.currentCard
     },
-    isAdvancedCard() : boolean {
+    isActionHidden() : boolean {
       return this.currentCard.cardType == CardType.ADVANCED
+          && this.navigationState.player != Player.BOT
     },
-    roundsVP() : number {
-      const vpCalculator = new RoundsVPCalculator(this.state.rounds.filter(item => item.round <= this.navigationState.round))
-      return vpCalculator.cardsShiftVP + vpCalculator.departmentsVP
+    vpCalculator() : RoundsVPCalculator {
+      return new RoundsVPCalculator(this.state.rounds
+          .filter(item => item.round <= this.navigationState.round - 1), this.navigationState)
     }
   }
 })

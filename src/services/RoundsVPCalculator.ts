@@ -1,4 +1,5 @@
 import { Round } from '@/store/state'
+import NavigationState from '@/util/NavigationState'
 import getCardShiftVP from '@/util/getCardShiftVP'
 
 /**
@@ -12,9 +13,21 @@ export default class RoundsVPCalculator {
   /**
    * @param rounds Rounds
    */
-  constructor(rounds : Round[]) {
+  constructor(rounds : Round[], navigationState?: NavigationState) {
     this._cardsShift = this.getCardsShift(rounds)
     this._departmentCount = this.getDepartmentCount(rounds)
+
+    if (navigationState) {
+      let currentCardShift
+      if (navigationState.botCardShift > 0) {
+        currentCardShift = navigationState.botCardShift
+      }
+      else {
+        currentCardShift = navigationState.botEventDonationFailed ? 1 : 0
+      }
+      this._cardsShift[currentCardShift]++
+      this._departmentCount += navigationState.botNewDepartments.length
+    }
   }
 
   private getCardsShift(rounds : Round[]) : number[] {

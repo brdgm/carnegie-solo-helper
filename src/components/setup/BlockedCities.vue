@@ -1,6 +1,6 @@
 <template>
   <div class="cities">
-    <p v-html="t('setupPrepare.pickBlockingColor.placeCityDisks')"></p>
+    <p v-html="t('setupPrepareGame.pickBlockingColor.placeCityDisks')"></p>
     <ul>
       <li v-for="cityCount of blockedCities" :key="cityCount.city">
         <CityBadge :city="cityCount.city"/>
