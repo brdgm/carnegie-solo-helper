@@ -76,7 +76,7 @@
     "title": "Andrews Zug",
     "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
     "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:",
-    "constructionCities": "Andrew realisiert Projekte in diesen Städten (erste freie Feld von links):",
+    "constructionCities": "Andrew realisiert Projekte in diesen Städten (erstes freie Feld von links):",
     "disksPlaced": "Scheiben platziert:",
     "researchIncreaseTransportLevel": "Andrew verbessert seinen Transportlevel in dieser Region um <b>{count} Schritte</b>:",
     "transportDiskMovedSteps": "Scheibe bewegt um Schritte:"
