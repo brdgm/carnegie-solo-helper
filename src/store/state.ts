@@ -67,6 +67,7 @@ export interface Setup {
   blockedDonations?: readonly Donation[]
   blockedCities?: readonly CityCount[]
   initialDepartments?: readonly string[]
+  debugMode?: boolean
 }
 export interface CityCount {
   city: City
