@@ -14,6 +14,7 @@ export default class NavigationState {
   readonly cardDeck : CardDeck
   readonly timeline : Timeline
   readonly departments : readonly string[]
+  readonly playerReserveDepartments : readonly string[]
   readonly playerDepartments : readonly string[]
   readonly playerNewDepartments : readonly string[]
   readonly botDepartments : readonly string[]
@@ -30,6 +31,7 @@ export default class NavigationState {
     let cardDeck : CardDeck|undefined;
     let timeline : Timeline|undefined;
     let departments : readonly string[] = []
+    let playerReserveDepartments : readonly string[] = []
     let playerDepartments : readonly string[] = []
     let botDepartments : readonly string[] = []
     let selectedAction : Action|undefined
@@ -43,9 +45,12 @@ export default class NavigationState {
       cardDeck = CardDeck.fromPersistence(roundData.cardDeck)
       timeline = Timeline.fromPersistence(roundData.timeline)
       departments = roundData.departments
+      playerReserveDepartments = roundData.playerReserveDepartments
       playerDepartments = roundData.playerDepartments
       botDepartments = roundData.botDepartments
 
+      // depending on current route, preselect certain already stored stuff for the current round
+      // but skip it, if it was stared previously and user is coming back to this step via back-button
       if (!isTimelineSelection(route)) {
         selectedAction = roundData.selectedAction
         botEventDonationFailed = roundData.botEventDonationFailed ?? false
@@ -62,6 +67,7 @@ export default class NavigationState {
     this.cardDeck = cardDeck ?? CardDeck.new(state.setup.difficultyLevel)
     this.timeline = timeline ?? Timeline.new()
     this.departments = departments
+    this.playerReserveDepartments = playerReserveDepartments
     this.playerDepartments = playerDepartments
     this.playerNewDepartments = playerNewDepartments
     this.botDepartments = botDepartments

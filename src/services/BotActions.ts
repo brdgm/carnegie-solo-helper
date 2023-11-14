@@ -18,6 +18,7 @@ export default class BotActions {
   private _cities : City[] = []
   private _transportRegion?: Region
   private _transportSteps = 0
+  private _managementActionStepsFailed = 0
   private _actionStepsFailed = 0
 
   constructor(currentCard : Card|undefined, botEventDonationFailed : boolean,
@@ -30,6 +31,7 @@ export default class BotActions {
   public get cardShift() : number {
     const result = this._cardShift
       + (this.botEventDonationFailed ? 1 : 0)
+      + this._managementActionStepsFailed
       + this._actionStepsFailed
     // card shift limited to 4
     if (result > 4) {
@@ -69,7 +71,7 @@ export default class BotActions {
       case Action.MANAGEMENT:
         this._botNewDepartments = this.getDepartements(this.currentCard.managementDepartment)
         // count number of departments that could not be gained
-        this._actionStepsFailed = this.currentCard.managementDepartment.length - this._botNewDepartments.length
+        this._managementActionStepsFailed = this.currentCard.managementDepartment.length - this._botNewDepartments.length
         break
       case Action.CONSTRUCTION:
         this._cities = this.currentCard.constructionCities
