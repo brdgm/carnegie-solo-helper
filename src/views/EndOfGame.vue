@@ -8,6 +8,11 @@
       <th scope="col">{{t('endOfGame.bot')}}</th>
     </tr>
     <tr>
+      <th scope="row">{{t('endOfGame.vpGameBoard')}}</th>
+      <td><input type="number" min="0" max="99" step="1" v-model="playerVPGameBoard" @focus="inputSelectAll"/></td>
+      <td></td>
+    </tr>
+    <tr>
       <th scope="row">{{t('endOfGame.vpActiveEmployee')}}</th>
       <td><input type="number" min="0" max="99" step="1" v-model="playerVPActiveEmployee" @focus="inputSelectAll"/></td>
       <td></td>
@@ -60,8 +65,7 @@
 
   <p class="small mt-4">
     <b>*) </b>
-    <span v-html="t('endOfGame.vpDonationsBotInfo1')"></span><br/>
-    <span v-html="t('endOfGame.vpDonationsBotInfo2')"></span>
+    <span class="fst-italic" v-html="t('endOfGame.vpDonationsBotInfo')"></span>
   </p>
 
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="endGame"/>
@@ -86,6 +90,7 @@ export default defineComponent({
   },
   data() {
     return {
+      playerVPGameBoard: 0,
       playerVPActiveEmployee: 0,
       playerVPDepartments: 0,
       playerVPProjectTabs: 0,
@@ -111,7 +116,8 @@ export default defineComponent({
       return this.vpCalculator.cardsShiftVP
     },
     totalPlayer() : number {
-      return this.playerVPActiveEmployee + this.playerVPDepartments + this.playerVPProjectTabs
+      return this.playerVPGameBoard 
+          + this.playerVPActiveEmployee + this.playerVPDepartments + this.playerVPProjectTabs
           + this.playerVPConnectionMajorCities + this.playerVPCityProjects + this.playerVPDonations
     },
     totalBot() : number {

@@ -86,6 +86,7 @@
     "vp": "SP",
     "player": "Spieler",
     "bot": "Andrew",
+    "vpGameBoard": "VP vom Spielbrett",
     "vpActiveEmployee": "1 SP pro aktivem Mitarbeiter",
     "vpDepartments": "2-3 SP pro Abteilung",
     "vpProjectTabs": "SP von den Projektstreifen",
@@ -96,8 +97,7 @@
     "vpBotCards": "SP für Andrews Karten",
     "total": "Summe",
     "difficultyLevel": "Schwierigkeitsgrad:",
-    "vpDonationsBotInfo1": "Andrews Spenden werden so gewertet, als hättest du sie geleistet. Wenn du z.B. 5 Projekte in der Region Westen realisiert hast und Andrew eine Scheibe auf der Spende platziert hat, die 2 SP für jedes Projekt in dieser Region bringt, bekommt Andrew dafür 10 SP (5 x 2).",
-    "vpDonationsBotInfo2": "Tipp: Du magst es unfair finden, dass Andrew Punkte für das bekommt, was du während des Spiels geschafft hast, aber Unternehmer von Andrews Kaliber kümmert das wenig. Sobald Andrew eine Spende getätigt hat, weißt du, dass du selbst diese Spende nicht mehr leisten kannst und vielleicht auf weitere Aktionen, die Andrew belohnen würden, verzichten solltest."
+    "vpDonationsBotInfo": "Andrews Spenden werden so gewertet, als hättest du sie geleistet. Wenn du z.B. 5 Projekte in der Region Westen realisiert hast und Andrew eine Scheibe auf der Spende platziert hat, die 2 SP für jedes Projekt in dieser Region bringt, bekommt Andrew dafür 10 SP (5 x 2). Du magst es unfair finden, dass Andrew Punkte für das bekommt, was du während des Spiels geschafft hast, aber Unternehmer von Andrews Kaliber kümmert das wenig. Sobald Andrew eine Spende getätigt hat, weißt du, dass du selbst diese Spende nicht mehr leisten kannst und vielleicht auf weitere Aktionen, die Andrew belohnen würden, verzichten solltest."
   },
   "actionStepsRadioGroup": {
     "all": "Alle {count}"
