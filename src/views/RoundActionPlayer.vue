@@ -63,9 +63,9 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, botNewDepartments } = navigationState
+    const { round, startPlayer, selectedAction, playerReserveDepartments, botNewDepartments } = navigationState
 
-    const playerNewDepartments = ref([] as string[])
+    const playerNewDepartments = ref([...playerReserveDepartments] as string[])
 
     if (navigationState.startPlayer == Player.BOT) {
       navigationState.cardDeck.discardCurrentCard(navigationState.botCardShift)
@@ -103,11 +103,12 @@ export default defineComponent({
       if (this.startPlayer == Player.BOT) {
         // prepare next round
         if (this.selectedAction) {
-          const { timeline, cardDeck, departments, playerDepartments, botDepartments } = this.navigationState
+          const { timeline, cardDeck, departments, playerReserveDepartments, playerDepartments, botDepartments } = this.navigationState
           this.state.storeRound({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
             timeline: timeline.toPersistence(),
+            playerReserveDepartments: removeDepartments(playerReserveDepartments, this.playerNewDepartments),
             departments: removeDepartments(departments, this.playerNewDepartments, this.botNewDepartments),
             playerDepartments: addDepartments(playerDepartments, this.playerNewDepartments),
             botDepartments: addDepartments(botDepartments, this.botNewDepartments)

@@ -68,7 +68,8 @@ export default defineComponent({
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
           timeline: Timeline.new().toPersistence(),
           departments: removeDepartment(this.state.setup.initialDepartments, this.department.id),
-          playerDepartments: [this.department.id],
+          playerReserveDepartments: [this.department.id],
+          playerDepartments: [],
           botDepartments: []
         })
         this.$router.push('/round/1/timelineSelection/player')
