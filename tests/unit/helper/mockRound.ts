@@ -10,6 +10,7 @@ export default function (params?: MockRoundParams) : Round {
     cardDeck: params?.cardDeck ?? CardDeck.new(DifficultyLevel.BEGINNER).toPersistence(),
     timeline: params?.timeline ?? Timeline.new().toPersistence(),
     departments: params?.departments ?? [],
+    playerReserveDepartments: params?.playerReserveDepartments ?? [],
     playerDepartments: params?.playerDepartments ?? [],
     botDepartments: params?.botDepartments ?? [],
     selectedAction: params?.selectedAction,
@@ -25,6 +26,7 @@ export interface MockRoundParams {
   cardDeck?: CardDeckPersistence
   timeline?: TimelinePersistence
   departments?: readonly string[]
+  playerReserveDepartments?: readonly string[]
   playerDepartments?: readonly string[]
   botDepartments?: readonly string[]
   selectedAction?: Action

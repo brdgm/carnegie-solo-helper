@@ -79,7 +79,8 @@ export interface Round {
   cardDeck: CardDeckPersistence
   timeline: TimelinePersistence
   departments: readonly string[]
-  playerDepartments: readonly string[]
+  playerReserveDepartments: readonly string[]
+  playerDepartments: readonly string[]  
   botDepartments: readonly string[]
   selectedAction?: Action
   botEventDonationFailed?: boolean

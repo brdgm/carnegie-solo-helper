@@ -31,7 +31,7 @@
       "botInfo": "Andrew does not use employees, VP, money, goods cubes, or study points during the game, and he does not use an individual Company board. Andrew always has enough money, goods, and study points."
     },
     "pickBlockingColor": {
-      "intro": "Pick a third player color for initially <b>blocking certain donations and cities</b>:",
+      "intro": "Pick a third player color for initially <b>blocking certain donations and cities</b> (18 disks in total):",
       "placeCityDisks": "Put discs on the <i>left-most</i> unoccupied construction spaces in each city:"
     }
   },
