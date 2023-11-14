@@ -5,7 +5,7 @@
       <CityBadge :city="city" class="me-2 mt-1"/>
     </span>
   </p>
-  <p>
+  <p class="mt-4">
     <span class="me-2">{{t('actionBot.disksPlaced')}}</span>
     <ActionStepsRadioGroup v-model="disksPlaced" :count="cities.length" @change="disksPlacedSelected"/>
   </p>

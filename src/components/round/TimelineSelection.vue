@@ -137,9 +137,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$breakpoint: 800px;
 .action {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: 10px;
   .btn {
     width: 90px;
@@ -148,9 +150,20 @@ export default defineComponent({
     &.btn-outline-primary:not(:hover) {
       background-color: #fff;
     }
+    @media (max-width: $breakpoint) {
+      width: 55px;
+      height: 55px;
+      margin-right: 10px;
+    }
   }
   .actionIcon {
     width: 60px;
+    @media (max-width: $breakpoint) {
+      width: 30px;
+    }
+  }
+  @media (max-width: $breakpoint) {
+    margin-bottom: 15px;
   }
 }
 .separator {
@@ -161,6 +174,9 @@ export default defineComponent({
   color: #e86720;
   font-size: 30px;
   font-weight: bold;
+  @media (max-width: $breakpoint) {
+    display: none;
+  }
 }
 .entry {
   display: inline-flex;
@@ -180,6 +196,9 @@ export default defineComponent({
     &:nth-child(2) {
       margin-left: -15px;
       z-index: 40;
+      @media (max-width: $breakpoint) {
+        margin-left: -40px;
+      }
     }
     &.selectable {
       cursor: pointer;
@@ -191,6 +210,12 @@ export default defineComponent({
     &.inactive {
       opacity: 25%;
       filter: none;
+    }
+    @media (max-width: $breakpoint) {
+      width: 60px;
+      height: 60px;
+      margin-right: 12px;
+      margin-bottom: 10px;
     }
   }
   .eventIcon {
@@ -209,6 +234,9 @@ export default defineComponent({
     color: #fff;
     text-align: center;
     margin-top: 4px;
+    @media (max-width: $breakpoint) {
+      min-width: 55px;
+    }
   }
 }
 </style>

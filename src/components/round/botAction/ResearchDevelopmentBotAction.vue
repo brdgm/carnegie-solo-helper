@@ -6,7 +6,7 @@
       <RegionBadge :region="region"/>
     </span>
   </p>
-  <p>
+  <p class="mt-4">
     <span class="me-2">{{t('actionBot.transportDiskMovedSteps')}}</span>
     <ActionStepsRadioGroup v-model="diskStepsMoved" :count="transportSteps" @change="diskStepsMovedSelected"/>
   </p>

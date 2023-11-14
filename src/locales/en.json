@@ -86,6 +86,7 @@
     "vp": "VP",
     "player": "Player",
     "bot": "Andrew",
+    "vpGameBoard": "VP from game board",
     "vpActiveEmployee": "1 VP per active employee",
     "vpDepartments": "2-3 VP per department",
     "vpProjectTabs": "VP from project tabs",
@@ -96,8 +97,7 @@
     "vpBotCards": "VP from Andrews cards",
     "total": "Total",
     "difficultyLevel": "Difficulty Level:",
-    "vpDonationsBotInfo1": "Andrew’s donations are scored according to what <i>you</i> built during the game. For example, you built 5 projects in the West; if Andrew had placed the donation disk that awards 2 VP for each project built in that region, Andrew would score 10 VP (5 x 2).",
-    "vpDonationsBotInfo2": "Tip: You may find it unfair that Andrew receives points for what you have done during the game, but businessmen of Andrew’s caliber don’t care. Once Andrew has placed a donation disk, you know that you may no longer make that particular donation and may thus wish to avoid taking further actions that would reward Andrew."
+    "vpDonationsBotInfo": "Andrew’s donations are scored according to what <i>you</i> built during the game. For example, you built 5 projects in the West; if Andrew had placed the donation disk that awards 2 VP for each project built in that region, Andrew would score 10 VP (5 x 2). You may find it unfair that Andrew receives points for what you have done during the game, but businessmen of Andrew’s caliber don’t care. Once Andrew has placed a donation disk, you know that you may no longer make that particular donation and may thus wish to avoid taking further actions that would reward Andrew."
   },
   "actionStepsRadioGroup": {
     "all": "All {count}"

@@ -4,7 +4,7 @@
   <h1>{{t('actionPlayer.title')}}</h1>
 
   <div v-if="selectedAction" class="mt-3">
-    <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-start me-3 mb-3"/>
+    <AppIcon type="action-hex" :name="selectedAction" class="actionIcon float-md-start me-3 mb-3"/>
     <p v-html="t('actionPlayer.useDepartments')"></p>
   </div>
 

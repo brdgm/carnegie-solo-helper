@@ -17,7 +17,7 @@
       <div class="border departmentContent">
         <div v-if="selectedDepartment" class="p-4">
           <div class="alert alert-warning" role="alert" v-if="!isAllowed">{{t('departmentShop.selectionNotAllowed')}}</div>
-          <div class="department float-start ms-3 me-4 mb-3">
+          <div class="department float-md-start ms-3 me-4 mb-3">
             <AppIcon type="department" :name="selectedDepartment.department.id" extension="jpg"
                     class="icon single"
                     :title="t(`department.${selectedDepartment.department.id}.title`)"
