@@ -2,19 +2,19 @@
   <h3 class="mt-4 mb-3">{{t('setup.difficultyLevel.title')}}</h3>
 
   <div class="row">
-    <div class="col-1 text-end">
+    <div class="col-2 col-md-1 text-end">
       <label for="difficultyLevel" class="form-label">{{t('setup.difficultyLevel.easy')}}</label>
     </div>
     <div class="col-8 col-md-4">
       <input type="range" class="form-range" min="1" max="4" id="difficultyLevel"
           :value="difficultyLevel" @input="updateDifficultyLevel($event)">
     </div>
-    <div class="col-1">
+    <div class="col-2 col-md-1">
       <label for="difficultyLevel" class="form-label">{{t('setup.difficultyLevel.hard')}}</label>
     </div>
   </div>  
   <div class="row">
-    <div class="col-11 offset-1">
+    <div class="col-10 offset-2 offset-md-1">
       <i>
         {{t('difficultyLevel.' + difficultyLevel)}}
       </i>
