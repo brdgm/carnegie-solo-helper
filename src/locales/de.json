@@ -31,7 +31,7 @@
       "botInfo": "Andrew hat keinen eigenen Unternehmensplan, keine Mitarbeiter und nutzt während des Spiels kein Geld, keine Warenwürfel und keine Forschungspunkte. Andrew hat für alle Aktionen immer ausreichend Ressourcen zur Verfügung und muss nichts bezahlen."
     },
     "pickBlockingColor": {
-      "intro": "Wähle eine dritte Spielerfarbe um zu Beginn <b>einige Spenden und Städte zu blockieren</b>:",
+      "intro": "Wähle eine dritte Spielerfarbe um zu Beginn <b>einige Spenden und Städte zu blockieren</b> (insgesamt 18 Scheiben):",
       "placeCityDisks": "Lege Schreiben auf das erste freie Projektfeld <i>von links</i> in jeder dieser Städte:"
     }
   },
