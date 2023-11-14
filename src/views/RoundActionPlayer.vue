@@ -15,10 +15,11 @@
           :department="department" :clickable="true" @click="deselectDepartment(index)"/>
     </p>
     <button class="btn btn-primary" v-if="playerNewDepartments.length < 3"
-      data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
+        data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
   </div>
 
-  <DepartmentShop id="newDepartmentModal" :departments="availableDepartments" :select="true" @selected="selectDepartment"/>
+  <DepartmentShop id="newDepartmentModal" :select="true" @selected="selectDepartment"
+      :departments="availableDepartments" :playerDepartments="playerDepartments" :botDepartments="botDepartments"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -62,9 +63,8 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, departments, botNewDepartments } = navigationState
+    const { round, startPlayer, selectedAction, botNewDepartments } = navigationState
 
-    const availableDepartments = ref([...removeDepartments(departments, botNewDepartments)])
     const playerNewDepartments = ref([] as string[])
 
     if (navigationState.startPlayer == Player.BOT) {
@@ -72,7 +72,7 @@ export default defineComponent({
     }
 
     return { t, state, navigationState, round, startPlayer, selectedAction,
-      availableDepartments, botNewDepartments, playerNewDepartments }
+      botNewDepartments, playerNewDepartments }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -85,6 +85,15 @@ export default defineComponent({
     },
     isManagement() : boolean {
       return this.selectedAction == Action.MANAGEMENT
+    },
+    availableDepartments() : string[] {
+      return [...removeDepartments(this.navigationState.departments, this.playerNewDepartments, this.botNewDepartments)]
+    },
+    playerDepartments() : string[] {
+      return [...this.navigationState.playerDepartments]
+    },
+    botDepartments() : string[] {
+      return [...addDepartments(this.navigationState.botDepartments,this.navigationState.botNewDepartments)]
     }
   },
   methods: {

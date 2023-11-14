@@ -21,7 +21,8 @@
     </p>
   </div>
 
-  <DepartmentShop id="sidebarDepartmentShopModal" :departments="availableDepartments"/>
+  <DepartmentShop id="sidebarDepartmentShopModal" :departments="availableDepartments"
+      :playerDepartments="playerDepartments" :botDepartments="botDepartments"/>
 
   <ModalDialog id="sidebarTimelineModal" :title="t('sideBar.timeline')" :size-xl="true" :scrollable="true">
     <template #body>
@@ -44,6 +45,7 @@ import CardType from '@/services/enum/CardType';
 import RoundsVPCalculator from '@/services/RoundsVPCalculator';
 import removeDepartments from '@/util/removeDepartments';
 import Player from '@/services/enum/Player';
+import addDepartments from '@/util/addDepartments';
 
 export default defineComponent({
   name: 'SideBar',
@@ -68,9 +70,15 @@ export default defineComponent({
     round() : number {
       return this.navigationState.round
     },
-    availableDepartments() : string [] {
+    availableDepartments() : string[] {
       return [...removeDepartments(this.navigationState.departments,
           this.navigationState.playerNewDepartments, this.navigationState.botNewDepartments)]
+    },
+    playerDepartments() : string[] {
+      return [...addDepartments(this.navigationState.playerDepartments,this.navigationState.playerNewDepartments)]
+    },
+    botDepartments() : string[] {
+      return [...addDepartments(this.navigationState.botDepartments,this.navigationState.botNewDepartments)]
     },
     currentCard() : Card|undefined {
       return this.navigationState.cardDeck.currentCard

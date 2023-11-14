@@ -44,7 +44,11 @@
     "activateEmployees": "You may <b>activate your employees</b>."
   },
   "departmentShop": {
-    "title": "Available Departments",
+    "title": "Departments",
+    "available": "Available Departments",
+    "player": "Player",
+    "bot": "Andrew",
+    "selectionNotAllowed": "You have already build this department.",
     "selectDepartment": "Select Department"
   },
   "timelineSelection": {

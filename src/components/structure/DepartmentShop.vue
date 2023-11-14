@@ -1,33 +1,51 @@
 <template>
-  <ModalDialog :id="id" :title="t('departmentShop.title')" :size-xl="true" :scrollable="true">
+  <ModalDialog :id="id" :title="t('departmentShop.title')" :size-xl="true" :scrollable="true" :centered="false">
     <template #body>
 
-      <template v-if="selectedDepartment">
-        <div class="department float-start ms-3 me-4 mb-3">
-          <AppIcon type="department" :name="selectedDepartment.department.id" extension="jpg"
-                  v-for="index of selectedDepartment.count" :key="index"
-                  class="icon" :class="{double: selectedDepartment.count > 1}"
-                  :title="t(`department.${selectedDepartment.department.id}.title`)"
-                  @click="backToOverview"/>
-        </div>
-        <h5>{{t(`department.${selectedDepartment.department.id}.title`)}}</h5>
-        <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)"></p>
-        <p v-html="t(`department.${selectedDepartment.department.id}.rules`)"></p>
-        <button class="btn btn-secondary" @click="backToOverview">&lt; {{t('action.back')}}</button>
-        <button class="btn btn-primary ms-2" data-bs-dismiss="modal" @click="selectDepartment(selectedDepartment.department)" v-if="select">{{t('departmentShop.selectDepartment')}}</button>
-      </template>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" :class="{active:!departmentView}" href="#" @click.prevent="showDepartments()">{{t('departmentShop.available')}}</a>
+        </li>
+        <li class="nav-item" v-if="(playerDepartments ?? []).length > 0">
+          <a class="nav-link" :class="{active:departmentView==playerPlayer}" href="#" @click.prevent="showDepartments(playerPlayer)">{{t('departmentShop.player')}}</a>
+        </li>
+        <li class="nav-item" v-if="(botDepartments ?? []).length > 0">
+          <a class="nav-link" :class="{active:departmentView==playerBot}" href="#" @click.prevent="showDepartments(playerBot)">{{t('departmentShop.bot')}}</a>
+        </li>
+      </ul>
 
-      <template v-else>
-        <div class="departmentGroup" v-for="group of groups" :key="group.departmentType">
-          <div class="department" v-for="departmentCount of group.departments" :key="departmentCount.department.id">
-            <AppIcon type="department" :name="departmentCount.department.id" extension="jpg"
-                v-for="index of departmentCount.count" :key="index"
-                class="icon" :class="{double: departmentCount.count > 1}"
-                :title="t(`department.${departmentCount.department.id}.title`)"
-                @click="departmentDetails(departmentCount)"/>
+      <div class="border departmentContent">
+        <div v-if="selectedDepartment" class="p-4">
+          <div class="alert alert-warning" role="alert" v-if="!isAllowed">{{t('departmentShop.selectionNotAllowed')}}</div>
+          <div class="department float-start ms-3 me-4 mb-3">
+            <AppIcon type="department" :name="selectedDepartment.department.id" extension="jpg"
+                    class="icon single"
+                    :title="t(`department.${selectedDepartment.department.id}.title`)"
+                    @click="backToOverview"/>
+          </div>
+          <h5>{{t(`department.${selectedDepartment.department.id}.title`)}}</h5>
+          <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)"></p>
+          <p v-html="t(`department.${selectedDepartment.department.id}.rules`)"></p>
+          <div class="clearfix"></div>
+          <div class="mt-2">
+            <button class="btn btn-secondary" @click="backToOverview">&lt; {{t('action.back')}}</button>
+            <button class="btn btn-primary ms-2" data-bs-dismiss="modal" @click="selectDepartment(selectedDepartment.department)"
+                v-if="select && departmentView == undefined" :disabled="!isAllowed">{{t('departmentShop.selectDepartment')}}</button>
           </div>
         </div>
-      </template>
+
+        <template v-else>
+          <div class="departmentGroup" v-for="group of groups" :key="group.departmentType">
+            <div class="department" v-for="departmentCount of group.departments" :key="departmentCount.department.id">
+              <AppIcon type="department" :name="departmentCount.department.id" extension="jpg"
+                  v-for="index of departmentCount.count" :key="index"
+                  class="icon" :class="{double: departmentCount.count > 1}"
+                  :title="t(`department.${departmentCount.department.id}.title`)"
+                  @click="departmentDetails(departmentCount)"/>
+            </div>
+          </div>
+        </template>
+      </div>
 
     </template>
   </ModalDialog>
@@ -40,6 +58,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import GroupedDepartments, { DepartmentCount, DepartmentGroup } from '@/services/GroupedDepartments'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import Department from '@/services/Department'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'DepartmentShop',
@@ -55,6 +74,14 @@ export default defineComponent({
       type: Array<string>,
       required: true
     },
+    playerDepartments: {
+      type: Array<string>,
+      required: false
+    },
+    botDepartments: {
+      type: Array<string>,
+      required: false
+    },
     select: {
       type: Boolean,
       required: false
@@ -66,6 +93,7 @@ export default defineComponent({
   },
   data() {
     return {
+      departmentView: undefined as Player|undefined,
       selectedDepartment: undefined as DepartmentCount|undefined
     }
   },
@@ -74,9 +102,38 @@ export default defineComponent({
     return { t }
   },
   computed: {
-    groups() : readonly DepartmentGroup[] {
+    groupsAvailable() : readonly DepartmentGroup[] {
       const groupedDepartments = new GroupedDepartments(this.departments)
       return groupedDepartments.groups
+    },
+    groupsPlayer() : readonly DepartmentGroup[] {
+      const groupedDepartments = new GroupedDepartments(this.playerDepartments ?? [])
+      return groupedDepartments.groups
+    },
+    groupsBot() : readonly DepartmentGroup[] {
+      const groupedDepartments = new GroupedDepartments(this.botDepartments ?? [])
+      return groupedDepartments.groups
+    },
+    groups() : readonly DepartmentGroup[] {
+      if (this.departmentView == Player.PLAYER) {
+        return this.groupsPlayer
+      }
+      else if (this.departmentView == Player.BOT) {
+        return this.groupsBot
+      }
+      else {
+        return this.groupsAvailable
+      }
+    },
+    playerPlayer() : Player {
+      return Player.PLAYER
+    },
+    playerBot() : Player {
+      return Player.BOT
+    },
+    isAllowed() : boolean {
+      return !(this.select && this.departmentView == undefined && this.selectedDepartment && this.playerDepartments
+          && this.playerDepartments.includes(this.selectedDepartment.department.id))
     }
   },
   methods: {
@@ -86,15 +143,22 @@ export default defineComponent({
     backToOverview() {
       this.selectedDepartment = undefined
     },
-    selectDepartment(department : Department) {
+    selectDepartment(department : Department) {      
       this.selectedDepartment = undefined
       this.$emit('selected', department)
+    },
+    showDepartments(player?: Player) {
+      this.selectedDepartment = undefined
+      this.departmentView = player
     }
   }
 })
 </script>
 
 <style lang="scss" scoped>
+.departmentContent {
+  min-height: 300px;
+}
 .departmentGroup {
   margin: 10px;
 }
@@ -121,6 +185,10 @@ export default defineComponent({
       position: absolute;
       left: 0;
       top: 0;
+    }
+    &.single {
+      left: 0px;
+      top: 0px;
     }
   }
 }

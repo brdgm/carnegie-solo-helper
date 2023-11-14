@@ -9,9 +9,9 @@
         Pile: {{cardDeck.pile.map(card => cardInfo(card))}}<br/>
         Discard: <span v-for="(discard,index) of cardDeck.discardPile" :key="index">{{index}}: {{(discard ?? []).map(card => cardInfo(card))}}&nbsp;</span><br/>
         <b>Departments</b><br/>
-        Available: {{navigationState.departments}}<br/>
-        Player: {{navigationState.playerDepartments}} + {{navigationState.playerNewDepartments}}<br/>
-        Bot: {{navigationState.botDepartments}} + {{navigationState.botNewDepartments}}<br/>
+        Available: {{navigationState.departments}}({{navigationState.departments.length}})<br/>
+        Player: {{navigationState.playerDepartments}}({{navigationState.playerDepartments.length}}) + {{navigationState.playerNewDepartments}}({{navigationState.playerNewDepartments.length}})<br/>
+        Bot: {{navigationState.botDepartments}}({{navigationState.botDepartments.length}}) + {{navigationState.botNewDepartments}}({{navigationState.botNewDepartments.length}})<br/>
         <b>Bot</b><br/>
         botEventDonationFailed={{navigationState.botEventDonationFailed}}, botCardShift={{navigationState.botCardShift}}<br/>
         vpCalculator: cardsShift={{vpCalculator.cardsShift}}, cardsShiftVP={{vpCalculator.cardsShiftVP}}, departmentCount={{vpCalculator.departmentCount}}, departmentsVP={{vpCalculator.departmentsVP}}

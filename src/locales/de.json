@@ -44,7 +44,11 @@
     "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>."
   },
   "departmentShop": {
-    "title": "Verfügbare Abteilungen",
+    "title": "Abteilungen",
+    "available": "Verfügbare Abteilungen",
+    "player": "Spieler",
+    "bot": "Andrew",
+    "selectionNotAllowed": "Du hast diese Abteilung bereits gebaut.",
     "selectDepartment": "Abteilung auswählen"
   },
   "timelineSelection": {
