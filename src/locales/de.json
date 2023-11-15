@@ -228,7 +228,7 @@
     },
     "23-payroll-management": {
       "title": "Lohnbuchhaltung",
-      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Diese Funktion gilt aber noch nicht in der Runde, in der der Mitarbeiter dort aktiviert wird. Immer wenn du einen Mitarbeiter in deinem Unternehmen aktivierst, kannst du <b>entweder</b> die auf dem Arbeitsplatz angegebenen Kosten zahlen (wie üblich) <b>oder</b> S2 zusätzlich zu diesen Kosten zahlen und 1 SP erhalten <b>oder</b> S1 statt der abgebildeten Kosten zahlen und 1 SP abgeben. Die letzte Möglichkeit kann nicht gewählt werden, wenn du 0 oder weniger SP besitzt."
+      "rules": "Diese Abteilung hat eine dauerhafte Funktion, solange sich dort ein aktiver Mitarbeiter befindet. Diese Funktion gilt aber noch nicht in der Runde, in der der Mitarbeiter dort aktiviert wird. Immer wenn du einen Mitarbeiter in deinem Unternehmen aktivierst, kannst du <b>entweder</b> die auf dem Arbeitsplatz angegebenen Kosten zahlen (wie üblich) <b>oder</b> $2 zusätzlich zu diesen Kosten zahlen und 1 SP erhalten <b>oder</b> $1 statt der abgebildeten Kosten zahlen und 1 SP abgeben. Die letzte Möglichkeit kann nicht gewählt werden, wenn du 0 oder weniger SP besitzt."
     },
     "24-public-relations": {
       "title": "Öffentlichkeitsarbeit",
