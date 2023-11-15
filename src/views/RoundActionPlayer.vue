@@ -19,7 +19,8 @@
   </div>
 
   <DepartmentShop id="newDepartmentModal" :select="true" @selected="selectDepartment"
-      :departments="availableDepartments" :playerDepartments="playerDepartments" :botDepartments="botDepartments"/>
+      :departments="availableDepartments" :playerReserveDepartments="playerReserveDepartments"
+      :playerDepartments="playerDepartments" :playerNewDepartments="playerNewDepartments" :botDepartments="botDepartments"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -63,9 +64,9 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, playerReserveDepartments, botNewDepartments } = navigationState
+    const { round, startPlayer, selectedAction, botNewDepartments } = navigationState
 
-    const playerNewDepartments = ref([...playerReserveDepartments] as string[])
+    const playerNewDepartments = ref([] as string[])
 
     if (navigationState.startPlayer == Player.BOT) {
       navigationState.cardDeck.discardCurrentCard(navigationState.botCardShift)
@@ -88,6 +89,9 @@ export default defineComponent({
     },
     availableDepartments() : string[] {
       return [...removeDepartments(this.navigationState.departments, this.playerNewDepartments, this.botNewDepartments)]
+    },
+    playerReserveDepartments() : string[] {
+      return [...removeDepartments(this.navigationState.playerReserveDepartments, this.playerNewDepartments)]
     },
     playerDepartments() : string[] {
       return [...this.navigationState.playerDepartments]

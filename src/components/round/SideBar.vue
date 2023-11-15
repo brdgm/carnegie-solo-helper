@@ -22,7 +22,7 @@
   </div>
 
   <DepartmentShop id="sidebarDepartmentShopModal" :departments="availableDepartments"
-      :playerDepartments="playerDepartments" :botDepartments="botDepartments"/>
+      :playerReserveDepartments="playerReserveDepartments" :playerDepartments="playerDepartments" :botDepartments="botDepartments"/>
 
   <ModalDialog id="sidebarTimelineModal" :title="t('sideBar.timeline')" :size-xl="true" :scrollable="true">
     <template #body>
@@ -73,6 +73,9 @@ export default defineComponent({
     availableDepartments() : string[] {
       return [...removeDepartments(this.navigationState.departments,
           this.navigationState.playerNewDepartments, this.navigationState.botNewDepartments)]
+    },
+    playerReserveDepartments() : string[] {
+      return [...removeDepartments(this.navigationState.playerReserveDepartments,this.navigationState.playerNewDepartments)]
     },
     playerDepartments() : string[] {
       return [...addDepartments(this.navigationState.playerDepartments,this.navigationState.playerNewDepartments)]
