@@ -46,9 +46,11 @@
   "departmentShop": {
     "title": "Departments",
     "available": "Available Departments",
+    "playerReserve": "Player Reserve",
     "player": "Player",
     "bot": "Andrew",
-    "selectionNotAllowed": "You have already build this department.",
+    "duplicateDepartmentWarning": "You have already build this department.",
+    "playerReserveWarning": "You have to build the department from your reserve first.",
     "selectDepartment": "Select Department"
   },
   "timelineSelection": {

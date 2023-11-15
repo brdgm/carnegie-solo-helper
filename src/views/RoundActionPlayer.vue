@@ -16,12 +16,14 @@
     </p>
     <button class="btn btn-primary" v-if="playerNewDepartments.length < 3"
         data-bs-toggle="modal" data-bs-target="#newDepartmentModal">{{t('actionPlayer.selectDepartment')}}</button>
+    <div class="alert alert-warning mt-2" role="alert" v-if="isManagementDepartmentsBuildNotFromPlayerReserve" v-html="t('departmentShop.playerReserveWarning')"></div>
   </div>
 
   <DepartmentShop id="newDepartmentModal" :select="true" @selected="selectDepartment"
-      :departments="availableDepartments" :playerDepartments="playerDepartments" :botDepartments="botDepartments"/>
+      :departments="availableDepartments" :playerReserveDepartments="playerReserveDepartments"
+      :playerDepartments="playerDepartments" :playerNewDepartments="playerNewDepartments" :botDepartments="botDepartments"/>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next()">
+  <button class="btn btn-primary btn-lg mt-4" @click="next()" :disabled="isManagementDepartmentsBuildNotFromPlayerReserve">
     {{t('action.next')}}
   </button>
 
@@ -63,9 +65,9 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, playerReserveDepartments, botNewDepartments } = navigationState
+    const { round, startPlayer, selectedAction, botNewDepartments } = navigationState
 
-    const playerNewDepartments = ref([...playerReserveDepartments] as string[])
+    const playerNewDepartments = ref([] as string[])
 
     if (navigationState.startPlayer == Player.BOT) {
       navigationState.cardDeck.discardCurrentCard(navigationState.botCardShift)
@@ -86,8 +88,14 @@ export default defineComponent({
     isManagement() : boolean {
       return this.selectedAction == Action.MANAGEMENT
     },
+    isManagementDepartmentsBuildNotFromPlayerReserve() : boolean {
+      return this.isManagement && this.playerNewDepartments.length > 0 && this.playerReserveDepartments.length > 0
+    },
     availableDepartments() : string[] {
       return [...removeDepartments(this.navigationState.departments, this.playerNewDepartments, this.botNewDepartments)]
+    },
+    playerReserveDepartments() : string[] {
+      return [...removeDepartments(this.navigationState.playerReserveDepartments, this.playerNewDepartments)]
     },
     playerDepartments() : string[] {
       return [...this.navigationState.playerDepartments]

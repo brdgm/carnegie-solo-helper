@@ -46,9 +46,11 @@
   "departmentShop": {
     "title": "Abteilungen",
     "available": "Verfügbare Abteilungen",
+    "playerReserve": "Spieler-Vorrat",
     "player": "Spieler",
     "bot": "Andrew",
-    "selectionNotAllowed": "Du hast diese Abteilung bereits gebaut.",
+    "duplicateDepartmentWarning": "Du hast diese Abteilung bereits gebaut.",
+    "playerReserveWarning": "Du musst als erste Abteilung die Abteilung aus dem Spieler-Vorrat bauen.",
     "selectDepartment": "Abteilung auswählen"
   },
   "timelineSelection": {
