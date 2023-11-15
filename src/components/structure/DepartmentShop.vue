@@ -3,20 +3,24 @@
     <template #body>
 
       <ul class="nav nav-tabs">
+        <li class="nav-item" v-if="(playerReserveDepartments ?? []).length > 0">
+          <a id="tablink-player-reserve" class="nav-link" :class="{active:departmentView=='playerReserve'}" href="#" @click.prevent="showDepartments('playerReserve')">{{t('departmentShop.playerReserve')}}</a>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" :class="{active:!departmentView}" href="#" @click.prevent="showDepartments()">{{t('departmentShop.available')}}</a>
+          <a class="nav-link" :class="{active:departmentView=='available'}" href="#" @click.prevent="showDepartments('available')">{{t('departmentShop.available')}}</a>
         </li>
         <li class="nav-item" v-if="(playerDepartments ?? []).length > 0">
-          <a class="nav-link" :class="{active:departmentView==playerPlayer}" href="#" @click.prevent="showDepartments(playerPlayer)">{{t('departmentShop.player')}}</a>
+          <a class="nav-link" :class="{active:departmentView=='player'}" href="#" @click.prevent="showDepartments('player')">{{t('departmentShop.player')}}</a>
         </li>
         <li class="nav-item" v-if="(botDepartments ?? []).length > 0">
-          <a class="nav-link" :class="{active:departmentView==playerBot}" href="#" @click.prevent="showDepartments(playerBot)">{{t('departmentShop.bot')}}</a>
+          <a class="nav-link" :class="{active:departmentView=='bot'}" href="#" @click.prevent="showDepartments('bot')">{{t('departmentShop.bot')}}</a>
         </li>
       </ul>
 
       <div class="border departmentContent">
         <div v-if="selectedDepartment" class="p-4">
-          <div class="alert alert-warning" role="alert" v-if="!isAllowed">{{t('departmentShop.selectionNotAllowed')}}</div>
+          <div class="alert alert-warning" role="alert" v-if="isDepartmentSelectionPossible && isDuplicateDepartment" v-html="t('departmentShop.duplicateDepartmentWarning')"></div>
+          <div class="alert alert-warning" role="alert" v-if="isDepartmentSelectionPossible && isNotPlayerReserveWhichIsNotEmpty" v-html="t('departmentShop.playerReserveWarning')"></div>
           <div class="department float-md-start ms-3 me-4 mb-3">
             <AppIcon type="department" :name="selectedDepartment.department.id" extension="jpg"
                     class="icon single"
@@ -24,13 +28,14 @@
                     @click="backToOverview"/>
           </div>
           <h5>{{t(`department.${selectedDepartment.department.id}.title`)}}</h5>
-          <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)"></p>
+          <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)" class="fst-italic"></p>
           <p v-html="t(`department.${selectedDepartment.department.id}.rules`)"></p>
           <div class="clearfix"></div>
           <div class="mt-2">
             <button class="btn btn-secondary" @click="backToOverview">&lt; {{t('action.back')}}</button>
             <button class="btn btn-primary ms-2" data-bs-dismiss="modal" @click="selectDepartment(selectedDepartment.department)"
-                v-if="select && departmentView == undefined" :disabled="!isAllowed">{{t('departmentShop.selectDepartment')}}</button>
+                v-if="isDepartmentSelectionPossible"
+                :disabled="isDuplicateDepartment || isNotPlayerReserveWhichIsNotEmpty">{{t('departmentShop.selectDepartment')}}</button>
           </div>
         </div>
 
@@ -58,7 +63,6 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import GroupedDepartments, { DepartmentCount, DepartmentGroup } from '@/services/GroupedDepartments'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import Department from '@/services/Department'
-import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'DepartmentShop',
@@ -74,7 +78,15 @@ export default defineComponent({
       type: Array<string>,
       required: true
     },
+    playerReserveDepartments: {
+      type: Array<string>,
+      required: false
+    },
     playerDepartments: {
+      type: Array<string>,
+      required: false
+    },
+    playerNewDepartments: {
       type: Array<string>,
       required: false
     },
@@ -93,7 +105,7 @@ export default defineComponent({
   },
   data() {
     return {
-      departmentView: undefined as Player|undefined,
+      departmentView: (this.playerReserveDepartments ?? []).length > 0 ? 'playerReserve' : 'available',
       selectedDepartment: undefined as DepartmentCount|undefined
     }
   },
@@ -106,6 +118,10 @@ export default defineComponent({
       const groupedDepartments = new GroupedDepartments(this.departments)
       return groupedDepartments.groups
     },
+    groupsPlayerReserve() : readonly DepartmentGroup[] {
+      const groupedDepartments = new GroupedDepartments(this.playerReserveDepartments ?? [])
+      return groupedDepartments.groups
+    },
     groupsPlayer() : readonly DepartmentGroup[] {
       const groupedDepartments = new GroupedDepartments(this.playerDepartments ?? [])
       return groupedDepartments.groups
@@ -115,25 +131,30 @@ export default defineComponent({
       return groupedDepartments.groups
     },
     groups() : readonly DepartmentGroup[] {
-      if (this.departmentView == Player.PLAYER) {
+      if (this.departmentView == 'playerReserve') {
+        return this.groupsPlayerReserve
+      }
+      if (this.departmentView == 'player') {
         return this.groupsPlayer
       }
-      else if (this.departmentView == Player.BOT) {
+      else if (this.departmentView == 'bot') {
         return this.groupsBot
       }
       else {
         return this.groupsAvailable
       }
     },
-    playerPlayer() : Player {
-      return Player.PLAYER
+    isDepartmentSelectionPossible() : boolean {
+      return this.select && (this.departmentView == 'available' || this.departmentView == 'playerReserve')
     },
-    playerBot() : Player {
-      return Player.BOT
+    isDuplicateDepartment() : boolean {
+      return !!(this.select && this.selectedDepartment
+          && ((this.playerDepartments ?? []).includes(this.selectedDepartment.department.id)
+          || (this.playerNewDepartments ?? []).includes(this.selectedDepartment.department.id)))
     },
-    isAllowed() : boolean {
-      return !(this.select && this.departmentView == undefined && this.selectedDepartment && this.playerDepartments
-          && this.playerDepartments.includes(this.selectedDepartment.department.id))
+    isNotPlayerReserveWhichIsNotEmpty() : boolean {
+      return !!(this.playerReserveDepartments && this.playerReserveDepartments.length > 0 && this.selectedDepartment
+          && !this.playerReserveDepartments.includes(this.selectedDepartment.department.id))
     }
   },
   methods: {
@@ -145,11 +166,12 @@ export default defineComponent({
     },
     selectDepartment(department : Department) {      
       this.selectedDepartment = undefined
+      this.departmentView = 'available'
       this.$emit('selected', department)
     },
-    showDepartments(player?: Player) {
+    showDepartments(departmentView: string) {
       this.selectedDepartment = undefined
-      this.departmentView = player
+      this.departmentView = departmentView
     }
   }
 })

@@ -1,6 +1,6 @@
 {
   "name": "@brdgm/carnegie-solo-helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Carnegie Solo Helper",
   "appDeployName": "carnegie",
@@ -21,6 +21,7 @@
     "lodash": "~4.17.21",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",
+    "set-interval-async": "^3.0.3",
     "vue": "~3.3.8",
     "vue-i18n": "~9.6.5",
     "vue-router": "~4.2.5"

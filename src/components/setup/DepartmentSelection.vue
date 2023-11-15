@@ -2,7 +2,7 @@
   <h3 class="mt-4 mb-3">{{t('setup.departmentSelection.title')}}</h3>
 
   <div class="row">
-    <div class="offset-md-1">
+    <div class="offset-md-1 col-md-10">
       
       <div class="form-check" v-for="departmentSelectionType of departmentSelectionTypes" :key="departmentSelectionType">
         <label class="form-check-label">
