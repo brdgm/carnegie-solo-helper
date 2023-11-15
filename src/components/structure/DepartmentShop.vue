@@ -24,7 +24,7 @@
                     @click="backToOverview"/>
           </div>
           <h5>{{t(`department.${selectedDepartment.department.id}.title`)}}</h5>
-          <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)"></p>
+          <p v-if="!selectedDepartment.department.expansion" v-html="t(`department.${selectedDepartment.department.id}.description`)" class="fst-italic"></p>
           <p v-html="t(`department.${selectedDepartment.department.id}.rules`)"></p>
           <div class="clearfix"></div>
           <div class="mt-2">
