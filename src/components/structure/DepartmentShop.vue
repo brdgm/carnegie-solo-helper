@@ -19,8 +19,8 @@
 
       <div class="border departmentContent">
         <div v-if="selectedDepartment" class="p-4">
-          <div class="alert alert-warning" role="alert" v-if="isDuplicateDepartment" v-html="t('departmentShop.duplicateDepartmentWarning')"></div>
-          <div class="alert alert-warning" role="alert" v-if="isNotPlayerReserveWhichIsNotEmpty" v-html="t('departmentShop.playerReserveWarning')"></div>
+          <div class="alert alert-warning" role="alert" v-if="isDepartmentSelectionPossible && isDuplicateDepartment" v-html="t('departmentShop.duplicateDepartmentWarning')"></div>
+          <div class="alert alert-warning" role="alert" v-if="isDepartmentSelectionPossible && isNotPlayerReserveWhichIsNotEmpty" v-html="t('departmentShop.playerReserveWarning')"></div>
           <div class="department float-md-start ms-3 me-4 mb-3">
             <AppIcon type="department" :name="selectedDepartment.department.id" extension="jpg"
                     class="icon single"
@@ -34,7 +34,7 @@
           <div class="mt-2">
             <button class="btn btn-secondary" @click="backToOverview">&lt; {{t('action.back')}}</button>
             <button class="btn btn-primary ms-2" data-bs-dismiss="modal" @click="selectDepartment(selectedDepartment.department)"
-                v-if="select && (departmentView == 'available' || departmentView == 'playerReserve')"
+                v-if="isDepartmentSelectionPossible"
                 :disabled="isDuplicateDepartment || isNotPlayerReserveWhichIsNotEmpty">{{t('departmentShop.selectDepartment')}}</button>
           </div>
         </div>
@@ -143,6 +143,9 @@ export default defineComponent({
       else {
         return this.groupsAvailable
       }
+    },
+    isDepartmentSelectionPossible() : boolean {
+      return this.select && (this.departmentView == 'available' || this.departmentView == 'playerReserve')
     },
     isDuplicateDepartment() : boolean {
       return !!(this.select && this.selectedDepartment
