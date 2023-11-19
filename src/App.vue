@@ -60,10 +60,9 @@ import AppHeader from 'brdgm-commons/src/components/structure/AppHeader.vue'
 import AppFooter from 'brdgm-commons/src/components/structure/AppFooter.vue'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
-import showModal, { showModalIfExist } from 'brdgm-commons/src/util/modal/showModal'
+import showModal from 'brdgm-commons/src/util/modal/showModal'
 import { version, description } from '@/../package.json'
-import { registerSW } from 'virtual:pwa-register'
-import { setIntervalAsync } from 'set-interval-async';
+import registerSWWithOptions from 'brdgm-commons/src/util/serviceWorker/registerSWWithOptions'
 
 export default defineComponent({
   name: 'App',
@@ -79,34 +78,12 @@ export default defineComponent({
     })
     const state = useStateStore()
 
-    // handle PWA updates with prompt if a new version is detected, check every 8h for a new version
-    const checkForNewVersionsIntervalMilliseconds = 8 * 60 * 60 * 1000
-    const updateServiceWorker = registerSW({
-      // check for new app version, see https://vite-pwa-org.netlify.app/guide/periodic-sw-updates.html
-      onRegisteredSW(swScriptUrl : string, registration? : ServiceWorkerRegistration) {
-        registration && setIntervalAsync(async () => {
-          if (!(!registration.installing && navigator)) {
-            return
-          }
-          if (('connection' in navigator) && !navigator.onLine) {
-            return
-          }
-          const resp = await fetch(swScriptUrl, {
-            cache: 'no-store',
-            headers: {
-              'cache': 'no-store',
-              'cache-control': 'no-cache',
-            }
-          })
-          if (resp?.status === 200) {
-            await registration.update()
-          }
-        }, checkForNewVersionsIntervalMilliseconds)
-      },
-      onNeedRefresh() {
-        showModalIfExist('serviceWorkerUpdatedRefresh')
-      }
-    })
+    /* TODO: switch back to 8h
+    // handle PWA updates with prompt if a new version is detected, check regularly for updates
+    const updateServiceWorker = registerSWWithOptions()
+    */
+    // check every 30min for updates
+    const updateServiceWorker = registerSWWithOptions({checkUpdateIntervalSeconds: 30 * 60})
 
     locale.value = state.language
 
