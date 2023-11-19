@@ -141,9 +141,6 @@ export default defineComponent({
   h5 { font-size: calc(v-bind(baseFontSize) * $h5-font-size); }
   h6 { font-size: calc(v-bind(baseFontSize) * $h6-font-size); }
 
-  .modal {
-    --bs-modal-zindex: 9000;
-  }
   .nav-tabs {
     --bs-nav-tabs-link-active-bg: #f8f8f8;
   }
