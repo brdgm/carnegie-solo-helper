@@ -79,11 +79,8 @@ export default defineComponent({
     })
     const state = useStateStore()
 
-    // handle PWA updates with prompt if a new version is detected, check every 8h for a new version
-    /* TODO: switch back to 8h
-    const checkForNewVersionsIntervalSeconds = 8 * 60 * 60
-    */
-    const checkForNewVersionsIntervalSeconds = 30 * 60
+    // handle PWA updates with prompt if a new version is detected, check every 1h for a new version
+    const checkForNewVersionsIntervalSeconds = 1 * 60 * 60
     const updateServiceWorker = registerSW({
       // check for new app version, see https://vite-pwa-org.netlify.app/guide/periodic-sw-updates.html
       onRegisteredSW(swScriptUrl : string, registration? : ServiceWorkerRegistration) {
@@ -141,9 +138,6 @@ export default defineComponent({
   h5 { font-size: calc(v-bind(baseFontSize) * $h5-font-size); }
   h6 { font-size: calc(v-bind(baseFontSize) * $h6-font-size); }
 
-  .modal {
-    --bs-modal-zindex: 9000;
-  }
   .nav-tabs {
     --bs-nav-tabs-link-active-bg: #f8f8f8;
   }
