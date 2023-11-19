@@ -60,9 +60,10 @@ import AppHeader from 'brdgm-commons/src/components/structure/AppHeader.vue'
 import AppFooter from 'brdgm-commons/src/components/structure/AppFooter.vue'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import getErrorMessage from 'brdgm-commons/src/util/error/getErrorMessage'
-import showModal from 'brdgm-commons/src/util/modal/showModal'
+import showModal, { showModalIfExist } from 'brdgm-commons/src/util/modal/showModal'
 import { version, description } from '@/../package.json'
-import registerSWWithOptions from 'brdgm-commons/src/util/serviceWorker/registerSWWithOptions'
+import { registerSW } from 'virtual:pwa-register'
+import onRegisteredSWCheckForUpdate from 'brdgm-commons/src/util/serviceWorker/onRegisteredSWCheckForUpdate'
 
 export default defineComponent({
   name: 'App',
@@ -78,12 +79,20 @@ export default defineComponent({
     })
     const state = useStateStore()
 
+    // handle PWA updates with prompt if a new version is detected, check every 8h for a new version
     /* TODO: switch back to 8h
-    // handle PWA updates with prompt if a new version is detected, check regularly for updates
-    const updateServiceWorker = registerSWWithOptions()
+    const checkForNewVersionsIntervalSeconds = 8 * 60 * 60
     */
-    // check every 30min for updates
-    const updateServiceWorker = registerSWWithOptions({checkUpdateIntervalSeconds: 30 * 60})
+    const checkForNewVersionsIntervalSeconds = 30 * 60
+    const updateServiceWorker = registerSW({
+      // check for new app version, see https://vite-pwa-org.netlify.app/guide/periodic-sw-updates.html
+      onRegisteredSW(swScriptUrl : string, registration? : ServiceWorkerRegistration) {
+        onRegisteredSWCheckForUpdate(swScriptUrl, registration, checkForNewVersionsIntervalSeconds)
+      },
+      onNeedRefresh() {
+        showModalIfExist('serviceWorkerUpdatedRefresh')
+      }
+    })
 
     locale.value = state.language
 
