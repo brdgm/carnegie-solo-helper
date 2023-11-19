@@ -1,5 +1,5 @@
 <template>
-  <ModalDialog :id="id" :title="t('departmentShop.title')" :size-xl="true" :scrollable="true" :centered="false">
+  <ModalDialog :id="id" :title="t('departmentShop.title')" :size-xl="true" :scrollable="true" :centered="false" :fullscreen-lg-down="true">
     <template #body>
 
       <ul class="nav nav-tabs">
@@ -21,7 +21,7 @@
         <div v-if="selectedDepartment" class="p-4">
           <div class="alert alert-warning" role="alert" v-if="isDepartmentSelectionPossible && isDuplicateDepartment" v-html="t('departmentShop.duplicateDepartmentWarning')"></div>
           <div class="alert alert-warning" role="alert" v-if="isDepartmentSelectionPossible && isNotPlayerReserveWhichIsNotEmpty" v-html="t('departmentShop.playerReserveWarning')"></div>
-          <div class="department float-md-start ms-3 me-4 mb-3">
+          <div class="department float-md-start ms-3 me-4 mb-3 single">
             <AppIcon type="department" :name="selectedDepartment.department.id" extension="jpg"
                     class="icon single"
                     :title="t(`department.${selectedDepartment.department.id}.title`)"
@@ -178,6 +178,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$breakpoint: 550px;
 .departmentContent {
   min-height: 300px;
 }
@@ -189,6 +190,14 @@ export default defineComponent({
   display: inline-block;
   height: 140px;
   width: 180px;
+  @media (max-width: $breakpoint) {
+    height: 93px;
+    width: 120px;
+    &.single {
+      height: 140px;
+      width: 180px;
+    }
+  }
   .icon {
     position: absolute;
     left: 5px;
@@ -198,6 +207,12 @@ export default defineComponent({
     border: 1px solid #888;
     filter: drop-shadow(#333 3px 3px 3px);
     cursor: pointer;
+    @media (max-width: $breakpoint) {
+      height: 86px;
+      &.single {
+        height: 130px;
+      }
+    }
     &.double:nth-child(1) {
       position: absolute;
       left: 10px;
