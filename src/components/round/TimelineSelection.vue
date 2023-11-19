@@ -137,7 +137,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$breakpoint: 800px;
+$breakpoint-small: 800px;
+$breakpoint-xsmall: 500px;
 .action {
   display: flex;
   align-items: center;
@@ -150,19 +151,28 @@ $breakpoint: 800px;
     &.btn-outline-primary:not(:hover) {
       background-color: #fff;
     }
-    @media (max-width: $breakpoint) {
+    @media (max-width: $breakpoint-small) {
       width: 55px;
       height: 55px;
       margin-right: 10px;
     }
+    @media (max-width: $breakpoint-xsmall) {
+      width: 50px;
+      height: 50px;
+      margin-right: 8px;
+      margin-bottom: 5px;
+    }
   }
   .actionIcon {
     width: 60px;
-    @media (max-width: $breakpoint) {
+    @media (max-width: $breakpoint-small) {
       width: 30px;
     }
+    @media (max-width: $breakpoint-xsmall) {
+      width: 25px;
+    }
   }
-  @media (max-width: $breakpoint) {
+  @media (max-width: $breakpoint-small) {
     margin-bottom: 15px;
   }
 }
@@ -174,7 +184,7 @@ $breakpoint: 800px;
   color: #e86720;
   font-size: 30px;
   font-weight: bold;
-  @media (max-width: $breakpoint) {
+  @media (max-width: $breakpoint-small) {
     display: none;
   }
 }
@@ -196,8 +206,11 @@ $breakpoint: 800px;
     &:nth-child(2) {
       margin-left: -15px;
       z-index: 40;
-      @media (max-width: $breakpoint) {
+      @media (max-width: $breakpoint-small) {
         margin-left: -40px;
+      }
+      @media (max-width: $breakpoint-xsmall) {
+        margin-left: -30px;
       }
     }
     &.selectable {
@@ -211,15 +224,24 @@ $breakpoint: 800px;
       opacity: 25%;
       filter: none;
     }
-    @media (max-width: $breakpoint) {
+    @media (max-width: $breakpoint-small) {
       width: 60px;
       height: 60px;
       margin-right: 12px;
       margin-bottom: 10px;
     }
+    @media (max-width: $breakpoint-xsmall) {
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
+      margin-bottom: 10px;
+    }
   }
   .eventIcon {
-    width: 35px;    
+    width: 35px;
+    @media (max-width: $breakpoint-xsmall) {
+      width: 25px;
+    }
   }
   .income .eventIcon {
     margin-top: 8px;
@@ -234,8 +256,12 @@ $breakpoint: 800px;
     color: #fff;
     text-align: center;
     margin-top: 4px;
-    @media (max-width: $breakpoint) {
+    @media (max-width: $breakpoint-small) {
       min-width: 55px;
+    }
+    @media (max-width: $breakpoint-xsmall) {
+      min-width: 40px;
+      font-size: 9px;
     }
   }
 }
