@@ -49,6 +49,8 @@ describe('services/CardDeck', () => {
     const deck = CardDeck.fromPersistence({pile:['N01','N02','N03','N04'], discardPile:[]})
 
     expect(deck.pile.length, 'pile size').to.eq(4)
+    expect(deck.currentCard?.id, 'current card').to.eq('N01')
+    expect(deck.nextCard?.id, 'next card').to.eq('N02')
 
     deck.discardCurrentCard(2)
     deck.discardCurrentCard(0)

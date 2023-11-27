@@ -19,6 +19,10 @@ export default class CardDeck {
     return this._pile[0]
   }
 
+  public get nextCard() : Card|undefined {
+    return this._pile[1]
+  }
+
   public get pile() : readonly Card[] {
     return this._pile
   }

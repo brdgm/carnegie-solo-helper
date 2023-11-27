@@ -2,13 +2,18 @@
   <div class="sidebar">    
     <p>{{t('sideBar.round')}} <strong>{{round}}</strong> / 20</p>
 
-    <p v-if="currentCard">
-      <span>{{t('sideBar.nextAction')}}</span><br/>
-      <span class="nextAction">
-        <span v-if="isActionHidden" class="unknownAction">?</span>
+    <span>{{t('sideBar.nextAction')}}</span><br/>      
+    <div class="nextActions">
+      <span class="nextAction" v-if="currentCard">
+        <span v-if="isCurrentCardActionHidden" class="unknownAction">?</span>
         <AppIcon v-else type="action" :name="currentCard.mainAction" class="icon"/>
       </span>
-    </p>
+      /
+      <span class="nextAction" v-if="nextCard">
+        <span v-if="isNextCardActionHidden" class="unknownAction">?</span>
+        <AppIcon v-else type="action" :name="nextCard.mainAction" class="icon"/>
+      </span>
+    </div>
 
     <p class="small">
       {{t('sideBar.vpCards',{count:vpCalculator.cardsShiftVP})}}<br/>
@@ -17,7 +22,7 @@
 
     <p class="buttons">
       <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarDepartmentShopModal">{{t('sideBar.departments')}}</button>
-      <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarTimelineModal">{{t('sideBar.timeline')}}</button>
+      <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarTimelineModal" :disabled="navigationState.isTimelineSelection">{{t('sideBar.timeline')}}</button>
     </p>
   </div>
 
@@ -26,7 +31,7 @@
 
   <ModalDialog id="sidebarTimelineModal" :title="t('sideBar.timeline')" :size-xl="true" :scrollable="true">
     <template #body>
-      <TimelineSelection :timeline="navigationState.timeline" :readOnly="true"/>
+      <TimelineSelection :timeline="navigationState.timeline" :preselected-action="navigationState.selectedAction" :readOnly="true"/>
     </template>
   </ModalDialog>
 </template>
@@ -86,9 +91,15 @@ export default defineComponent({
     currentCard() : Card|undefined {
       return this.navigationState.cardDeck.currentCard
     },
-    isActionHidden() : boolean {
+    nextCard() : Card|undefined {
+      return this.navigationState.cardDeck.nextCard
+    },
+    isCurrentCardActionHidden() : boolean {
       return this.currentCard?.cardType == CardType.ADVANCED
           && this.navigationState.player != Player.BOT
+    },
+    isNextCardActionHidden() : boolean {
+      return this.nextCard?.cardType == CardType.ADVANCED
     },
     vpCalculator() : RoundsVPCalculator {
       return new RoundsVPCalculator(this.state.rounds
@@ -112,14 +123,21 @@ export default defineComponent({
   background-color: #fbf8f1;
   filter: drop-shadow(#666 3px 3px 3px);
 
+  .nextActions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
   .nextAction {
     .icon {
-      width: 50px;
+      width: 40px;
     }
     .unknownAction {
       font-size: 30px;
       font-weight: bold;
       margin-left: 15px;
+      margin-right: 10px;
     }
   }
 
