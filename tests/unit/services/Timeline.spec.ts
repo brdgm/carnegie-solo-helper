@@ -61,10 +61,22 @@ describe('services/Timeline', () => {
     expect(timeline.canExecute()).to.true
     const entry1 = timeline.execute(Action.MANAGEMENT)
     expect(entry1.region).to.eq(Region.WEST)
+    expect(entry1.executed).to.true
+    expect(entry1.active).to.true
     const entry2 = timeline.execute(Action.MANAGEMENT)
     expect(entry2.events).to.eql([Event.DONATION])
+    expect(entry2.executed).to.true
+    expect(entry2.active).to.true
+    expect(entry1.executed).to.true
+    expect(entry1.active).to.false
     const entry3 = timeline.execute(Action.MANAGEMENT)
     expect(entry3.region).to.eq(Region.MIDWEST)
+    expect(entry3.executed).to.true
+    expect(entry3.active).to.true
+    expect(entry2.executed).to.true
+    expect(entry2.active).to.false
+    expect(entry1.executed).to.true
+    expect(entry1.active).to.false
     const entry4 = timeline.execute(Action.MANAGEMENT)
     expect(entry4.region).to.eq(Region.SOUTH)
     const entry5 = timeline.execute(Action.MANAGEMENT)
