@@ -69,10 +69,6 @@ export default defineComponent({
 
     const playerNewDepartments = ref([] as string[])
 
-    if (navigationState.startPlayer == Player.BOT) {
-      navigationState.cardDeck.discardCurrentCard(navigationState.botCardShift)
-    }
-
     return { t, state, navigationState, round, startPlayer, selectedAction,
       botNewDepartments, playerNewDepartments }
   },
@@ -111,7 +107,8 @@ export default defineComponent({
       if (this.startPlayer == Player.BOT) {
         // prepare next round
         if (this.selectedAction) {
-          const { timeline, cardDeck, departments, playerReserveDepartments, playerDepartments, botDepartments } = this.navigationState
+          const { timeline, cardDeck, departments, playerReserveDepartments, playerDepartments, botDepartments, botCardShift } = this.navigationState
+          cardDeck.discardCurrentCard(botCardShift)
           this.state.storeRound({
             round: this.round + 1,
             cardDeck: cardDeck.toPersistence(),
