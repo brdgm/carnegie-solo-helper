@@ -1,7 +1,10 @@
 <template>
   <div class="action" v-for="timelineAction of timelineActions" :key="timelineAction.action">
     <button class="btn"
-        :class="{'btn-outline-primary':selectedAction && !(selectedAction==timelineAction.action), 'btn-primary':selectedAction==timelineAction.action || !selectedAction}"        
+        :class="{
+          'btn-outline-primary':selectedAction && !(selectedAction==timelineAction.action),
+          'btn-primary':selectedAction==timelineAction.action || !selectedAction
+        }"        
         @click="selectAction(timelineAction.action)"
         :disabled="isReadOnly">
       <AppIcon type="action" :name="timelineAction.action" class="actionIcon"/>
@@ -79,7 +82,7 @@ export default defineComponent({
   },
   computed: {
     timelineActions() : readonly TimelineAction[] {
-      if (this.selectedAction) {
+      if (this.selectedAction && !this.readOnly) {
         return this.timeline.actions.filter(item => item.action == this.selectedAction
             || item.entries.find(entry => entry.id == this.selectedTimelineEntry?.id))
       }

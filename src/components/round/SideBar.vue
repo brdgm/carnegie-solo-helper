@@ -31,7 +31,7 @@
 
   <ModalDialog id="sidebarTimelineModal" :title="t('sideBar.timeline')" :size-xl="true" :scrollable="true">
     <template #body>
-      <TimelineSelection :timeline="navigationState.timeline" :readOnly="true"/>
+      <TimelineSelection :timeline="navigationState.timeline" :preselected-action="navigationState.selectedAction" :readOnly="true"/>
     </template>
   </ModalDialog>
 </template>
