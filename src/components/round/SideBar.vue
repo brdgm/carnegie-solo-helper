@@ -22,7 +22,7 @@
 
     <p class="buttons">
       <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarDepartmentShopModal">{{t('sideBar.departments')}}</button>
-      <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarTimelineModal">{{t('sideBar.timeline')}}</button>
+      <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#sidebarTimelineModal" :disabled="navigationState.isTimelineSelection">{{t('sideBar.timeline')}}</button>
     </p>
   </div>
 

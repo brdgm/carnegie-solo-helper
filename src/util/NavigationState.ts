@@ -10,6 +10,7 @@ export default class NavigationState {
   readonly round : number
   readonly startPlayer : Player
   readonly player : Player
+  readonly isTimelineSelection : boolean
 
   readonly cardDeck : CardDeck
   readonly timeline : Timeline
@@ -27,6 +28,7 @@ export default class NavigationState {
     this.round = parseInt(route.params['round'] as string)
     this.startPlayer = this.round % 2 == 0 ? Player.BOT : Player.PLAYER
     this.player = isBotRoute(route) ? Player.BOT : Player.PLAYER
+    this.isTimelineSelection = isTimelineSelection(route)
 
     let cardDeck : CardDeck|undefined;
     let timeline : Timeline|undefined;
@@ -51,7 +53,7 @@ export default class NavigationState {
 
       // depending on current route, preselect certain already stored stuff for the current round
       // but skip it, if it was stared previously and user is coming back to this step via back-button
-      if (!isTimelineSelection(route)) {
+      if (!this.isTimelineSelection) {
         selectedAction = roundData.selectedAction
         botEventDonationFailed = roundData.botEventDonationFailed ?? false
         if (this.startPlayer == Player.PLAYER && this.player == Player.BOT) {

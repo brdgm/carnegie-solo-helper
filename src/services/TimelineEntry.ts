@@ -6,4 +6,5 @@ export default interface TimelineEntry {
   events: Event[]
   region?: Region
   executed?: boolean
+  active?: boolean
 }

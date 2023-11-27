@@ -84,7 +84,10 @@ export default class Timeline {
     // get next available action
     const result = this.checkExecuteAction(action)
     if (result) {
+      // clear active state on all other entries
+      this._actions.forEach(item => item.entries.filter(entry => entry.active).forEach(entry => entry.active = false))
       result.executed = true
+      result.active = true
       return result
     }
     else {
@@ -106,7 +109,10 @@ export default class Timeline {
               result.region = entry.region
             }
             if (entry.executed) {
-              result.executed = entry.executed
+              result.executed = true
+            }
+            if (entry.active) {
+              result.active = true
             }
             return result
           })
@@ -155,6 +161,9 @@ export default class Timeline {
           }
           if (entry.executed) {
             result.executed = true
+          }
+          if (entry.active) {
+            result.active = true
           }
           return result
         })

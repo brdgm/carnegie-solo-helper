@@ -15,7 +15,7 @@
               :class="{
                 selectable:isSelectable(timelineEntry),
                 selected:isSelected(timelineEntry),
-                inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)
+                inactive:isInactive(timelineEntry)
               }"
               :style="{'background-color':getRegionEventBackgroundColor(timelineEntry.region)}"
               @click="selectTimelineEntry(timelineEntry)">
@@ -25,7 +25,8 @@
           <div v-else class="eventBackground donation"
               :class="{
                 selectable:isSelectable(timelineEntry),
-                selected:isSelected(timelineEntry),inactive:timelineEntry.executed || selectedTimelineEntry && !isSelected(timelineEntry)
+                selected:isSelected(timelineEntry),
+                inactive:isInactive(timelineEntry)
               }"
               @click="selectTimelineEntry(timelineEntry)">
             <AppIcon type="event" :name="event" class="eventIcon"/>
@@ -130,7 +131,20 @@ export default defineComponent({
       }
     },
     isSelected(timelineEntry : TimelineEntry) {
-      return this.selectedTimelineEntry?.id == timelineEntry.id
+      if (this.readOnly) {
+        return timelineEntry.active
+      }
+      else {
+        return this.selectedTimelineEntry?.id == timelineEntry.id
+      }
+    },
+    isInactive(timelineEntry : TimelineEntry) {
+      if (this.readOnly) {
+        return timelineEntry.executed && !timelineEntry.active
+      }
+      else {
+        return timelineEntry.executed || (this.selectedTimelineEntry && !this.isSelected(timelineEntry))
+      }
     }
   }
 })
@@ -217,8 +231,8 @@ $breakpoint-xsmall: 500px;
       cursor: pointer;
     }
     &.selected {      
-      border: 5px solid #e86720;
-      filter: drop-shadow(#e86720 3px 3px 3px);
+      border: 6px solid #e86720;
+      filter: drop-shadow(#e86720 4px 4px 3px);
     }
     &.inactive {
       opacity: 25%;
