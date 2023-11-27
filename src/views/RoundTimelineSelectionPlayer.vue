@@ -3,7 +3,10 @@
 
   <h1>{{t('timelineSelection.title')}}</h1>
 
-  <p v-html="t('timelineSelection.playerSelect')"></p>
+  <p class="selectAction">
+    <img src="@/assets/arrow-bottom.svg" alt=""/>
+    <span v-html="t('timelineSelection.playerSelect')"></span>
+  </p>
 
   <TimelineSelection :timeline="navigationState.timeline" @selected="selectTimeline"/>
 
@@ -95,3 +98,19 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+$breakpoint-small: 800px;
+$breakpoint-xsmall: 500px;
+.selectAction {
+  img {
+    width: 90px;
+    @media (max-width: $breakpoint-small) {
+      width: 55px;
+    }
+    @media (max-width: $breakpoint-xsmall) {
+      width: 50px;
+    }
+  }
+}
+</style>
