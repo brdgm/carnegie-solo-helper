@@ -21,18 +21,18 @@
     "title": "Spielbrett vorbereiten",
     "pickPlayerColor": {
       "intro": "Wähle eine Spielerfarbe <b>für dich</b>.",
-      "putDisks": "Lege 1 Schreibe auf die Punkteleiste, je 1 Schreibe auf die Transportleisten, und 1 Schreibe auf jedes der sichtbaren Felder der Projektstreifen.",
+      "putDisks": "Lege 1 Scheibe auf die Punkteleiste, je 1 Scheibe auf die Transportleisten, und 1 Scheibe auf jedes der sichtbaren Felder der Projektstreifen.",
       "placeEmployees": "Stelle je 1 Mitarbeiter aufrecht auf jede der 5 Abteilungen deines Unternehmens und lege weitere 5 in den Empfangsbereich.",
       "takeGoodsMoney": "Nehme 4 Warenwürfel und $12."
     },
     "pickBotColor": {
       "intro": "Wähle eine Spielerfarbe <b>für Andrew</b>, den Solo-Gegner.",
-      "putDisks": "Lege je 1 Schreibe auf die Transportleisten.",
+      "putDisks": "Lege je 1 Scheibe auf die Transportleisten.",
       "botInfo": "Andrew hat keinen eigenen Unternehmensplan, keine Mitarbeiter und nutzt während des Spiels kein Geld, keine Warenwürfel und keine Forschungspunkte. Andrew hat für alle Aktionen immer ausreichend Ressourcen zur Verfügung und muss nichts bezahlen."
     },
     "pickBlockingColor": {
       "intro": "Wähle eine dritte Spielerfarbe um zu Beginn <b>einige Spenden und Städte zu blockieren</b> (insgesamt 18 Scheiben):",
-      "placeCityDisks": "Lege Schreiben auf das erste freie Projektfeld <i>von links</i> in jeder dieser Städte:"
+      "placeCityDisks": "Lege Scheiben auf das erste freie Projektfeld <i>von links</i> in jeder dieser Städte:"
     }
   },
   "setupPreparePlayer": {
@@ -88,7 +88,7 @@
     "vp": "SP",
     "player": "Spieler",
     "bot": "Andrew",
-    "vpGameBoard": "VP vom Spielbrett",
+    "vpGameBoard": "SP vom Spielbrett",
     "vpActiveEmployee": "1 SP pro aktivem Mitarbeiter",
     "vpDepartments": "2-3 SP pro Abteilung",
     "vpProjectTabs": "SP von den Projektstreifen",
@@ -278,9 +278,9 @@
     "next": "Weiter",
     "nextRound": "Nächste Runde",
     "abortGame": "Spiel abbrechen",
-    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist Du sicher?",
+    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist du sicher?",
     "endGame": "Spiel beenden",
-    "endGameConfirm": "Dieses Spiel wird beendet - bist Du sicher?",
+    "endGameConfirm": "Dieses Spiel wird beendet - bist du sicher?",
     "cancel": "Abbrechen",
     "backToHome": "Zurück zum Anfang",
     "back": "Zurück",
