@@ -17,7 +17,6 @@ export default class NavigationState {
   readonly departments : readonly string[]
   readonly playerReserveDepartments : readonly string[]
   readonly playerDepartments : readonly string[]
-  readonly playerNewDepartments : readonly string[]
   readonly botDepartments : readonly string[]
   readonly botNewDepartments : readonly string[]
   readonly selectedAction? : Action
@@ -38,7 +37,6 @@ export default class NavigationState {
     let botDepartments : readonly string[] = []
     let selectedAction : Action|undefined
     let botEventDonationFailed = false
-    const playerNewDepartments : readonly string[] = []
     let botNewDepartments : readonly string[] = []
     let botCardShift : number = 0
 
@@ -68,7 +66,6 @@ export default class NavigationState {
     this.departments = departments
     this.playerReserveDepartments = playerReserveDepartments
     this.playerDepartments = playerDepartments
-    this.playerNewDepartments = playerNewDepartments
     this.botDepartments = botDepartments
     this.botNewDepartments = botNewDepartments
     this.selectedAction = selectedAction

@@ -7,7 +7,7 @@
       Discard: <span v-for="(discard,index) of cardDeck.discardPile" :key="index">{{index}}: {{(discard ?? []).map(card => cardInfo(card))}}&nbsp;</span><br/>
       <b>Departments</b><br/>
       Available: {{navigationState.departments}}({{navigationState.departments.length}})<br/>
-      Player: {{navigationState.playerDepartments}}({{navigationState.playerDepartments.length}}) + {{navigationState.playerNewDepartments}}({{navigationState.playerNewDepartments.length}}),
+      Player: {{navigationState.playerDepartments}}({{navigationState.playerDepartments.length}}),
         Reserve: {{navigationState.playerReserveDepartments}}({{navigationState.playerReserveDepartments.length}})<br/>
       Bot: {{navigationState.botDepartments}}({{navigationState.botDepartments.length}}) + {{navigationState.botNewDepartments}}({{navigationState.botNewDepartments.length}})<br/>
       <b>Bot</b><br/>
