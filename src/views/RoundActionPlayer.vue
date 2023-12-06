@@ -48,6 +48,7 @@ import removeDepartments from '@/util/removeDepartments'
 import addDepartments from '@/util/addDepartments'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
@@ -114,12 +115,12 @@ export default defineComponent({
         if (this.round == 20) {
           this.$router.push('/endOfGame')
         }
-        else {
+        else if (this.timelineSelectionPlayer == Player.BOT) {
           this.$router.push(`/round/${this.round + 1}/timelineSelection/player`)
         }
-      }
-      else {
-        this.$router.push(`/round/${this.round}/action/bot`)
+        else {
+          this.$router.push(`/round/${this.round + 1}/timelineSelection/bot`)
+        }
       }
     },
     selectDepartment(department : Department) : void {
