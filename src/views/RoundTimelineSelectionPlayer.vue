@@ -81,7 +81,7 @@ export default defineComponent({
       if (this.action) {
         this.state.storeTimelineSelection(this.round, this.action, this.botEventDonationFailed)
       }
-      this.$router.push(`/round/${this.round}/action/player`)
+      this.$router.push(`/round/${this.round}/action/bot`)
     },
     selectTimeline(action?: Action, events?: Event[]) : void {
       this.action = action

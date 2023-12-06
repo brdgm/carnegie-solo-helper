@@ -38,7 +38,6 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
-import Player from '@/services/enum/Player'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import Action from '@/services/enum/Action'
 import Department from '@/services/Department'
@@ -49,6 +48,7 @@ import removeDepartments from '@/util/removeDepartments'
 import addDepartments from '@/util/addDepartments'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'RoundActionPlayer',
@@ -65,21 +65,16 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, botNewDepartments } = navigationState
+    const { round, timelineSelectionPlayer, selectedAction, botNewDepartments } = navigationState
 
     const playerNewDepartments = ref([] as string[])
 
-    return { t, state, navigationState, round, startPlayer, selectedAction,
+    return { t, state, navigationState, round, timelineSelectionPlayer, selectedAction,
       botNewDepartments, playerNewDepartments }
   },
   computed: {
     backButtonRouteTo() : string {
-      if (this.startPlayer == Player.BOT) {
-        return `/round/${this.round}/action/bot`
-      }
-      else {
-        return `/round/${this.round}/timelineSelection/${this.startPlayer}`
-      }
+      return `/round/${this.round}/action/bot`
     },
     isManagement() : boolean {
       return this.selectedAction == Action.MANAGEMENT
@@ -104,30 +99,28 @@ export default defineComponent({
     next() : void {
       // update current round
       this.state.storePlayerRoundDetails(this.round, this.playerNewDepartments)
-      if (this.startPlayer == Player.BOT) {
-        // prepare next round
-        if (this.selectedAction) {
-          const { timeline, cardDeck, departments, playerReserveDepartments, playerDepartments, botDepartments, botCardShift } = this.navigationState
-          cardDeck.discardCurrentCard(botCardShift)
-          this.state.storeRound({
-            round: this.round + 1,
-            cardDeck: cardDeck.toPersistence(),
-            timeline: timeline.toPersistence(),
-            playerReserveDepartments: removeDepartments(playerReserveDepartments, this.playerNewDepartments),
-            departments: removeDepartments(departments, this.playerNewDepartments, this.botNewDepartments),
-            playerDepartments: addDepartments(playerDepartments, this.playerNewDepartments),
-            botDepartments: addDepartments(botDepartments, this.botNewDepartments)
-          })
-          if (this.round == 20) {
-            this.$router.push('/endOfGame')
-          }
-          else {
-            this.$router.push(`/round/${this.round + 1}/timelineSelection/player`)
-          }
+      // prepare next round
+      if (this.selectedAction) {
+        const { timeline, cardDeck, departments, playerReserveDepartments, playerDepartments, botDepartments, botCardShift } = this.navigationState
+        cardDeck.discardCurrentCard(botCardShift)
+        this.state.storeRound({
+          round: this.round + 1,
+          cardDeck: cardDeck.toPersistence(),
+          timeline: timeline.toPersistence(),
+          playerReserveDepartments: removeDepartments(playerReserveDepartments, this.playerNewDepartments),
+          departments: removeDepartments(departments, this.playerNewDepartments, this.botNewDepartments),
+          playerDepartments: addDepartments(playerDepartments, this.playerNewDepartments),
+          botDepartments: addDepartments(botDepartments, this.botNewDepartments)
+        })
+        if (this.round == 20) {
+          this.$router.push('/endOfGame')
         }
-      }
-      else {
-        this.$router.push(`/round/${this.round}/action/bot`)
+        else if (this.timelineSelectionPlayer == Player.BOT) {
+          this.$router.push(`/round/${this.round + 1}/timelineSelection/player`)
+        }
+        else {
+          this.$router.push(`/round/${this.round + 1}/timelineSelection/bot`)
+        }
       }
     },
     selectDepartment(department : Department) : void {

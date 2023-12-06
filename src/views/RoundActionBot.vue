@@ -26,10 +26,7 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
-import Player from '@/services/enum/Player'
 import BotBackgroundImage from '@/components/structure/BotBackgroundImage.vue'
-import removeDepartments from '@/util/removeDepartments'
-import addDepartments from '@/util/addDepartments'
 import HumanResourcesBotAction from '@/components/round/botAction/HumanResourcesBotAction.vue'
 import ConstructionBotAction from '@/components/round/botAction/ConstructionBotAction.vue'
 import ManagementBotAction from '@/components/round/botAction/ManagementBotAction.vue'
@@ -58,7 +55,7 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, startPlayer, selectedAction, playerNewDepartments } = navigationState
+    const { round, timelineSelectionPlayer, selectedAction, playerNewDepartments } = navigationState
 
     const botActions = new BotActions(navigationState.cardDeck.currentCard,
         navigationState.botEventDonationFailed, navigationState.departments)
@@ -67,7 +64,7 @@ export default defineComponent({
     }
     const botNewDepartments = botActions.botNewDepartments
 
-    return { t, state, navigationState, round, startPlayer, selectedAction, playerNewDepartments, botNewDepartments, botActions }
+    return { t, state, navigationState, round, timelineSelectionPlayer, selectedAction, playerNewDepartments, botNewDepartments, botActions }
   },
   data() {
     return {
@@ -76,38 +73,14 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      if (this.startPlayer == Player.PLAYER) {
-        return `/round/${this.round}/action/player`
-      }
-      else {
-        return `/round/${this.round}/timelineSelection/${this.startPlayer}`
-      }
+      return `/round/${this.round}/timelineSelection/${this.timelineSelectionPlayer}`
     }
   },
   methods: {
     next() : void {
       // update current round
       this.state.storeBotRoundDetails(this.round, this.botNewDepartments, this.botActions.cardShift)
-      if (this.startPlayer == Player.PLAYER) {
-        // prepare next round
-        if (this.selectedAction) {
-          const { timeline, cardDeck, departments, playerReserveDepartments, playerDepartments, botDepartments } = this.navigationState
-          cardDeck.discardCurrentCard(this.botActions.cardShift)
-          this.state.storeRound({
-            round: this.round + 1,
-            cardDeck: cardDeck.toPersistence(),
-            timeline: timeline.toPersistence(),
-            departments: removeDepartments(departments, this.playerNewDepartments, this.botNewDepartments),
-            playerReserveDepartments: removeDepartments(playerReserveDepartments, this.playerNewDepartments),
-            playerDepartments: addDepartments(playerDepartments, this.playerNewDepartments),
-            botDepartments: addDepartments(botDepartments, this.botNewDepartments)
-          })
-          this.$router.push(`/round/${this.round + 1}/timelineSelection/bot`)
-        }
-      }
-      else {
-        this.$router.push(`/round/${this.round}/action/player`)
-      }
+      this.$router.push(`/round/${this.round}/action/player`)
     },
     actionCompleted(actionStepsFailed: number) {
       this.botActions.setActionStepsFailed(actionStepsFailed)

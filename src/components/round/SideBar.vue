@@ -76,14 +76,13 @@ export default defineComponent({
       return this.navigationState.round
     },
     availableDepartments() : string[] {
-      return [...removeDepartments(this.navigationState.departments,
-          this.navigationState.playerNewDepartments, this.navigationState.botNewDepartments)]
+      return [...removeDepartments(this.navigationState.departments, this.navigationState.botNewDepartments)]
     },
     playerReserveDepartments() : string[] {
-      return [...removeDepartments(this.navigationState.playerReserveDepartments,this.navigationState.playerNewDepartments)]
+      return [...this.navigationState.playerReserveDepartments]
     },
     playerDepartments() : string[] {
-      return [...addDepartments(this.navigationState.playerDepartments,this.navigationState.playerNewDepartments)]
+      return [...this.navigationState.playerDepartments]
     },
     botDepartments() : string[] {
       return [...addDepartments(this.navigationState.botDepartments,this.navigationState.botNewDepartments)]
