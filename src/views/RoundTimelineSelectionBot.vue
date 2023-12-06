@@ -70,7 +70,7 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      return `/round/${this.round - 1}/action/bot`
+      return `/round/${this.round - 1}/action/player`
     },
     botDonation() : Donation|undefined {
       return this.navigationState.cardDeck.currentCard?.donation
