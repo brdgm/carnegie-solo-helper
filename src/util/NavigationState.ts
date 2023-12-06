@@ -8,7 +8,7 @@ import { RouteLocation } from 'vue-router'
 export default class NavigationState {
 
   readonly round : number
-  readonly startPlayer : Player
+  readonly timelineSelectionPlayer : Player
   readonly player : Player
   readonly isTimelineSelection : boolean
 
@@ -17,7 +17,6 @@ export default class NavigationState {
   readonly departments : readonly string[]
   readonly playerReserveDepartments : readonly string[]
   readonly playerDepartments : readonly string[]
-  readonly playerNewDepartments : readonly string[]
   readonly botDepartments : readonly string[]
   readonly botNewDepartments : readonly string[]
   readonly selectedAction? : Action
@@ -26,7 +25,7 @@ export default class NavigationState {
 
   constructor(route : RouteLocation, state : State) {    
     this.round = parseInt(route.params['round'] as string)
-    this.startPlayer = this.round % 2 == 0 ? Player.BOT : Player.PLAYER
+    this.timelineSelectionPlayer = this.round % 2 == 0 ? Player.BOT : Player.PLAYER
     this.player = isBotRoute(route) ? Player.BOT : Player.PLAYER
     this.isTimelineSelection = isTimelineSelection(route)
 
@@ -38,7 +37,6 @@ export default class NavigationState {
     let botDepartments : readonly string[] = []
     let selectedAction : Action|undefined
     let botEventDonationFailed = false
-    let playerNewDepartments : readonly string[] = []
     let botNewDepartments : readonly string[] = []
     let botCardShift : number = 0
 
@@ -56,10 +54,7 @@ export default class NavigationState {
       if (!this.isTimelineSelection) {
         selectedAction = roundData.selectedAction
         botEventDonationFailed = roundData.botEventDonationFailed ?? false
-        if (this.startPlayer == Player.PLAYER && this.player == Player.BOT) {
-          playerNewDepartments = roundData.playerNewDepartments ?? []
-        }
-        if (this.startPlayer == Player.BOT && this.player == Player.PLAYER) {
+        if (this.player == Player.PLAYER) {
           botNewDepartments = roundData.botNewDepartments ?? []
           botCardShift = roundData.botCardShift ?? 0
         }
@@ -71,7 +66,6 @@ export default class NavigationState {
     this.departments = departments
     this.playerReserveDepartments = playerReserveDepartments
     this.playerDepartments = playerDepartments
-    this.playerNewDepartments = playerNewDepartments
     this.botDepartments = botDepartments
     this.botNewDepartments = botNewDepartments
     this.selectedAction = selectedAction
