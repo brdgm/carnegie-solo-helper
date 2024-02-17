@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { shuffle } from 'lodash'
 import Card from './Card'
 import Cards from './Cards'
 import { CardDeckPersistence } from '@/store/state'
@@ -61,8 +61,8 @@ export default class CardDeck {
    * Creates a shuffled new card deck.
    */
   public static new(difficultyLevel : DifficultyLevel) : CardDeck {    
-    const normalCards = _.shuffle(Cards.getByType(CardType.NORMAL))
-    const advancedCards = _.shuffle(Cards.getByType(CardType.ADVANCED))
+    const normalCards = shuffle(Cards.getByType(CardType.NORMAL))
+    const advancedCards = shuffle(Cards.getByType(CardType.ADVANCED))
     const pile : Card[] = []
     switch (difficultyLevel) {
       case DifficultyLevel.BEGINNER:
@@ -83,7 +83,7 @@ export default class CardDeck {
       default:
         throw new Error(`Invalid difficulty level ${difficultyLevel}`)
     }
-    return new CardDeck(_.shuffle(pile), [])
+    return new CardDeck(shuffle(pile), [])
   }
 
   /**

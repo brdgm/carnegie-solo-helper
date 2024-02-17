@@ -1,5 +1,5 @@
 /**
- * Region
+ * Action
  */
 enum Action {
   HUMAN_RESOURCES = 'human-resources',

@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { shuffle } from 'lodash'
 import DepartmentSelectionType from './enum/DepartmentSelectionType'
 import Department from './Department'
 import Departments from './Departments'
@@ -58,7 +58,7 @@ export default class DepartmentSelectionRandomizer {
   private createExpansionPool(allDepartments : Department[]) : Department[] {
     const departmentsByType = new Map<Action,Department[]>
     Object.values(Action).forEach(action => departmentsByType.set(action, []))
-    const shuffledAllDepartments = _.shuffle(allDepartments)
+    const shuffledAllDepartments = shuffle(allDepartments)
     shuffledAllDepartments.forEach(dept => {
       const departmentsForCurrentType = departmentsByType.get(dept.departmentType)
       if (departmentsForCurrentType && departmentsForCurrentType.length < 4) {
@@ -76,7 +76,7 @@ export default class DepartmentSelectionRandomizer {
   }
 
   private selectSubset(count : number) : Department[] {
-    const shuffledPool = _.shuffle(this._pool)
+    const shuffledPool = shuffle(this._pool)
     return shuffledPool.slice(0, count)
   }
 
