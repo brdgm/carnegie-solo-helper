@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { shuffle } from 'lodash'
 import Cards from './Cards'
 import Donation from './enum/Donation'
 import City from './enum/City'
@@ -37,7 +37,7 @@ export default class BlockDonationCityRandomizer {
    * Draw solo mode cards to place disks by random on donation and city slots.
    */
   private drawCards() {
-    const cards = _.shuffle(Cards.getAll())
+    const cards = shuffle(Cards.getAll())
     for (const card of cards) {
       this.placeDonationDisk(card.donation)
       card.constructionCities.forEach(city => this.placeCityDisk(city))

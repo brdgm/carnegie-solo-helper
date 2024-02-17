@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { shuffle } from 'lodash'
 import { TimelinePersistence, TimelinePersistenceEntry } from '@/store/state'
 import TimelineAction from './TimelineAction'
 import rollDice from 'brdgm-commons/src/util/random/rollDice'
@@ -125,7 +125,7 @@ export default class Timeline {
    * Create new timeline grid based on random timeline tile fronts/backs and the fixed final entry for each row.
    */
   public static new() : Timeline {
-    const timelineTiles = _.shuffle(TimelineTiles.getAll())
+    const timelineTiles = shuffle(TimelineTiles.getAll())
     const finalRegions = Object.values(Region)
     const actions : TimelineAction[] = []
     let index = 0
