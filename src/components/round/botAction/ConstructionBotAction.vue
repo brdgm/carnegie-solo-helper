@@ -14,10 +14,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import BotActions from '@/services/BotActions'
-import CityBadge from '@/components/structure/CityBadge.vue';
-import City from '@/services/enum/City';
-import ActionStepsRadioGroup from '@/components/structure/ActionStepsRadioGroup.vue';
-import { useI18n } from 'vue-i18n';
+import CityBadge from '@/components/structure/CityBadge.vue'
+import City from '@/services/enum/City'
+import ActionStepsRadioGroup from '@/components/structure/ActionStepsRadioGroup.vue'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ConstructionBotAction',

@@ -37,20 +37,20 @@
 </template>
 
 <script lang="ts">
-import NavigationState from '@/util/NavigationState';
+import NavigationState from '@/util/NavigationState'
 import { defineComponent } from 'vue'
-import { useI18n } from 'vue-i18n';
-import { useStateStore } from '@/store/state';
-import DepartmentShop from '../structure/DepartmentShop.vue';
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue';
-import TimelineSelection from './TimelineSelection.vue';
-import AppIcon from '../structure/AppIcon.vue';
-import Card from '@/services/Card';
-import CardType from '@/services/enum/CardType';
-import RoundsVPCalculator from '@/services/RoundsVPCalculator';
-import removeDepartments from '@/util/removeDepartments';
-import Player from '@/services/enum/Player';
-import addDepartments from '@/util/addDepartments';
+import { useI18n } from 'vue-i18n'
+import { useStateStore } from '@/store/state'
+import DepartmentShop from '../structure/DepartmentShop.vue'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import TimelineSelection from './TimelineSelection.vue'
+import AppIcon from '../structure/AppIcon.vue'
+import Card from '@/services/Card'
+import CardType from '@/services/enum/CardType'
+import RoundsVPCalculator from '@/services/RoundsVPCalculator'
+import removeDepartments from '@/util/removeDepartments'
+import Player from '@/services/enum/Player'
+import addDepartments from '@/util/addDepartments'
 
 export default defineComponent({
   name: 'SideBar',
