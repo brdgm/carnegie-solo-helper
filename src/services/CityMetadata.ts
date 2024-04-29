@@ -1,4 +1,4 @@
-import Region from "./enum/Region"
+import Region from './enum/Region'
 
 export default interface CityMetadata {
   region: Region

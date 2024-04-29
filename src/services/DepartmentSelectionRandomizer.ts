@@ -38,15 +38,15 @@ export default class DepartmentSelectionRandomizer {
           pool.push(dept)
           pool.push(dept)
         })
-        break;
+        break
       case DepartmentSelectionType.EXPANSION:
         // pick 4 departments from each type, and put 2 of each into the pool
         pool.push(...this.createExpansionPool(allDepartments))
-        break;
+        break
       case DepartmentSelectionType.EXPANSION_OPEN_BAR:
         // one of all departments in pool
         pool.push(...allDepartments)
-        break;
+        break
     }
 
     return pool

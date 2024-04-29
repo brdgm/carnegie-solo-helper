@@ -1,5 +1,5 @@
-import Event from "./enum/Event"
-import Region from "./enum/Region"
+import Event from './enum/Event'
+import Region from './enum/Region'
 
 export default interface TimelineEntry {
   id: string

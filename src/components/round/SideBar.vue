@@ -61,9 +61,9 @@ export default defineComponent({
     AppIcon
   },
   setup() {
-    const { t } = useI18n();
+    const { t } = useI18n()
     const state = useStateStore()
-    return { t, state };
+    return { t, state }
   },
   props: {
     navigationState: {
