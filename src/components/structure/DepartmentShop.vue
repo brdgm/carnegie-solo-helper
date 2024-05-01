@@ -61,7 +61,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import GroupedDepartments, { DepartmentCount, DepartmentGroup } from '@/services/GroupedDepartments'
-import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import Department from '@/services/Department'
 
 export default defineComponent({

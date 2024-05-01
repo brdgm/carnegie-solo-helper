@@ -1,7 +1,7 @@
 import { shuffle } from 'lodash'
 import { TimelinePersistence, TimelinePersistenceEntry } from '@/store/state'
 import TimelineAction from './TimelineAction'
-import rollDice from 'brdgm-commons/src/util/random/rollDice'
+import rollDice from '@brdgm/brdgm-commons/src/util/random/rollDice'
 import TimelineTiles from './TimelineTiles'
 import Action from './enum/Action'
 import TimelineEntry from './TimelineEntry'
