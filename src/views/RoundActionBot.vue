@@ -55,7 +55,7 @@ export default defineComponent({
     const route = useRoute()
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
-    const { round, timelineSelectionPlayer, selectedAction, playerNewDepartments } = navigationState
+    const { round, timelineSelectionPlayer, selectedAction } = navigationState
 
     const botActions = new BotActions(navigationState.cardDeck.currentCard,
         navigationState.botEventDonationFailed, navigationState.departments)
@@ -64,7 +64,7 @@ export default defineComponent({
     }
     const botNewDepartments = botActions.botNewDepartments
 
-    return { t, state, navigationState, round, timelineSelectionPlayer, selectedAction, playerNewDepartments, botNewDepartments, botActions }
+    return { t, state, navigationState, round, timelineSelectionPlayer, selectedAction, botNewDepartments, botActions }
   },
   data() {
     return {
