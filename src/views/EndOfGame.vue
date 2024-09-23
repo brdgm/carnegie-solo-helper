@@ -2,61 +2,63 @@
   <h1>{{t('endOfGame.title')}}</h1>
 
   <table aria-describedby="endOfGameTitle">
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">{{t('endOfGame.player')}}</th>
-      <th scope="col">{{t('endOfGame.bot')}}</th>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpGameBoard')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPGameBoard" @focus="inputSelectAll"/></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpActiveEmployee')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPActiveEmployee" @focus="inputSelectAll"/></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpDepartments')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPDepartments" @focus="inputSelectAll"/></td>
-      <td>{{botVPDepartments}} {{t('endOfGame.vp')}}</td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpProjectTabs')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPProjectTabs" @focus="inputSelectAll"/></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpConnectionMajorCities')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPConnectionMajorCities" @focus="inputSelectAll"/></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpCityProjects')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPCityProjects" @focus="inputSelectAll"/></td>
-      <td><input type="number" min="0" max="99" step="1" v-model="botVPCityProjects" @focus="inputSelectAll"/></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpDonations')}}</th>
-      <td><input type="number" min="0" max="99" step="1" v-model="playerVPDonations" @focus="inputSelectAll"/></td>
-      <td><input type="number" min="0" max="99" step="1" v-model="botVPDonations" @focus="inputSelectAll"/></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpBotTransportLevel')}}</th>
-      <td></td>
-      <td><input type="number" min="0" max="24" step="6" v-model="botVPTransportLevel" @focus="inputSelectAll"/></td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.vpBotCards')}}</th>
-      <td></td>
-      <td>{{botVPCards}} {{t('endOfGame.vp')}}</td>
-    </tr>
-    <tr>
-      <th scope="row">{{t('endOfGame.total')}}</th>
-      <td><b>{{totalPlayer}} {{t('endOfGame.vp')}}</b></td>
-      <td><b>{{totalBot}} {{t('endOfGame.vp')}}</b></td>
-    </tr>
+    <tbody>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">{{t('endOfGame.player')}}</th>
+        <th scope="col">{{t('endOfGame.bot')}}</th>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpGameBoard')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPGameBoard" @focus="inputSelectAll"/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpActiveEmployee')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPActiveEmployee" @focus="inputSelectAll"/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpDepartments')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPDepartments" @focus="inputSelectAll"/></td>
+        <td>{{botVPDepartments}} {{t('endOfGame.vp')}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpProjectTabs')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPProjectTabs" @focus="inputSelectAll"/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpConnectionMajorCities')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPConnectionMajorCities" @focus="inputSelectAll"/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpCityProjects')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPCityProjects" @focus="inputSelectAll"/></td>
+        <td><input type="number" min="0" max="99" step="1" v-model="botVPCityProjects" @focus="inputSelectAll"/></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpDonations')}}</th>
+        <td><input type="number" min="0" max="99" step="1" v-model="playerVPDonations" @focus="inputSelectAll"/></td>
+        <td><input type="number" min="0" max="99" step="1" v-model="botVPDonations" @focus="inputSelectAll"/></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpBotTransportLevel')}}</th>
+        <td></td>
+        <td><input type="number" min="0" max="24" step="6" v-model="botVPTransportLevel" @focus="inputSelectAll"/></td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.vpBotCards')}}</th>
+        <td></td>
+        <td>{{botVPCards}} {{t('endOfGame.vp')}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{t('endOfGame.total')}}</th>
+        <td><b>{{totalPlayer}} {{t('endOfGame.vp')}}</b></td>
+        <td><b>{{totalBot}} {{t('endOfGame.vp')}}</b></td>
+      </tr>
+    </tbody>
   </table>
 
   <p class="mt-3">
