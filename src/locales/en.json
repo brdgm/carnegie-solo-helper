@@ -42,7 +42,7 @@
     "pickDepartmentTile": "Pick Department tile",
     "moveEmployees": "You may <b>move your employees</b> up to a total of 6 steps on your Company board.",
     "activateEmployees": "You may <b>activate your employees</b>.",
-    "departmentTileMissing": "Please select a department tile."
+    "departmentTileMissing": "Please select a Department tile."
   },
   "departmentShop": {
     "title": "Departments",
