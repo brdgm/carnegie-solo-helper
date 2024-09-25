@@ -15,11 +15,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import BotActions from '@/services/BotActions'
-import ActionStepsRadioGroup from '@/components/structure/ActionStepsRadioGroup.vue';
-import { useI18n } from 'vue-i18n';
-import Region from '@/services/enum/Region';
-import AppIcon from '@/components/structure/AppIcon.vue';
-import RegionBadge from '@/components/structure/RegionBadge.vue';
+import ActionStepsRadioGroup from '@/components/structure/ActionStepsRadioGroup.vue'
+import { useI18n } from 'vue-i18n'
+import Region from '@/services/enum/Region'
+import AppIcon from '@/components/structure/AppIcon.vue'
+import RegionBadge from '@/components/structure/RegionBadge.vue'
 
 export default defineComponent({
   name: 'ResearchDevelopmentBotAction',

@@ -29,8 +29,8 @@ export default class NavigationState {
     this.player = isBotRoute(route) ? Player.BOT : Player.PLAYER
     this.isTimelineSelection = isTimelineSelection(route)
 
-    let cardDeck : CardDeck|undefined;
-    let timeline : Timeline|undefined;
+    let cardDeck : CardDeck|undefined
+    let timeline : Timeline|undefined
     let departments : readonly string[] = []
     let playerReserveDepartments : readonly string[] = []
     let playerDepartments : readonly string[] = []

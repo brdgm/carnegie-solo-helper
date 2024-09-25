@@ -1,4 +1,4 @@
-import findMandatory from 'brdgm-commons/src/util/map/findMandatory'
+import findMandatory from '@brdgm/brdgm-commons/src/util/map/findMandatory'
 import TimelineTile from './TimelineTile'
 import Region from './enum/Region'
 import Event from './enum/Event'

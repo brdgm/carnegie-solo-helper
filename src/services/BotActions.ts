@@ -35,7 +35,7 @@ export default class BotActions {
       + this._actionStepsFailed
     // card shift limited to 4
     if (result > 4) {
-      return 4;
+      return 4
     }
     return result
   }

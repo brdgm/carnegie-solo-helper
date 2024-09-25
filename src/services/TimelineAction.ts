@@ -1,5 +1,5 @@
-import TimelineEntry from "./TimelineEntry"
-import Action from "./enum/Action"
+import TimelineEntry from './TimelineEntry'
+import Action from './enum/Action'
 
 export default interface TimelineAction {
   action: Action

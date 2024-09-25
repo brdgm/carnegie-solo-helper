@@ -16,6 +16,8 @@
     <li v-html="t('setupPreparePlayer.activateEmployees')"></li>
   </ol>
 
+  <div v-if="!department" class="alert alert-info" v-html="t('setupPreparePlayer.departmentTileMissing')"></div>
+
   <button class="btn btn-primary btn-lg mt-4" @click="startGame()" v-if="department">
     {{t('action.startGame')}}
   </button>

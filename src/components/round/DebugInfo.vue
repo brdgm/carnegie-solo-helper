@@ -18,19 +18,19 @@
 </template>
 
 <script lang="ts">
-import NavigationState from '@/util/NavigationState';
+import NavigationState from '@/util/NavigationState'
 import { defineComponent } from 'vue'
-import { useI18n } from 'vue-i18n';
-import { useStateStore } from '@/store/state';
-import RoundsVPCalculator from '@/services/RoundsVPCalculator';
-import Card from '@/services/Card';
+import { useI18n } from 'vue-i18n'
+import { useStateStore } from '@/store/state'
+import RoundsVPCalculator from '@/services/RoundsVPCalculator'
+import Card from '@/services/Card'
 
 export default defineComponent({
   name: 'DebugInfo',
   setup() {
-    const { t } = useI18n();
+    const { t } = useI18n()
     const state = useStateStore()
-    return { t, state };
+    return { t, state }
   },
   props: {
     navigationState: {
