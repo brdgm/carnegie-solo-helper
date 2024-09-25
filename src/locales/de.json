@@ -41,7 +41,8 @@
     "pickDepartmentTileInfo": "Wähle eines der <b>Abteilungsplättchen</b> und lege es in deinen persönlichen Vorrat:",
     "pickDepartmentTile": "Abteilungsplättchen wählen",
     "moveEmployees": "<b>Bewege eigene Mitarbeiter</b> um bis zu 6 Schritte auf dem Unternehmensplan.",
-    "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>."
+    "activateEmployees": "Du kannst deine <b>Mitarbeiter aktivieren</b>.",
+    "departmentTileMissing": "Bitte wähle ein Abteilungsplättchen."
   },
   "departmentShop": {
     "title": "Abteilungen",
