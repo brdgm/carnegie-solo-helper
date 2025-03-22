@@ -23,15 +23,3 @@ test('smoke test', async ({ page }) => {
   // app home
   await expect(page.locator('h1')).toHaveText('Carnegie Solo Helper')
 })
-
-
-async function nextStep(page: Page) {
-  const diskPlacedButton = page.getByRole('button', { name: 'Disk placed' })
-  if (await diskPlacedButton.isVisible()) {
-    await diskPlacedButton.click()
-  }
-  const nextButton = page.getByRole('button', { name: 'Next' })
-  if (await nextButton.isVisible()) {
-    await nextButton.click()
-  }
-}
