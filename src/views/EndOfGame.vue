@@ -10,43 +10,43 @@
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpGameBoard')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPGameBoard" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPGameBoard"/></td>
         <td></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpActiveEmployee')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPActiveEmployee" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPActiveEmployee"/></td>
         <td></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpDepartments')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPDepartments" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPDepartments"/></td>
         <td>{{botVPDepartments}} {{t('endOfGame.vp')}}</td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpProjectTabs')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPProjectTabs" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPProjectTabs"/></td>
         <td></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpConnectionMajorCities')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPConnectionMajorCities" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPConnectionMajorCities"/></td>
         <td></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpCityProjects')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPCityProjects" @focus="inputSelectAll"/></td>
-        <td><input type="number" min="0" max="99" step="1" v-model="botVPCityProjects" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPCityProjects"/></td>
+        <td><ScoringTextInput v-model="botVPCityProjects"/></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpDonations')}}</th>
-        <td><input type="number" min="0" max="99" step="1" v-model="playerVPDonations" @focus="inputSelectAll"/></td>
-        <td><input type="number" min="0" max="99" step="1" v-model="botVPDonations" @focus="inputSelectAll"/></td>
+        <td><ScoringTextInput v-model="playerVPDonations"/></td>
+        <td><ScoringTextInput v-model="botVPDonations"/></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpBotTransportLevel')}}</th>
         <td></td>
-        <td><input type="number" min="0" max="24" step="6" v-model="botVPTransportLevel" @focus="inputSelectAll"/></td>
+        <td><input type="number" min="0" max="24" step="6" v-model="botVPTransportLevel"/></td>
       </tr>
       <tr>
         <th scope="row">{{t('endOfGame.vpBotCards')}}</th>
@@ -79,11 +79,13 @@ import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStateStore } from '@/store/state'
 import RoundsVPCalculator from '@/services/RoundsVPCalculator'
+import ScoringTextInput from '@brdgm/brdgm-commons/src/components/form/ScoringTextInput.vue'
 
 export default defineComponent({
   name: 'EndOfGame',
   components: {
-    FooterButtons
+    FooterButtons,
+    ScoringTextInput
   },
   setup() {
     const { t } = useI18n()
@@ -125,12 +127,6 @@ export default defineComponent({
     totalBot() : number {
       return this.botVPDepartments + this.botVPCityProjects + this.botVPDonations
           + this.botVPTransportLevel + this.botVPCards
-    }
-  },
-  methods: {
-    inputSelectAll(event: Event) : void {
-      const input = event.target as HTMLInputElement
-      input.select()
     }
   }
 })
