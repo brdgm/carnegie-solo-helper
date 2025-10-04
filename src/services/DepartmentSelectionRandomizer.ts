@@ -70,7 +70,7 @@ export default class DepartmentSelectionRandomizer {
     // put departments in pool in correct order
     const selectedDepartments = Array.from(departmentsByType.values()).flatMap(item => item)
     const result : Department[] = []
-    for (const dept of allDepartments.filter(dept => selectedDepartments.includes(dept))) {
+    for (const dept of allDepartments.filter(item => selectedDepartments.includes(item))) {
       result.push(dept)
       result.push(dept)
     }
