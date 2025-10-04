@@ -7,7 +7,7 @@ import removeDepartment from './removeDepartment'
  * @param removeDepartments List(s) of Department IDs to remove
  * @returns New list of departments without the given department.
  */
-export default function(departments? : readonly string[], ...removeDepartments: (readonly string[])[]) : readonly string[] {
+export default function removeDepartments(departments? : readonly string[], ...removeDepartments: (readonly string[])[]) : readonly string[] {
   if (!departments) {
     return []
   }

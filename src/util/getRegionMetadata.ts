@@ -6,7 +6,7 @@ import Region from '@/services/enum/Region'
  * @param region Region
  * @returns Color code
  */
-export default function(region: Region) : RegionMetadata {
+export default function getRegionMetadata(region: Region) : RegionMetadata {
   switch (region) {
     case Region.EAST:
       return { backgroundColor: '#886088', borderColor: '#7e653c', eventBackgroundColor: '#a77984' }
