@@ -127,7 +127,9 @@ const timelineTiles : TimelineTile[] = [
 ]
 
 const timelineTilesMap = new Map<number,TimelineTile>()
-timelineTiles.forEach(timelineTile => timelineTilesMap.set(timelineTile.id, timelineTile))
+for (const timelineTile of timelineTiles) {
+  timelineTilesMap.set(timelineTile.id, timelineTile)
+}
 
 export default {
 

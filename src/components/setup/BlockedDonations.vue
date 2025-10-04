@@ -33,10 +33,10 @@ export default defineComponent({
     donationGroups() : Donation[][] {
       const result : Donation[][] = [[],[],[],[]]
       const donations = Object.values(Donation)
-      donations.forEach(donation => {
+      for (const donation of donations) {
         const metadata = getDonationMetadata(donation)
         result[metadata.column-1][metadata.row-1] = donation
-      })
+      }
       return result
     }
   },

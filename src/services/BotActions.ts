@@ -100,7 +100,7 @@ export default class BotActions {
   private getDepartements(departmentTypes : Action[]) : readonly string[] {
     const groupedDepartments = new GroupedDepartments(this.availableDepartments)
     const result : string[] = []
-    departmentTypes.forEach(departmentType => {
+    for (const departmentType of departmentTypes) {
       const group = groupedDepartments.groups.find(item => item.departmentType == departmentType)
       if (group) {
         // andrew does not take multiple copies of the same department in one turn, but may do so in future turns
@@ -110,7 +110,7 @@ export default class BotActions {
           result.push(departmentCount.department.id)
         }
       }
-    })
+    }
     return result
   }
 

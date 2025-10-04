@@ -40,7 +40,9 @@ export default class BlockDonationCityRandomizer {
     const cards = shuffle(Cards.getAll())
     for (const card of cards) {
       this.placeDonationDisk(card.donation)
-      card.constructionCities.forEach(city => this.placeCityDisk(city))
+      for (const city of card.constructionCities) {
+        this.placeCityDisk(city)
+      }
       if (this._disksPlaced == this._disksTotal) {
         break
       }

@@ -9,14 +9,14 @@ export default function removeDepartment(departments? : readonly string[], depar
   const result : string[] = []
   let removed = false
   if (departments) {
-    departments.forEach(dept => {
+    for (const dept of departments) {
       if (dept == department && !removed) {
         removed = true
       }
       else {
         result.push(dept)
       }
-    })
+    }
   }
   return result
 }

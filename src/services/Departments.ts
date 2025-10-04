@@ -166,7 +166,9 @@ const departments : Department[] = [
 ]
 
 const departmentsMap = new Map<string,Department>()
-departments.forEach(department => departmentsMap.set(department.id, department))
+for (const department of departments) {
+  departmentsMap.set(department.id, department)
+}
 
 export default {
 

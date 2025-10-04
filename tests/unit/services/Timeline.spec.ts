@@ -40,10 +40,10 @@ describe('services/Timeline', () => {
 
     const persistence = timeline.toPersistence()
     expect(persistence.actions.length).to.eq(4)
-    persistence.actions.forEach(actionPersistence => {
+    for (const actionPersistence of persistence.actions) {
       expect(actionPersistence.action).to.not.undefined
       expect(actionPersistence.entries.length).to.eq(5)
-    })
+    }
 
     const fromPersistence = Timeline.fromPersistence(persistence)
     expect(fromPersistence).to.eql(timeline)

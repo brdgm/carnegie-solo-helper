@@ -12,10 +12,10 @@ export default function removeDepartments(departments? : readonly string[], ...r
     return []
   }
   let result : readonly string[] = departments
-  removeDepartments.forEach(departmentIds => {
-    departmentIds.forEach(department => {
+  for (const departmentIds of removeDepartments) {
+    for (const department of departmentIds) {
       result = removeDepartment(result, department)
-    })
-  })
+    }
+  }
   return result
 }
