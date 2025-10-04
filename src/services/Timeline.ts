@@ -85,8 +85,8 @@ export default class Timeline {
     const result = this.checkExecuteAction(action)
     if (result) {
       // clear active state on all other entries
-      for (const item of this._actions) {
-        for (const entry of item.entries.filter(item => item.active)) {
+      for (const actionItem of this._actions) {
+        for (const entry of actionItem.entries.filter(entryItem => entryItem.active)) {
           entry.active = false
         }
       }
