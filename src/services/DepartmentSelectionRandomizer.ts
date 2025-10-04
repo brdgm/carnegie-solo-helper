@@ -34,10 +34,10 @@ export default class DepartmentSelectionRandomizer {
     switch (departmentSelectionType) {
       case DepartmentSelectionType.BASE:
         // two of each base department in pool
-        baseDepartments.forEach(dept => {
+        for (const dept of baseDepartments) {
           pool.push(dept)
           pool.push(dept)
-        })
+        }
         break
       case DepartmentSelectionType.EXPANSION:
         // pick 4 departments from each type, and put 2 of each into the pool
@@ -57,21 +57,23 @@ export default class DepartmentSelectionRandomizer {
    */
   private createExpansionPool(allDepartments : Department[]) : Department[] {
     const departmentsByType = new Map<Action,Department[]>
-    Object.values(Action).forEach(action => departmentsByType.set(action, []))
+    for (const action of Object.values(Action)) {
+      departmentsByType.set(action, [])
+    }
     const shuffledAllDepartments = shuffle(allDepartments)
-    shuffledAllDepartments.forEach(dept => {
+    for (const dept of shuffledAllDepartments) {
       const departmentsForCurrentType = departmentsByType.get(dept.departmentType)
       if (departmentsForCurrentType && departmentsForCurrentType.length < 4) {
         departmentsForCurrentType.push(dept)
       }
-    })
+    }
     // put departments in pool in correct order
     const selectedDepartments = Array.from(departmentsByType.values()).flatMap(item => item)
     const result : Department[] = []
-    allDepartments.filter(dept => selectedDepartments.includes(dept)).forEach(dept => {
+    for (const dept of allDepartments.filter(item => selectedDepartments.includes(item))) {
       result.push(dept)
       result.push(dept)
-    })
+    }
     return result
   }
 

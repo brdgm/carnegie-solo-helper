@@ -85,7 +85,11 @@ export default class Timeline {
     const result = this.checkExecuteAction(action)
     if (result) {
       // clear active state on all other entries
-      this._actions.forEach(item => item.entries.filter(entry => entry.active).forEach(entry => entry.active = false))
+      for (const actionItem of this._actions) {
+        for (const entry of actionItem.entries.filter(entryItem => entryItem.active)) {
+          entry.active = false
+        }
+      }
       result.executed = true
       result.active = true
       return result
@@ -129,7 +133,7 @@ export default class Timeline {
     const finalRegions = Object.values(Region)
     const actions : TimelineAction[] = []
     let index = 0
-    Object.values(Action).forEach(action => {
+    for (const action of Object.values(Action)) {
       const timelineTile = timelineTiles.shift()
       const entries : TimelineEntry[] = []
       if (timelineTile) {
@@ -143,7 +147,7 @@ export default class Timeline {
       }
       entries.push({id:`l${++index}`, events:[Event.TAKE_INCOME,Event.DONATION], region:finalRegions.shift()})
       actions.push({action,entries})
-    })
+    }
     return new Timeline(actions)
   }
 

@@ -7,7 +7,7 @@ import Region from '@/services/enum/Region'
  * @param city City
  * @returns City metadata
  */
-export default function(city: City) : CityMetadata {
+export default function getCityMetadata(city: City) : CityMetadata {
   switch (city) {
     case City.SEATTLE:
       return { region: Region.WEST, slots: 1 }

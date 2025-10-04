@@ -6,7 +6,7 @@ import Donation from '@/services/enum/Donation'
  * @param donation Donation
  * @returns Donation metadata
  */
-export default function(donation: Donation) : DonationMetadata {
+export default function getDonationMetadata(donation: Donation) : DonationMetadata {
   switch (donation) {
     case Donation.EDUCATION_DEPARTMENT_HUMAN_RESOURCES:
       return { column: 1, row: 1 }
