@@ -23,16 +23,16 @@ export default class GroupedDepartments {
 
   private createGroups(departments : readonly string[], allDepartments : Department[]) : DepartmentGroup[] {
     const result : DepartmentGroup[] = []
-    Object.values(Action).forEach(departmentType => {
+    for (const departmentType of Object.values(Action)) {
       const departmentGroup : DepartmentGroup = { departmentType, departments: [] }
       result.push(departmentGroup)
-      allDepartments.filter(item => item.departmentType == departmentType).forEach(department => {
+      for (const department of allDepartments.filter(item => item.departmentType == departmentType)) {
         const count = departments.filter(id => id == department.id).length
         if (count > 0) {
           departmentGroup.departments.push({ department, count })
         }
-      })
-    })
+      }
+    }
     return result
   }
 

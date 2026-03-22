@@ -25,7 +25,9 @@ export default class RoundsVPCalculator {
 
   private getCardsShift(rounds : Round[]) : number[] {
     const result : number[] = [0,0,0,0,0]
-    rounds.forEach(round => result[round.botCardShift ?? 0]++)
+    for (const round of rounds) {
+      result[round.botCardShift ?? 0]++
+    }
     return result
   }
 

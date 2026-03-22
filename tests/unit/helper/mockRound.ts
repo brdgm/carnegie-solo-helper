@@ -4,7 +4,7 @@ import Action from '@/services/enum/Action'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import { CardDeckPersistence, Round, TimelinePersistence } from '@/store/state'
 
-export default function (params?: MockRoundParams) : Round {  
+export default function mockRound(params?: MockRoundParams) : Round {  
   return {
     round: params?.round ?? 1,
     cardDeck: params?.cardDeck ?? CardDeck.new(DifficultyLevel.BEGINNER).toPersistence(),

@@ -227,7 +227,7 @@
     },
     "22-branding": {
       "title": "Branding",
-      "rules": "When using this Department, the player must choose a single region of the map. Then, for each project they have built in that region, the player receives either $2 b>OR</b> 1 goods cube."
+      "rules": "When using this Department, the player must choose a single region of the map. Then, for each project they have built in that region, the player receives either $2 <b>OR</b> 1 goods cube."
     },
     "23-payroll-management": {
       "title": "Payroll Management",

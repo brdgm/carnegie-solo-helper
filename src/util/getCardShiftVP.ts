@@ -3,7 +3,7 @@
  * @param cardShift Card shift
  * @returns VP
  */
-export default function(cardShift : number) : number {
+export default function getCardShiftVP(cardShift : number) : number {
   switch (cardShift) {
     case 0:
       return 0

@@ -24,7 +24,7 @@ export default class NavigationState {
   readonly botCardShift : number
 
   constructor(route : RouteLocation, state : State) {    
-    this.round = parseInt(route.params['round'] as string)
+    this.round = Number.parseInt(route.params['round'] as string)
     this.timelineSelectionPlayer = this.round % 2 == 0 ? Player.BOT : Player.PLAYER
     this.player = isBotRoute(route) ? Player.BOT : Player.PLAYER
     this.isTimelineSelection = isTimelineSelection(route)

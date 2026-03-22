@@ -40,7 +40,7 @@ export default defineComponent({
   },
   methods: {
     changed(event : Event) {
-      const newValue = parseInt((event.target as HTMLInputElement).value)
+      const newValue = Number.parseInt((event.target as HTMLInputElement).value)
       this.$emit('update:modelValue', newValue)
     }
   }

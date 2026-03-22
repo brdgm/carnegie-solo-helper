@@ -5,18 +5,18 @@
  * @param department Department ID
  * @returns New list of departments without the given department.
  */
-export default function(departments? : readonly string[], department?: string) : readonly string[] {
+export default function removeDepartment(departments? : readonly string[], department?: string) : readonly string[] {
   const result : string[] = []
   let removed = false
   if (departments) {
-    departments.forEach(dept => {
+    for (const dept of departments) {
       if (dept == department && !removed) {
         removed = true
       }
       else {
         result.push(dept)
       }
-    })
+    }
   }
   return result
 }

@@ -8,8 +8,8 @@ test('smoke test', async ({ page }) => {
   await page.getByRole('link', { name: 'Play Game' }).click()
 
   // setup game
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('link', { name: 'Next' }).click();
+  await page.getByRole('button', { name: 'Next' }).click()
+  await page.getByRole('link', { name: 'Next' }).click()
   await page.getByRole('button', { name: 'Pick Department tile' }).click()
 
   await page.locator('#departmentShopModal .departmentContent .departmentGroup .department img').first().click()
