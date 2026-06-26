@@ -2,7 +2,7 @@
   "gameTitle": "Carnegie",
   "home": {
     "title": "Carnegie Solo Helper",
-    "play1": "Play <a href='https://boardgamegeek.com/boardgame/310873/carnegie' target='_blank' rel='noopener'><b>Carnegie</b></a> against a Andrew, the Solo Opponent.",
+    "play1": "Play <a href='https://boardgamegeek.com/boardgame/310873/carnegie' target='_blank' rel='noopener'><b>Carnegie</b></a> against Andrew, the Solo Opponent.",
     "play2": "This app replaces the solo card deck, the timeline action selection and manages the available department tiles.",
     "feedback": "Discussion and Feedback:"
   },
@@ -21,7 +21,7 @@
     "title": "Prepare Game Board",
     "pickPlayerColor": {
       "intro": "Pick a player color <b>for you</b>.",
-      "putDisks": "Put 1 disks on the score track, 1 disk on each transportation track, and 1 on each available space on the project tabs.",
+      "putDisks": "Put 1 disk on the score track, 1 disk on each transportation track, and 1 on each available space on the project tabs.",
       "placeEmployees": "Place 1 of your employees standing up on each of your Company’s 5 Departments, with another 5 employees lying down in the Company’s Lobby.",
       "takeGoodsMoney": "Take 4 good cubes and $12."
     },
@@ -50,7 +50,7 @@
     "playerReserve": "Player Reserve",
     "player": "Player",
     "bot": "Andrew",
-    "duplicateDepartmentWarning": "You have already build this department.",
+    "duplicateDepartmentWarning": "You have already built this department.",
     "playerReserveWarning": "You have to build the department from your reserve first.",
     "selectDepartment": "Select Department"
   },
@@ -97,7 +97,7 @@
     "vpCityProjects": "VPs for each construction project in cities",
     "vpDonations": "VPs for donations *)",
     "vpBotTransportLevel": "6 VP for each disk on last box in transportation track",
-    "vpBotCards": "VP from Andrews cards",
+    "vpBotCards": "VP from Andrew's cards",
     "total": "Total",
     "difficultyLevel": "Difficulty Level:",
     "vpDonationsBotInfo": "Andrew’s donations are scored according to what <i>you</i> built during the game. For example, you built 5 projects in the West; if Andrew had placed the donation disk that awards 2 VP for each project built in that region, Andrew would score 10 VP (5 x 2). You may find it unfair that Andrew receives points for what you have done during the game, but businessmen of Andrew’s caliber don’t care. Once Andrew has placed a donation disk, you know that you may no longer make that particular donation and may thus wish to avoid taking further actions that would reward Andrew."

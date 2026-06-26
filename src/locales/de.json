@@ -23,7 +23,7 @@
       "intro": "Wähle eine Spielerfarbe <b>für dich</b>.",
       "putDisks": "Lege 1 Scheibe auf die Punkteleiste, je 1 Scheibe auf die Transportleisten, und 1 Scheibe auf jedes der sichtbaren Felder der Projektstreifen.",
       "placeEmployees": "Stelle je 1 Mitarbeiter aufrecht auf jede der 5 Abteilungen deines Unternehmens und lege weitere 5 in den Empfangsbereich.",
-      "takeGoodsMoney": "Nehme 4 Warenwürfel und $12."
+      "takeGoodsMoney": "Nimm 4 Warenwürfel und $12."
     },
     "pickBotColor": {
       "intro": "Wähle eine Spielerfarbe <b>für Andrew</b>, den Solo-Gegner.",
@@ -37,7 +37,7 @@
   },
   "setupPreparePlayer": {
     "title": "Spieler-Vorbereitung",
-    "placeHousingDisk": "Setze die <b>Scheibe vom deinem Wohnprojektstreifen</b> auf das Wohnprojektfeld einer <i>mittleren oder großen</i> Stadt auf dem Spielplan.",
+    "placeHousingDisk": "Setze die <b>Scheibe von deinem Wohnprojektstreifen</b> auf das Wohnprojektfeld einer <i>mittleren oder großen</i> Stadt auf dem Spielplan.",
     "pickDepartmentTileInfo": "Wähle eines der <b>Abteilungsplättchen</b> und lege es in deinen persönlichen Vorrat:",
     "pickDepartmentTile": "Abteilungsplättchen wählen",
     "moveEmployees": "<b>Bewege eigene Mitarbeiter</b> um bis zu 6 Schritte auf dem Unternehmensplan.",
@@ -72,14 +72,14 @@
   "actionPlayer": {
     "title": "Dein Zug",
     "useDepartments": "Nutze deine Abteilungen.",
-    "newDepartments": " Wenn du in dieser Runde neue Abteilungen gebaut hast, wähle sie hier aus:",
+    "newDepartments": "Wenn du in dieser Runde neue Abteilungen gebaut hast, wähle sie hier aus:",
     "selectDepartment": "Neue Abteilung"
   },
   "actionBot": {
     "title": "Andrews Zug",
     "cardShiftVP": "Andrew erhält <b>{count} SP</b>.",
     "managementBuildDepartments": "Andrew baut eine neue Abteilung: | Andrew baut neue Abteilungen:",
-    "constructionCities": "Andrew realisiert Projekte in diesen Städten (erstes freie Feld von links):",
+    "constructionCities": "Andrew realisiert Projekte in diesen Städten (erstes freies Feld von links):",
     "disksPlaced": "Scheiben platziert:",
     "researchIncreaseTransportLevel": "Andrew verbessert seinen Transportlevel in dieser Region um <b>{count} Schritte</b>:",
     "transportDiskMovedSteps": "Scheibe bewegt um Schritte:"
@@ -207,7 +207,7 @@
     },
     "17-human-resources-administration": {
       "title": "Personalverwaltung",
-      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann darfst du für jede Personalabteilung in deinem Unternehmen (einschließlich der Startabteilung) einen Mitarbeiter auf deinem Unternehmensplan an einen beliebigen anderen Drt in deinem Unternehmen versetzen. Auf diese Weise versetzte Mitarbeiter werden inaktiv."
+      "rules": "Um diese Abteilung zu nutzen, musst du einen aktiven Mitarbeiter dieser Abteilung auf einen Außeneinsatz schicken (setze ihn in ein Einsatzgebiet auf dem Spielplan). Dann darfst du für jede Personalabteilung in deinem Unternehmen (einschließlich der Startabteilung) einen Mitarbeiter auf deinem Unternehmensplan an einen beliebigen anderen Ort in deinem Unternehmen versetzen. Auf diese Weise versetzte Mitarbeiter werden inaktiv."
     },
     "18-local-partners": {
       "title": "Regionale Partner",
